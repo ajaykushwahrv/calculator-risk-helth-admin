@@ -199,7 +199,7 @@ $_SESSION['rvrhprofilemsg'] = "Thank you for contacting us. We will get back to 
 exit;
 }
 }
-$_SESSION['rvrrf'] = bin2hex(random_bytes(32));
+
 ?>
 
 

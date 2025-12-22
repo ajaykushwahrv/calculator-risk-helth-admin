@@ -12,7 +12,9 @@ include "./rvm-include/rvfcaptcha_generate.php";
     <form  id="secureForm" method="POST" action="rvscmail.php" onsubmit="return validate();">
 	<?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 			echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
-			}?>
+			}
+			$_SESSION['rvrrf'] = bin2hex(random_bytes(32));
+			?>
 	<div class="">
 
 		<input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'] ?>">
