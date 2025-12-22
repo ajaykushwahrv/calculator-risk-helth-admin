@@ -1,10 +1,18 @@
 
-<?php session_start(); include("./rvm-include/config.php"); ?>
+<?php session_start(); 
+include("./rvm-include/config.php"); 
+include "./rvm-include/rvfcaptcha_generate.php";
+ $captcha_contact = generateCaptcha("contact");
+?>
+
 
 
 <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
 <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
     <form  id="secureForm" method="POST" action="rvscmail.php" onsubmit="return validate();">
+	<?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
+			echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
+			}?>
 	<div class="">
 
 		<input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'] ?>">
@@ -50,15 +58,13 @@
 			 <span id="rvrmessage_err" class="error"></span>
 		</div>
 		<div class="form-group">
-			<label for='rvrname'>Solve: <b id="cap_label"><?= $rvfa ?> + <?= $rvfb ?> </b> = ? </label>
-			<div class="rvfmathcaptcha"> 
-			 <input type="number" name="rvfmath_captcha" id="rvfcaptcha" maxlength="3">
-			<a href="#!" type="button"  class="btn btn-primary"  id="refreshCaptcha">↻</a>
+			<label for='rvrname'>Solve: <b id="cap_contact"><?= $captcha_contact ?> </b> = ? </label>
+			<div class=""> 
+				 <input type="number" name="contact_captcha" id="rvfcaptcha" maxlength="3" required>
+				<a href="#!" type="button"  class="btn btn-primary"  onclick="refreshCaptcha('contact')" id="refreshCaptcha">↻</a>
 			</div>
-			<span id="captcha_err" class="error"><?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
-        echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
-        }?></span>
-                </div>
+				 
+		</div>
 
 
             </div>

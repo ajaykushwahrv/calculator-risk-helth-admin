@@ -44,7 +44,7 @@ $ip = getClientIP();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
    // Captcha validation
-    if (!isset($_POST['rvfmath_captcha']) || $_POST['rvfmath_captcha'] != $_SESSION['rvfcaptcha_answer']) {
+    if($_POST['contact_captcha'] != $_SESSION['contact_ans']){
         header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
         exit;
     }  else {

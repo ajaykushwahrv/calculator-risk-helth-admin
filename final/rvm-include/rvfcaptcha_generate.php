@@ -1,8 +1,16 @@
 <?php 
-	session_start();
-	// Random numbers
-	$rvfa = rand(10,50);
-	$rvfb = rand(10,50);
-	$_SESSION['rvfcaptcha_answer'] = $rvfa + $rvfb;
-	echo $rvfa . " + " . $rvfb;
+session_start();
+
+function generateCaptcha($key){
+    $rvfa = rand(10,30);
+    $rvfb = rand(10,30);
+ 
+
+    $_SESSION[$key.'_a']   = $rvfa;
+    $_SESSION[$key.'_b']   = $rvfb;
+    $_SESSION[$key.'_ans'] = $rvfa + $rvfb;
+
+    return $rvfa . " + " . $rvfb;
+}
+ 
 ?>

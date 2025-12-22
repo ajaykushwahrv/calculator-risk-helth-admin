@@ -105,14 +105,6 @@ function validate() {
     }
 
 
-    // CAPTCHA Validation
-    if ($("#rvfcaptcha").val().trim() === "") {
-        $("#captcha_err").text("Enter captcha");
-        $("#rvfcaptcha")
-            .removeClass("input-success")
-            .addClass("error-field");
-        valid = false;
-    }
 
 
     $("#submitBtn").prop("disabled", !valid);
@@ -140,14 +132,10 @@ $("#secureForm").on("submit", function(e) {
         .text("Please wait...");
 });
 
-function loadCaptcha() {
-    fetch("/rvm-include/rvfcaptcha_generate.php")
-        .then(res => res.text())
+function refreshCaptcha(key) {
+    fetch("/rvm-include/rvfcaptcha_refresh.php?key=" + key)
+        .then(r => r.text())
         .then(txt => {
-            document.getElementById("cap_label").innerHTML = txt;
+            document.getElementById("cap_" + key).innerHTML = txt;
         });
 }
-// Refresh Captcha Button
-$("#refreshCaptcha").on("click", function() {
-    loadCaptcha();
-});

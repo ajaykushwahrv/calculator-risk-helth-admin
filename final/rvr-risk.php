@@ -2,10 +2,9 @@
 <html lang="en">
 
 <?php
-header("Content-Security-Policy: script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com;");
-
-session_start();
+ 	session_start();
 include("./rvm-include/config.php");
+header("Content-Security-Policy: script-src 'self' 'unsafe-inline' ".$config['rvuserinfo']['base_url']."; object-src 'none'; base-uri 'self'; frame-ancestors 'none';");
 
 
 
@@ -13,9 +12,7 @@ require './PHPMailer-master/src/PHPMailer.php';
 require './PHPMailer-master/src/SMTP.php';
 require './PHPMailer-master/src/Exception.php';
 
-$config = require __DIR__ . '/rvm-include/sfa_config.php';
-$db = new PDO($config['db']['dsn'], $config['db']['user'], $config['db']['pass']);
-
+ 
 use PHPMailer\PHPMailer\PHPMailer;
 
 
@@ -57,30 +54,16 @@ $ip = getClientIP();
 
 
 
-// ---------------- GOOGLE CAPTCHA VERIFY ----------------
-$captcha_valid = false;
-
-if (!empty($_POST['g-recaptcha-response'])) {
-    $secretKey = $config['recaptcha']['secret_key'];
-    $responseKey = $_POST['g-recaptcha-response'];
-    $userIP = $_SERVER['REMOTE_ADDR'];
-    $verifyURL = "https://www.google.com/recaptcha/api/siteverify?secret=$secretKey&response=$responseKey&remoteip=$userIP";
-    $response = file_get_contents($verifyURL);
-    $responseData = json_decode($response);
-    if ($responseData->success) {
-        $captcha_valid = true;  // Captcha OK
-    } else {
-        $captcha_valid = false; // Captcha Fail
-    }
-}
-
+ 
 
 // When form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  if (!$captcha_valid) {
-        echo "<p style='color:red;'>Captcha Failed!</p>";
-    } else {
+   if($_POST['risk_captcha'] != $_SESSION['risk_ans']){
+        header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
+        exit;
+    }  else {
+    $captcha_valid = true;
 
 // Script Injection Block
  foreach ($_POST as $value) {
@@ -296,6 +279,10 @@ exit;
 }
 }
 $_SESSION['rvrrf'] = bin2hex(random_bytes(32));
+	
+	
+include "./rvm-include/rvfcaptcha_generate.php";
+$captcha_risk = generateCaptcha("risk");
 ?>
 
 
@@ -342,6 +329,9 @@ $_SESSION['rvrrf'] = bin2hex(random_bytes(32));
             <div class="logo-images">
                 <img src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
                 <h3 class="">Risk Form</h3>
+				<?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
+	echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
+}?>
             </div>
             <div class="progressBar">
                 <ul>
@@ -421,7 +411,14 @@ $_SESSION['rvrrf'] = bin2hex(random_bytes(32));
                                 <span id="rvrmessage_err" class="error"></span>
                             </div>
 
-                            <div class="g-recaptcha" data-sitekey="<?= $config['recaptcha']['site_key']; ?>"></div>
+							<div class="form-group">
+								<label for='rvrname'>Solve: <b id="cap_risk"><?= $captcha_risk ?> </b> = ? </label>
+								<div class=""> 
+									<input type="number" name="risk_captcha" id="rvfcaptcha" maxlength="3" required>
+									<a href="#!" type="button"  class="btn btn-primary"  onclick="refreshCaptcha('risk')" id="refreshCaptcha">↻</a>
+								</div>
+								 
+							</div>
 
                         </div>
                         <div class="back-links">
@@ -437,9 +434,8 @@ $_SESSION['rvrrf'] = bin2hex(random_bytes(32));
         </div>
     </section>
     
-    <script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
-    <script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
+    <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>
 </body>
 
 </html>
