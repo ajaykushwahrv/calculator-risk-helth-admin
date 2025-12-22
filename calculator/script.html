@@ -1,0 +1,51 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    if (jQuery('.calculatorHendler').length) {
+        jQuery(document).on('click', '.calculatorHendler', function() {
+            var titlename = jQuery(this).data('titlename');
+            var toolscat = jQuery(this).data('toolscat');
+            var urlname = jQuery(this).data('urlname');
+            var apikey = jQuery(this).data('apikey');
+            var rvsrcimg = jQuery(this).data('rvsrcimg');
+            var rvdomain = jQuery(this).data('rvdomain');
+            var rvdirectory = jQuery(this).data('rvdirectory');
+            var rvminheight = jQuery(this).data('rvminheight');
+            var rvmaxheight = jQuery(this).data('rvmaxheight');
+            var rvlogin = "<?= $config['rvuserinfo']['base_url']; ?>/login.php";
+
+            jQuery('.calculatorHendler').removeClass('active');
+            jQuery(this).addClass('active');
+            jQuery('.calculators_section').addClass('active');
+
+            jQuery('.calculator-title').html(
+                '<img src="' + rvsrcimg + '"alt=" ' + titlename + ' "> <span>' + titlename + '</span>')
+            var rvPrimary = jQuery("html").css("--rvc-primary").replace("#", "").trim();
+            var rvSecondary = jQuery("html").css("--rvc-secondary").replace("#", "").trim();
+            var rvwhite = jQuery("html").css("--rvc-white").replace("#", "").trim();
+
+            jQuery('.calculator-text .rvcaliframe').html(
+                '<iframe src="' + rvdomain + '/' + rvdirectory + '/' + toolscat + '/' + urlname +
+                '?apikey=' + apikey +
+                '&primarycolor=' + rvPrimary +
+                '&secondarycolor=' + rvSecondary +
+                '&primaryactive=' + rvwhite +
+                '&redirecturl=' + rvlogin +
+                '&bgcolo=000000 frameBorder="0" title="' + titlename + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+            );
+            jQuery("html, body").animate({
+                scrollTop: jQuery(".calculators_section").offset().top - 130
+            }, 0);
+            jQuery(".calculatorlist-section").css({
+                "--rvmaxh": rvmaxheight,
+                "--rvminh": rvminheight
+            });
+        });
+    }
+</script>
+<?php if (isset($_GET['tools'])) { 
+        $tools= $_GET['tools'];
+            echo "<script>jQuery('.calculatorHendler[data-urlname=\"$tools\"]').trigger('click');</script>";
+        } else{
+            //echo "<script>jQuery('.calculatorHendler.active').trigger('click');</script>";
+        }
+?>

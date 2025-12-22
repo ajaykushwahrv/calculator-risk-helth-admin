@@ -1,0 +1,127 @@
+:root {
+  --rvc-primary: var(--rv-primary);
+  --rvc-secondary: var(--rv-secondary);
+  --rvc-secondary-light: #ffff00;
+  --rvc-white: #fff;
+  --rvc-black: #000;
+}
+
+.calculatorlist-section .calculator-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: -10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.calculatorlist-section .calculator-list li {
+  max-width: 25%;
+  width: 100%;
+  padding: 10px;
+}
+@media only screen and (max-width: 992px) {
+  .calculatorlist-section .calculator-list li {
+    max-width: 50%;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .calculatorlist-section .calculator-list li {
+    max-width: 100%;
+  }
+}
+.calculatorlist-section .calculator-list li a {
+  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--rvc-primary);
+  background: var(--rvc-primary);
+  padding: 10px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: 0.5s;
+  height: 100%;
+}
+.calculatorlist-section .calculator-list li a.active, .calculatorlist-section .calculator-list li a:hover {
+  border: 1px solid var(--rvc-primary);
+  background: var(--rvc-white);
+  transition: 0.5s;
+}
+.calculatorlist-section .calculator-list li a.active span, .calculatorlist-section .calculator-list li a:hover span {
+  transition: 0.5s;
+  color: var(--rvc-black);
+}
+.calculatorlist-section .calculator-list li a.active .image, .calculatorlist-section .calculator-list li a:hover .image {
+  transition: 0.5s;
+}
+.calculatorlist-section .calculator-list li a.active .image img, .calculatorlist-section .calculator-list li a:hover .image img {
+  transition: 0.5s;
+  filter: unset;
+}
+.calculatorlist-section .calculator-list li a span {
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.5s;
+  text-align: left;
+  color: var(--rvc-white);
+}
+.calculatorlist-section .calculator-list li a .image {
+  max-width: 40px;
+  transition: 0.5s;
+  height: 40px;
+  width: 100%;
+}
+.calculatorlist-section .calculator-list li a .image img {
+  width: 100%;
+  transition: 0.5s;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+.calculatorlist-section .rvcaliframe {
+  position: relative;
+  width: 100%;
+  height: var(--rvmaxh);
+  border-radius: 3px;
+}
+@media only screen and (max-width: 992px) {
+  .calculatorlist-section .rvcaliframe {
+    height: var(--rvminh);
+  }
+}
+.calculatorlist-section .rvcaliframe iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.calculators_section {
+  display: none;
+}
+.calculators_section.active {
+  display: block;
+}
+
+.calculator-title {
+  padding: 10px 20px;
+  margin: 30px 0;
+  background: var(--rvc-primary);
+  color: var(--rvc-white);
+  display: flex;
+  align-items: center;
+}
+.calculator-title span {
+  font-size: 20px;
+}
+.calculator-title img {
+  width: 40px;
+  filter: brightness(0) invert(1);
+  margin-right: 10px;
+  height: 40px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}

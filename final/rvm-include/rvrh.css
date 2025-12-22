@@ -1,0 +1,403 @@
+:root {
+    --rv-primary-rgb: 113 18 7;
+    --rv-secondary-rgb: 69 9 5;
+    --rv-primary: rgba(var(--rv-primary-rgb)/ 100%);
+    --rv-secondary: rgba(var(--rv-secondary-rgb)/ 100%);
+    --rv-white: #fff;
+    --rv-black: #070707;
+    --rv-gray: #726d7b;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.rvrhsection-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: radial-gradient(circle, rgba(var(--rv-primary-rgb)/ 1%) 0%, rgba(var(--rv-secondary-rgb)/ 10%) 100%), url(./bg-01.svg);
+    a {
+        text-decoration: none;
+    }
+}
+
+.rvrhsection-section .btn-primary {
+    padding: 10px 30px;
+    border: 1px solid;
+    border-radius: 3px;
+    font-weight: 600;
+    background: var(--rv-primary);
+    color: var(--rv-white);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.rvrhsection-section .btn-primary[disabled] {
+    background: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.rvrhsection-section .btn-primary:hover {
+    transition: 0.5s;
+    background: var(--rv-secondary);
+    border-color: var(--rv-secondary);
+}
+
+.rvrhsection {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+body {
+    font-family: system-ui;
+    margin: 0;
+    padding: 0;
+}
+
+.wizard-stape-body {
+    background: #FFFFFF;
+    box-shadow: 0px 9px 30px rgba(0, 0, 0, 0.14);
+    border-radius: 10px;
+}
+
+.wizard-stape-body .wizard-stape-cart {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+    position: relative;
+}
+
+.form-group span.error {
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    top: 0;
+    right: 10px;
+    margin-top: 15px;
+    background: #fff;
+    padding: 0 5px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 3px;
+}
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    height: 45px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    padding: 8px 20px;
+}
+
+.form-group input.error-field,
+.form-group textarea.error-field {
+    border: 1px solid red !important;
+}
+
+.form-group input.input-success,
+.form-group textarea.input-success {
+    border: 1px solid green !important;
+}
+
+.form-group input.input-active,
+.form-group textarea.input-active {
+    border: 1px solid var(--rv-primary) !important;
+    box-shadow: 0 0 5px rgba(var(--rv-primary-rgb), 0.5);
+    outline: none;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.wizard-stape-body .wizard-stape-cart .rvrcaptcha {
+    display: flex;
+    gap: 20px;
+    align-items: anchor-center;
+}
+
+.wizard-stape-body .back-links {
+    padding: 20px 30px;
+    border-top: 1px solid #F3F3F3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wizard-stape-body .back-links a {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #2A2A2A;
+}
+
+.wizard-stape-body .content-box {
+    padding: 30px 30px 0px;
+}
+
+.wizard-stape-body .content-box h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.wizard-stape-body .content-box ul {
+    padding-left: 0px;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.wizard-stape-body .content-box ul li {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.wizard-stape-body .content-box ul li input[type=radio] {
+    display: none;
+}
+
+.wizard-stape-body .content-box ul li input[type=radio]:checked+label {
+    border-color: #2A2A2A;
+    padding: 10px 40px 13px 20px;
+    background-color: #f9f9f9;
+}
+
+.wizard-stape-body .content-box ul li input[type=radio]:checked+label i {
+    color: #21c52f;
+    left: unset;
+    right: 6px;
+}
+
+.wizard-stape-body .content-box ul li input[type=radio]:checked+label i:before {
+    content: "\f6b2";
+    font-family: bootstrap-icons !important;
+}
+
+.wizard-stape-body .content-box ul li .rvrhradio {
+    display: block;
+    border: 1px solid #eee;
+    padding: 10px 20px 13px 40px;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+}
+
+.wizard-stape-body .content-box ul li .rvrhradio i {
+    position: absolute;
+    top: 4px;
+    left: 6px;
+    font-size: 24px;
+    color: #bbb;
+}
+
+.progressBar ul {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    padding: 30px 0;
+    padding-left: 0;
+    justify-content: space-between;
+}
+
+.progressBar ul li {
+    list-style: none;
+    position: relative;
+}
+
+.progressBar ul li:last-child a::after {
+    content: unset;
+}
+
+.progressBar ul li a {
+    display: flex;
+    flex-wrap: wrap;
+    pointer-events: none;
+}
+
+.progressBar ul li a span {
+    text-align: center;
+    width: 100%;
+}
+
+.progressBar ul li a span.ws-no {
+    width: 22px;
+    height: 22px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E2E2E2;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 12px;
+    color: #949494;
+    border-radius: 50%;
+}
+
+.progressBar ul li a span.ws-steps {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.02em;
+    color: #949494;
+}
+
+.progressBar ul li a::after {
+    content: "";
+    pointer-events: none;
+    width: 66%;
+    height: 2px;
+    background-color: #E2E2E2;
+    position: absolute;
+    top: 10px;
+    right: -37%;
+}
+
+.progressBar ul li a.activeStep span.ws-no {
+    color: #fff;
+    background-color: #2A2A2A;
+}
+
+.progressBar ul li a.activeStep span.ws-steps {
+    color: #2A2A2A;
+}
+
+.progressBar ul li a.completeStep span::after {
+    pointer-events: none;
+    background-color: #2A2A2A;
+}
+
+.progressBar ul li a.completeStep span.ws-no {
+    background-color: #2A2A2A;
+    font-size: 0;
+}
+
+.progressBar ul li a.completeStep span.ws-no::before {
+    content: "\f272";
+    font-family: bootstrap-icons !important;
+    font-size: 12px;
+    color: #fff;
+}
+
+.progressBar ul li a.completeStep span.ws-steps {
+    color: #2A2A2A;
+}
+
+.rvrhc-tahnkyou-section {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(160deg, rgb(6 188 166 / 10%) 0%, rgb(6 188 166 / 5%), rgb(6 188 166 / 10%), rgb(6 188 166 / 15%)), url(./bg-01.svg);
+    .btn-box {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+    .image {
+        width: 100%;
+        img {
+            width: 100%;
+            height: 200px;
+        }
+    }
+    .result-card {
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 720px;
+        width: 100%;
+        flex-wrap: wrap;
+        box-shadow: 0 0 10px 0 #06bca675;
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        backdrop-filter: saturate(100%) blur(2px);
+        background: rgba(255, 255, 255, 0.1019607843);
+        align-self: center;
+        .result-card-body {
+            a {
+                display: block;
+                width: max-content;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.logo-images {
+    width: 100%;
+    text-align: center;
+    img {
+        height: 90px;
+        margin: 0 auto;
+        width: auto;
+    }
+}
+
+.rvrhc-notfound-section {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(180deg, rgb(255 255 255 / 52%) 50%, rgb(230 230 230 / 51%) 50%), url(./bg-01.svg);
+    .result-card {
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 720px;
+        width: 100%;
+        flex-wrap: wrap;
+        box-shadow: 0 0 10px 0 #bbbbbb;
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        backdrop-filter: saturate(100%) blur(5px);
+        background: rgba(255, 255, 255, 0.1019607843);
+        align-self: center;
+        .result-card-body {
+            h1 {
+                font-size: 300px;
+                line-height: 250px;
+                color: #b6b6b6;
+                margin: 0;
+            }
+            a {
+                display: block;
+                width: max-content;
+            }
+        }
+        .btn-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    }
+}
+
+#refreshCaptcha {
+    width: 50px;
+    height: 41px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 24px;
+    right: -3px;
+    z-index: 1;
+    border-radius: 3px;
+    font-size: 28px;
+}
