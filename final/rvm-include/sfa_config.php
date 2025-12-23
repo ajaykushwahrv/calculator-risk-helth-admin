@@ -13,7 +13,8 @@
       'password' => 'sas',   
       'port' => 587,                     
       'from_email' => '@gmail.com', 
-      'from_name' => 'Website data' 
+      'CC_email' => '', 
+      'BCC_email' => '', 
     ],
 
     'otp' => [

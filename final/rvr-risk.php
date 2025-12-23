@@ -201,7 +201,9 @@ else if ($rvrradioadd >= 40 && $rvrradioadd <= 50) {
 
 
 $mail = new PHPMailer(true);
-$adminMail = $config['smtp']['from_email'];;
+$adminMail = $config['smtp']['from_email'];
+$ccMail = $config['smtp']['CC_email'];
+$bccMail = $config['smtp']['BCC_email'];
 $body  = "<table width='100%' border='0' cellpadding='3' cellspacing='7' bgcolor='#e4e4e4' style='font-size:12px;'>
 <thead>
     <tr><td bgcolor='#FFFFFF' colspan='2'>$cfservices</td></tr>
@@ -251,8 +253,10 @@ $mail->Port =  $config['smtp']['port'];
 $mail->Username = $config['smtp']['username'];
 $mail->Password = $config['smtp']['password'];
 
-$mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
+$mail->setFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename']);
 $mail->addAddress($adminMail);
+if (!empty($ccMail)) { $mail->addCC($ccMail); }
+if (!empty($bccMail)) { $mail->addBCC($bccMail); }
 $mail->isHTML(true);
 $mail->Subject = "New Contact Lead - ".$cfusersName;
 $mail->Body = $body;
@@ -293,7 +297,7 @@ $captcha_risk = generateCaptcha("risk");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $config['rvuserinfo']['websitename']; ?> || Risk</title>
     <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-    <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
+    <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
 
 
     <style>
@@ -327,7 +331,7 @@ $captcha_risk = generateCaptcha("risk");
     <section class="rvrhsection-section">
         <div class="section-container rvrhsection">
             <div class="logo-images">
-                <img src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
+                <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
                 <h3 class="">Risk Form</h3>
 				<?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 	echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";

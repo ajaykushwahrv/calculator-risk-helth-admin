@@ -6,7 +6,7 @@ $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8';
 $mail->Username = $config['smtp']['username']; // Server Mail ID
 $mail->Password = $config['smtp']['password'];
-$mail->SetFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
+$mail->SetFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename']);
 
 
 ajay@2023#2025h*VY!P=p2#=C
@@ -47,6 +47,18 @@ admin me 2 file dalna
 logout pr url chang krna 
 
 
+
+
+risk_user
+risk_result_pop
+risk_result
+risk_question
+risk_ans
+result_pop
+result
+question_opt
+testmonial
+user
 
 
 

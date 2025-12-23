@@ -17,9 +17,9 @@ $db = new PDO($config['db']['dsn'], $config['db']['user'], $config['db']['pass']
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ]);
 
-$username = $config['rvuserinfo']['username'];
-$useremail = $config['rvuserinfo']['email'];
-$clientname = $config['rvuserinfo']['clientname'];
+$username = $userinfo['username'];
+$useremail = $userinfo['email'];
+$clientname = $userinfo['clientname'];
 
 
 // Generate a new random password
@@ -68,7 +68,7 @@ if ($stmt->execute()) {
         $mail->Port       = $config['smtp']['port'];
 
         // Email settings
-        $mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name'], 'Admin');
+        $mail->setFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename'], 'Admin');
         $mail->addAddress($useremail); // Replace with recipient email
         $mail->Subject = 'Your New Admin Password for website';
         $mail->Body    = "Your website " . $clientname  .  " new admin password is : $new_password\n\nPlease change it after login.";

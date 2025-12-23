@@ -38,7 +38,7 @@ include "./rvm-include/rvfcaptcha_generate.php";
 			<span id="rvrmobile_err" class="error"></span>
 		</div>
 		<div class="form-group">
-			<label for='rvrname'>Mobile</label>
+			<label for='rvrname'>Service</label>
 			<select name="cfservices" id="service">
 				<option value="">-- Select Service --</option>
 				<?php $cfservices = [

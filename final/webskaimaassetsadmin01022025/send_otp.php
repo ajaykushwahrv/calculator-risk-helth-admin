@@ -90,7 +90,7 @@
 						$mail->SMTPSecure = 'tls';
 						$mail->Port = $config['smtp']['port'];
 
-						$mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
+						$mail->setFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename']);
 						$mail->addAddress($email);
 						$mail->isHTML(true);
 						$mail->Subject = 'Your verification code';

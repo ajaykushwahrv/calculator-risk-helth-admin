@@ -152,7 +152,9 @@ $stmt->close();
 
 
 $mail = new PHPMailer(true);
-$adminMail = $config['smtp']['from_email'];;
+$adminMail = $config['smtp']['from_email'];
+$ccMail = $config['smtp']['CC_email'];
+$bccMail = $config['smtp']['BCC_email'];
 $body  = "<table width='100%' border='0' cellpadding='3' cellspacing='7' bgcolor='#e4e4e4' style='font-size:12px;'>
 <thead>
     <tr><td bgcolor='#FFFFFF' colspan='2'>New Contact Us Inquiry Received from Website</td></tr>
@@ -174,8 +176,10 @@ $mail->Port =  $config['smtp']['port'];
 $mail->Username = $config['smtp']['username'];
 $mail->Password = $config['smtp']['password'];
 
-$mail->setFrom($config['smtp']['from_email'], $config['smtp']['from_name']);
+$mail->setFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename']);
 $mail->addAddress($adminMail);
+if (!empty($ccMail)) { $mail->addCC($ccMail); }
+if (!empty($bccMail)) { $mail->addBCC($bccMail); }
 $mail->isHTML(true);
 $mail->Subject = "New Contact Lead - ".$cfusersName;
 $mail->Body = $body;
