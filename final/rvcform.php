@@ -20,6 +20,7 @@ include "./rvm-include/rvfcaptcha_generate.php";
 		<input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'] ?>">
 		<input type="hidden" name="my_address" class="honeypot">
 		<input type="hidden" name="rvrformtype" value="Contact">
+		<input type="hidden" name="rvrformname" value="New Contact Us Inquiry Received from Website">
 
 		<div class="form-group">
 			<label for='rvrname'>Name</label>
@@ -34,7 +35,7 @@ include "./rvm-include/rvfcaptcha_generate.php";
 
 		<div class="form-group">
 			<label for='rvrname'>Mobile</label>
-			<input type="text" name="rvrmobile" id="mobile" maxlength="10">
+			<input type="number" name="rvrmobile" id="mobile" maxlength="10">
 			<span id="rvrmobile_err" class="error"></span>
 		</div>
 		<div class="form-group">

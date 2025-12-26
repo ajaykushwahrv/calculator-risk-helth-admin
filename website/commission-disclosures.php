@@ -13,54 +13,27 @@
                                 <th>Trail 2nd Year Onwards</th>
                             </tr>
                         </thead>
+                        <?php $commissionData = [
+							[ 'Scheme'   => 'Arbitrage Funds', 'trail1st'   => '0.05% to 0.60%', 'trail2nd'   => '0.05% to 0.60%', ],
+							[ 'Scheme'   => 'ELSS Funds', 'trail1st'   => '0.50% to 1.25%', 'trail2nd'   => '0.50% to 1.25%', ],
+							[ 'Scheme'   => 'Equity Oriented Funds', 'trail1st'   => '0.50% to 1.25%', 'trail2nd'   => '0.50% to 1.25%', ],
+							[ 'Scheme'   => 'Aggressive Hybrid Equity Funds', 'trail1st'   => '0.50% to 1.25%', 'trail2nd'   => '0.50% to 1.25%', ],
+							[ 'Scheme'   => 'Fixed Maturity Plans', 'trail1st'   => '0.05% to 0.50%', 'trail2nd'   => '0.05% to 0.50%', ],
+							[ 'Scheme'   => 'Fund of Funds', 'trail1st'   => '0.25% to 1%', 'trail2nd'   => '0.25% to 1%', ],
+							[ 'Scheme'   => 'Gilt Funds', 'trail1st'   => '0.25% to 1%', 'trail2nd'   => '0.05% to 0.65%', ],
+							[ 'Scheme'   => 'Hybrid Debt Funds', 'trail1st'   => '0.05% to 0.75%', 'trail2nd'   => '0.05% to 0.75%', ],
+							[ 'Scheme'   => 'Income Funds', 'trail1st'   => '0,05% to 1%', 'trail2nd'   => '0,05% to 1%', ],
+							[ 'Scheme'   => 'Index Funds', 'trail1st'   => '0.01% to 0.75%', 'trail2nd'   => '0.01% to 0.75%', ],
+							[ 'Scheme'   => 'Liquid Funds / Ultra Short-Term Funds', 'trail1st'   => '0.05% to 0.50%', 'trail2nd'   => '0.05% to 0.50%', ],
+							[ 'Scheme'   => 'Short-Term Income Funds', 'trail1st'   => '0.05% to 0.65%', 'trail2nd'   => '0.05% to 0.65%', ],
+							[ 'Scheme'   => 'Thematic / Sector Funds', 'trail1st'   => '0.50% to 1.25%', 'trail2nd'   => '0.50% to 1.25%', ],
+						];?>
                         <tbody>
-                            <?php for($i=1; $i<=13; $i++){?>
+                            <?php foreach($commissionData as $commissionitems){?>
                             <tr>
-                                <td><?php switch($i){
-                                    case 1 : echo 'Arbitrage Funds' ; break;
-                                    case 2 : echo 'ELSS Funds' ; break;
-                                    case 3 : echo 'Equity Oriented Funds' ; break;
-                                    case 4 : echo 'Aggressive Hybrid Equity Funds' ; break;
-                                    case 5 : echo 'Fixed Maturity Plans ' ; break;
-                                    case 6 : echo 'Fund of Funds ' ; break;
-                                    case 7 : echo 'Gilt Funds ' ; break;
-                                    case 8 : echo 'Hybrid Debt Funds ' ; break;
-                                    case 9 : echo 'Income Funds ' ; break;
-                                    case 10 : echo 'Index Funds' ; break;
-                                    case 11 : echo 'Liquid Funds / Ultra Short-Term Funds' ; break;
-                                    case 12 : echo 'Short-Term Income Funds' ; break;
-                                    case 13 : echo 'Thematic / Sector Funds' ; break;
-                                }?></td>
-                                <td><?php switch($i){
-                                    case 1 : echo '0.05% to 0.60% ' ; break;
-                                    case 2 : echo '0.50% to 1.25%' ; break;
-                                    case 3 : echo '0.50% to 1.25%' ; break;
-                                    case 4 : echo '0.50% to 1.25%' ; break;
-                                    case 5 : echo '0.05% to 0.50% ' ; break;
-                                    case 6 : echo '0.25% to 1% ' ; break;
-                                    case 7 : echo '0.25% to 1% ' ; break;
-                                    case 8 : echo '0.05% to 0.75% ' ; break;
-                                    case 9 : echo '0,05% to 1% ' ; break;
-                                    case 10 : echo '0.01% to 0.75%' ; break;
-                                    case 11 : echo '0.05% to 0.50%' ; break;
-                                    case 12 : echo '0.05% to 0.65%' ; break;
-                                    case 13 : echo '0.50% to 1.25%' ; break;
-                                }?></td>
-                                <td><?php switch($i){
-                                    case 1 : echo '0.05% to 0.60%' ; break;
-                                    case 2 : echo '0.50% to 1.25%' ; break;
-                                    case 3 : echo '0.50% to 1.25%' ; break;
-                                    case 4 : echo '0.50% to 1.25%' ; break;
-                                    case 5 : echo '0.05% to 0.50% ' ; break;
-                                    case 6 : echo '0.25% to 1% ' ; break;
-                                    case 7 : echo '0.05% to 0.65% ' ; break;
-                                    case 8 : echo '0.05% to 0.75%' ; break;
-                                    case 9 : echo '0,05% to 1%' ; break;
-                                    case 10 : echo '0.01% to 0.75%' ; break;
-                                    case 11 : echo '0.05% to 0.50%' ; break;
-                                    case 12 : echo '0.05% to 0.65%' ; break;
-                                    case 13 : echo '0.50% to 1.25%' ; break;
-                                }?></td>
+                                <td><?=  $commissionitems['Scheme'];?></td>
+                                <td><?=  $commissionitems['trail1st'];?></td>
+                                <td><?=  $commissionitems['trail2nd'];?></td>
                             </tr>
                             <?php } ?>
                         </tbody>

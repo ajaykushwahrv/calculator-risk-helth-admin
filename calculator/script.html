@@ -11,7 +11,7 @@
             var rvdirectory = jQuery(this).data('rvdirectory');
             var rvminheight = jQuery(this).data('rvminheight');
             var rvmaxheight = jQuery(this).data('rvmaxheight');
-            var rvlogin = "<?= $config['rvuserinfo']['base_url']; ?>/login.php";
+            var rvlogin = "<?= $config['rvlogin']['callbackUrl']; ?>";
 
             jQuery('.calculatorHendler').removeClass('active');
             jQuery(this).addClass('active');

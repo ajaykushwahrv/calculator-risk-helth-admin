@@ -75,6 +75,7 @@ $cfmobile = trim($_POST['rvrmobile']);
 $cfservices = trim($_POST['cfservices']);
 $cfmessage = trim($_POST['rvrmessage']);
 $cfformtype =  trim($_POST['rvrformtype']);
+$cfformtypename =  trim($_POST['rvrformname']);
 
  
 if (!$cfuserEmail) { die("Invalid Email"); }
@@ -157,14 +158,24 @@ $ccMail = $config['smtp']['CC_email'];
 $bccMail = $config['smtp']['BCC_email'];
 $body  = "<table width='100%' border='0' cellpadding='3' cellspacing='7' bgcolor='#e4e4e4' style='font-size:12px;'>
 <thead>
-    <tr><td bgcolor='#FFFFFF' colspan='2'>New Contact Us Inquiry Received from Website</td></tr>
+    <tr><td bgcolor='#FFFFFF' colspan='2'>$cfformtypename</td></tr>
     <tr><td bgcolor='#FFFFFF'><strong>Name</strong></td><td bgcolor='#FFFFFF'>$cfusersName</td></tr>
     <tr><td bgcolor='#FFFFFF'><strong>Email</strong></td><td bgcolor='#FFFFFF'>$cfuserEmail</td></tr>
-    <tr><td bgcolor='#FFFFFF'><strong>Mobile</strong></td><td bgcolor='#FFFFFF'>$cfmobile</td></tr>
-    <tr><td bgcolor='#FFFFFF'><strong>Service</strong></td><td bgcolor='#FFFFFF'>$cfservices</td></tr>
-    <tr><td bgcolor='#FFFFFF'><strong>Message</strong></td><td bgcolor='#FFFFFF'>$cfmessage</td></tr>
-</thead>
-</table>";
+    <tr><td bgcolor='#FFFFFF'><strong>Mobile</strong></td><td bgcolor='#FFFFFF'>$cfmobile</td></tr>";
+if (!empty($cfservices)) {
+    $body .= "<tr>
+        <td bgcolor='#FFFFFF'><strong>Service</strong></td>
+        <td bgcolor='#FFFFFF'>" . htmlspecialchars($cfservices) . "</td>
+    </tr>";
+}
+if (!empty($cfmessage)) {
+    $body .= "<tr>
+        <td bgcolor='#FFFFFF'><strong>Message</strong></td>
+        <td bgcolor='#FFFFFF'>" . htmlspecialchars($cfmessage) . "</td>
+    </tr>";
+}
+$body .= "</thead> </table>";
+
 
 try {
 $mail->isSMTP();
