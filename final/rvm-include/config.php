@@ -33,7 +33,7 @@ if (!$con) {
  
 
 // FETCH SINGLE DATA
-function rvFetchSingleData($con, $id, $column, $table)
+function rvFetchSingleDatanconf($con, $id, $column, $table)
 {
 	// Create a prepared statement
 	$stmt = mysqli_prepare($con, "SELECT * FROM $table WHERE $column = ? ORDER BY id DESC LIMIT 1");
@@ -67,7 +67,7 @@ function rvFetchSingleData($con, $id, $column, $table)
 
 	return $row;
 }
-$userinfo = rvFetchSingleData($con, 1, 'id', 'admin');
+$userinfo = rvFetchSingleDatanconf($con, 1, 'id', 'admin');
 
 function insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype)
 {
@@ -111,7 +111,7 @@ function insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $
 
 
 
-function rvFetchAllDataSpecific($con, $id, $column, $table)
+function rvFetchAllDataSpecificnconf($con, $id, $column, $table)
 {
 // Create a prepared statement
 $stmt = mysqli_prepare($con, "SELECT * FROM $table WHERE $column =?");

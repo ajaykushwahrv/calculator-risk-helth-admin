@@ -180,6 +180,14 @@ return
 ^!Numpad5::
 Clipboard =
 (
+ $config['rvlogin']['callbackUrl'];
+)
+Send, ^v
+return
+
+^!Numpad6::
+Clipboard =
+(
 <?= $config['rvuserinfo']['base_url']; ?>
 )
 Send, ^v
