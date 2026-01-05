@@ -14,9 +14,7 @@ require './PHPMailer-master/src/PHPMailer.php';
 require './PHPMailer-master/src/SMTP.php';
 require './PHPMailer-master/src/Exception.php';
 
-$config = require __DIR__ . '/rvm-include/sfa_config.php';
 
-$db = new PDO($config['db']['dsn'], $config['db']['user'], $config['db']['pass']);
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -43,8 +41,15 @@ $ip = getClientIP();
 // When form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+ 
+	
+	$formKey = $_POST['form_key'] ?? '';
+	$captchaField = $formKey . '_captcha';
+ 
+	
+		
    // Captcha validation
-    if($_POST['contact_captcha'] != $_SESSION['contact_ans']){
+    if($_POST[$captchaField] != ($_SESSION[$formKey . '_ans'] ?? '')){
         header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
         exit;
     }  else {
@@ -58,14 +63,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-// CSRF Check
-if (!isset($_POST['rvrrf']) || $_POST['rvrrf'] !== $_SESSION['rvrrf']) {
-die("Invalid request - RSCSRF failed");
-}
-
+// RSCSRF Check
+		
+if (
+  empty($_SESSION['rvrrf'][$formKey]) ||  $_POST['rvrrf'] !== $_SESSION['rvrrf'][$formKey]
+) {
+  die("Invalid request - RSCSRF failed");
+}		
+		
+		
+		
   // Honeypot Bot Check
-if (!empty($_POST['my_address'])) {
-die("Bot detected!");
+if (!empty($_POST['hp_'.$formKey])) {
+  die("Bot detected");
 }
 
 // ---------------- READ FORM INPUTS ----------------
@@ -203,7 +213,12 @@ die("Mail failed: " . $mail->ErrorInfo);
 
 // Save lead to DB
 insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype);
-
+// CSRF
+unset($_SESSION['rvrrf'][$formKey]);
+// Captcha
+unset($_SESSION[$formKey . '_ans']);
+// Honeypot (optional)
+unset($_SESSION['hp_' . $formKey]);
 
 $_SESSION['rvrhName'] = $cfformtype;
 $_SESSION['rvrhprofilemsg'] = "Thank you for contacting us. We will get back to you shortly.";

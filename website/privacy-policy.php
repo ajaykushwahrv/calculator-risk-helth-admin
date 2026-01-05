@@ -33,4 +33,4 @@ return "Privacy policy not found.";
 
 ?>
 
-<?php echo $privacy_policy = fetchPrivacyPolicy($config['rvuserinfo']['name'], $config['rvuserinfo']['email']); ?>
+<?php echo $privacy_policy = fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>

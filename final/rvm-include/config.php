@@ -33,7 +33,7 @@ if (!$con) {
  
 
 // FETCH SINGLE DATA
-function rvFetchSingleData($con, $id, $column, $table)
+function rvFetchSingleDatas($con, $id, $column, $table)
 {
 	// Create a prepared statement
 	$stmt = mysqli_prepare($con, "SELECT * FROM $table WHERE $column = ? ORDER BY id DESC LIMIT 1");

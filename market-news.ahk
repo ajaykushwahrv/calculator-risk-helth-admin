@@ -164,7 +164,8 @@ return
 ^!Numpad3::
 Clipboard =
 (
- $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
+$callbackUrl = $config['rvlogin']['callbackUrl'];
+$siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
 )
 Send, ^v
 return

@@ -83,6 +83,7 @@ Ctrl + Alt + 1 = contect form rvcform.php
 Ctrl + Alt + 2 = $config = require __DIR__ . '/rvm-include/sfa_config.php';
 Ctrl + Alt + 3 = $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
 Ctrl + Alt + 4 = <?= !empty($config['rvuserinfo']['arn']) ? $config['rvuserinfo']['arn'] : '' ?>;
+Ctrl + Alt + 5 = <?= $config['rvuserinfo']['base_url']; ?>;
 
 win + Alt + 1 = adit;
 win + Alt + 2 = commission-disclosures;
@@ -91,4 +92,5 @@ win + Alt + 4 = investor-grievance-redressal;
 win + Alt + 5 = privacy-policy;
 win + Alt + 6 = risk-factors;
 win + Alt + 7 = terms-conditions;
+win + Alt + 8 = STP Calculator;
 

@@ -97,7 +97,7 @@
 						$_SESSION['admin_login'] = $email;
 
 						// redirect
-						header("Location: ../admin/home.php");
+						header("Location: ../admin/index.php");
 						exit;
 
 					} else {?>
