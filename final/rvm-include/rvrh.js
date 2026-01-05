@@ -132,10 +132,16 @@ $("#secureForm").on("submit", function(e) {
         .text("Please wait...");
 });
 
-function refreshCaptcha(key) {
-    fetch("/rvm-include/rvfcaptcha_refresh.php?key=" + key)
-        .then(r => r.text())
-        .then(txt => {
-            document.getElementById("cap_" + key).innerHTML = txt;
-        });
+function rvrefreshCaptcha(key) {
+    jQuery.ajax({
+        url: "/rvm-include/rvfcaptcha_refresh.php",
+        type: "GET",
+        data: { key: key },
+        success: function (response) {
+            jQuery("#cap_" + key).html(response);
+        },
+        error: function () {
+            console.error("Captcha refresh failed");
+        }
+    });
 }

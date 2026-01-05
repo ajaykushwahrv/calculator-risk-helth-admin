@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$formKey = $_POST['form_key'] ?? '';
 	$captchaField = $formKey . '_captcha';
  
-	
+	 
 		
    // Captcha validation
     if($_POST[$captchaField] != ($_SESSION[$formKey . '_ans'] ?? '')){
@@ -66,9 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // RSCSRF Check
 		
 if (
-  empty($_SESSION['rvrrf'][$formKey]) ||  $_POST['rvrrf'] !== $_SESSION['rvrrf'][$formKey]
+    empty($formKey) ||
+    empty($_POST['rvrrf']) ||
+    empty($_SESSION['rvrrf'][$formKey]) ||
+    !hash_equals($_SESSION['rvrrf'][$formKey], $_POST['rvrrf'])
 ) {
-  die("Invalid request - RSCSRF failed");
+    die("Invalid request - RSCSRF failed");
 }		
 		
 		
