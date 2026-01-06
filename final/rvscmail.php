@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $captchaField = $formKey .'_'. $formVal . '_captcha';
 	$rvrrf = $formVal . 'rvrrf';	
 	$honeypot = $formVal . '_hp_' . $formKey;
-	
-
+	$captchacode = $formKey . '_' . $formVal . '_ans';
+ 
    // Captcha validation
-    if($_POST[$captchaField] != ($_SESSION[$formKey . '_' . $formVal . '_ans'] ?? '')){
+    if($_POST[$captchaField] != ($_SESSION[$captchacode] ?? '')){
          header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
         exit;
     }  else {

@@ -2,11 +2,25 @@
 <html lang="en">
 
 <?php
- 	session_start();
+
+ 
 include("./rvm-include/config.php");
 header("Content-Security-Policy: script-src 'self' 'unsafe-inline' ".$config['rvuserinfo']['base_url']."; object-src 'none'; base-uri 'self'; frame-ancestors 'none';");
-
-
+	
+	
+		  
+	session_start();
+	include "./rvm-include/rvfcaptcha_generate.php";
+    $formvalrhval = 'risk';
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+        $captcha_risk = handleCaptcha("risk");
+    }
+	if (!isset($_SESSION['rvrrf']) || !is_array($_SESSION['rvrrf'])) {
+		$_SESSION['rvrrf'] = [];
+	}
+	if (empty($_SESSION['rvrrf'][$formvalrhval])) {
+		$_SESSION['rvrrf'][$formvalrhval] = bin2hex(random_bytes(32));
+	}
 
 require './PHPMailer-master/src/PHPMailer.php';
 require './PHPMailer-master/src/SMTP.php';
@@ -59,6 +73,8 @@ $ip = getClientIP();
 // When form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+  
+	
    if($_POST['risk_captcha'] != $_SESSION['risk_ans']){
         header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
         exit;
@@ -73,9 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-// CSRF Check
-if (!isset($_POST['rvrrf']) || $_POST['rvrrf'] !== $_SESSION['rvrrf']) {
-die("Invalid request - RSCSRF failed");
+$formKeyri = $_POST['form_key'] ?? '';
+
+if (
+    empty($_SESSION['rvrrf'][$formKeyri]) ||
+    $_POST['rvrrf'] !== $_SESSION['rvrrf'][$formKeyri]
+) {
+    die("Invalid CSRF");
 }
 
   // Honeypot Bot Check
@@ -270,7 +290,8 @@ die("Mail failed: " . $mail->ErrorInfo);
 // Save lead to DB
 insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype);
 
-
+unset($_SESSION['risk_ans']);
+	   
 $_SESSION['rvrradioALL'] = 'Your Score is '. ($rvrradioadd * 2) .' out of 100';
 $_SESSION['rvrhName'] = $cfformtype;
 $_SESSION['rvrhprofile'] = $riskprofile;
@@ -282,11 +303,10 @@ $_SESSION['rvrhprofilemsg'] = $riskprofilemsg;
 exit;
 }
 }
-$_SESSION['rvrrf'] = bin2hex(random_bytes(32));
+ 
 	
 	
-include "./rvm-include/rvfcaptcha_generate.php";
-$captcha_risk = generateCaptcha("risk");
+
 ?>
 
 
@@ -296,9 +316,11 @@ $captcha_risk = generateCaptcha("risk");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $config['rvuserinfo']['websitename']; ?> || Risk</title>
-    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_favicon']; ?>">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_favicon']; ?>">
     <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-    <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
+    <link rel="stylesheet"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
 
 
     <style>
@@ -332,9 +354,10 @@ $captcha_risk = generateCaptcha("risk");
     <section class="rvrhsection-section">
         <div class="section-container rvrhsection">
             <div class="logo-images">
-                <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
+                <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                    alt="Logo">
                 <h3 class="">Risk Form</h3>
-				<?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
+                <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 	echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
 }?>
             </div>
@@ -351,7 +374,7 @@ $captcha_risk = generateCaptcha("risk");
                 <li><a href="#" data-step="3" class="pSteps step_4 back-step" data-tab-id="4"><span class="ws-no">4</span><span class="ws-steps">Step 4</span></a></li> -->
                 </ul>
             </div>
-            <form id="secureForm" method="POST">
+            <form id="secureForm" method="POST" data-key="<?= $formvalrhval;?>">
                 <div class="wizard-stape-body">
                     <?php $i=1; foreach($riskData as $riskDitems){ ?>
                     <div class="wizard-stape-cart" id="wizard_stape_<?= $i; ?>"
@@ -389,47 +412,51 @@ $captcha_risk = generateCaptcha("risk");
                     <div class="wizard-stape-cart" id="wizard_stape_11" style="display:none;">
                         <div class="content-box">
                             <h3>Risk Form</h3>
-                            <input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'] ?>">
+                            <input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'][$formvalrhval]; ?>">
+							<input type="hidden" name="form_key" value="risk">
                             <input type="hidden" name="my_address" class="honeypot">
                             <input type="hidden" name="rvrformtype" value="Risk">
 
                             <div class="form-group">
-                                <label for='rvrname'>Name</label>
-                                <input type="text" name="rvusersName" id="rvrname">
-                                <span id="rvrname_err" class="error"></span>
+                                <label for='rvrname_<?= $formvalrhval;?>'>Name</label>
+                                <input type="text" name="rvusersName" id="rvrname_<?= $formvalrhval;?>">
+                                <span id="rvrname_err_<?= $formvalrhval;?>" class="error"></span>
                             </div>
                             <div class="form-group">
-                                <label for='rvrname'>Email</label>
-                                <input type="text" name="rvruserEmail" id="rvremail">
-                                <span id="rvremail_err" class="error"></span>
+                                <label for='rvreamil_<?= $formvalrhval;?>'>Email</label>
+                                <input type="text" name="rvruserEmail" id="rvremail_<?= $formvalrhval;?>">
+                                <span id="rvremail_err_<?= $formvalrhval;?>" class="error"></span>
                             </div>
 
                             <div class="form-group">
-                                <label for='rvrname'>Mobile</label>
-                                <input type="text" name="rvrmobile" id="mobile" maxlength="10">
-                                <span id="rvrmobile_err" class="error"></span>
+                                <label for='mobile_<?= $formvalrhval;?>'>Mobile</label>
+                                <input type="text" name="rvrmobile" id="mobile_<?= $formvalrhval;?>" maxlength="10">
+                                <span id="rvrmobile_err_<?= $formvalrhval;?>" class="error"></span>
                             </div>
 
                             <div class="form-group">
-                                <label for='rvrname'>Message</label>
-                                <textarea name="rvrmessage" id="rvrmessage"></textarea>
-                                <span id="rvrmessage_err" class="error"></span>
+                                <label for='rvrmessage_<?= $formvalrhval;?>'>Message</label>
+                                <textarea name="rvrmessage" id="rvrmessage_<?= $formvalrhval;?>"></textarea>
+                                <span id="rvrmessage_err_<?= $formvalrhval;?>" class="error"></span>
                             </div>
 
-							<div class="form-group">
-								<label for='rvrname'>Solve: <b id="cap_risk"><?= $captcha_risk ?> </b> = ? </label>
-								<div class=""> 
-									<input type="number" name="risk_captcha" id="rvfcaptcha" maxlength="3" required>
-									<a href="#!" type="button"  class="btn btn-primary"  onclick="refreshCaptcha('risk')" id="refreshCaptcha">↻</a>
-								</div>
-								 
-							</div>
+                            <div class="form-group">
+                                <label for='rvrname'>Solve: <b id="cap_risk"><?= $captcha_risk ?> </b> = ? </label>
+                                <div class="">
+                                    <input type="number" name="<?= $formvalrhval;?>_captcha" id="rvfcaptcha" maxlength="3"
+                                        required>
+                                    <a href="#!" type="button" class="btn btn-primary"
+                                        onclick="refreshCaptcha('<?= $formvalrhval;?>')" id="refreshCaptcha">↻</a>
+                                </div>
+
+                            </div>
 
                         </div>
                         <div class="back-links">
                             <a href="javascript:void(0);" class="prev_action" data-step="11"><i
                                     class="bi bi-chevron-left"></i> Back </a>
-                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled>Submit</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn_<?= $formvalrhval;?>"
+                                disabled>Submit</button>
                         </div>
                     </div>
 
@@ -438,7 +465,7 @@ $captcha_risk = generateCaptcha("risk");
             </form>
         </div>
     </section>
-    
+
     <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
     <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>
 </body>
