@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<?php 	require("../rvm-include/config.php");?>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?= $config['rvuserinfo']['websitename']; ?></title>
@@ -26,7 +27,6 @@
 					use PHPMailer\PHPMailer\SMTP;
 					use PHPMailer\PHPMailer\Exception;
 
-					require("../rvm-include/config.php");
 
 					
 					$config = require __DIR__ . '/../rvm-include/sfa_config.php';

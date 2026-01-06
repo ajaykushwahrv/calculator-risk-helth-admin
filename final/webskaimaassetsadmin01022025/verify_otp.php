@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<?php 	require("../rvm-include/config.php");?>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Email Otp | <?= $config['rvuserinfo']['websitename']; ?></title>
@@ -23,7 +24,6 @@
 					require '../PHPMailer-master/src/SMTP.php';
 					require '../PHPMailer-master/src/Exception.php';
 
-					require("../rvm-include/config.php");
 
 					$config = require __DIR__ . '/../rvm-include/sfa_config.php';
 

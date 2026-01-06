@@ -43,14 +43,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
  
 	
-	$formKey = $_POST['form_key'] ?? '';
-	$captchaField = $formKey . '_captcha';
- 
-	 
-		
+	$formVal = $_POST['form_val'] ?? '';
+	$formKeyName = $formVal . 'form_key';
+	$formKey = ($_POST[$formKeyName] ?? '');
+    $captchaField = $formKey .'_'. $formVal . '_captcha';
+	$rvrrf = $formVal . 'rvrrf';	
+	$honeypot = $formVal . '_hp_' . $formKey;
+	
+
    // Captcha validation
-    if($_POST[$captchaField] != ($_SESSION[$formKey . '_ans'] ?? '')){
-        header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
+    if($_POST[$captchaField] != ($_SESSION[$formKey . '_' . $formVal . '_ans'] ?? '')){
+         header("Location: " . $_SERVER['HTTP_REFERER'] . "?err=captcha_err");
         exit;
     }  else {
     $captcha_valid = true;
@@ -64,31 +67,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 // RSCSRF Check
-		
-if (
-    empty($formKey) ||
-    empty($_POST['rvrrf']) ||
-    empty($_SESSION['rvrrf'][$formKey]) ||
-    !hash_equals($_SESSION['rvrrf'][$formKey], $_POST['rvrrf'])
+
+if (empty($_SESSION[$rvrrf][$formKey]) ||  $_POST[$rvrrf] !== $_SESSION[$rvrrf][$formKey]
 ) {
-    die("Invalid request - RSCSRF failed");
+  die("Invalid request - RSCSRF failed");
 }		
 		
-		
+ 	
 		
   // Honeypot Bot Check
-if (!empty($_POST['hp_'.$formKey])) {
-  die("Bot detected");
+if (!empty($_POST[$honeypot])) {
+    die("Bot detected");
 }
-
 // ---------------- READ FORM INPUTS ----------------
-$cfusersName = trim($_POST['rvusersName']);
-$cfuserEmail = filter_var(trim($_POST['rvruserEmail']), FILTER_VALIDATE_EMAIL);
-$cfmobile = trim($_POST['rvrmobile']);
-$cfservices = trim($_POST['cfservices']);
-$cfmessage = trim($_POST['rvrmessage']);
-$cfformtype =  trim($_POST['rvrformtype']);
-$cfformtypename =  trim($_POST['rvrformname']);
+		
+		
+	$rvusersName = $formVal . '_rvusersName';
+ 	$rvruserEmail = $formVal . '_rvruserEmail';
+ 	$rvrmobile = $formVal . '_rvrmobile';
+ 	$rvrmessage = $formVal . '_rvrmessage';
+ 	$cfservices = $formVal . '_cfservices';
+ 	$rvrformtype = $formVal . '_rvrformtype';
+ 	$rvrformname = $formVal . '_rvrformname';
+	$cfusersName = trim($_POST[$rvusersName]);
+	$cfuserEmail = filter_var(trim($_POST[$rvruserEmail]), FILTER_VALIDATE_EMAIL);
+	$cfmobile = trim($_POST[$rvrmobile]);
+	$cfservices = trim($_POST[$cfservices]);
+	$cfmessage = trim($_POST[$rvrmessage]);
+	$cfformtype =  trim($_POST[$rvrformtype]);
+	$cfformtypename =  trim($_POST[$rvrformname]);		
+		
+		
+
 
  
 if (!$cfuserEmail) { die("Invalid Email"); }
@@ -217,11 +227,9 @@ die("Mail failed: " . $mail->ErrorInfo);
 // Save lead to DB
 insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype);
 // CSRF
-unset($_SESSION['rvrrf'][$formKey]);
+unset($_SESSION[$rvrrf][$formKey]);
 // Captcha
-unset($_SESSION[$formKey . '_ans']);
-// Honeypot (optional)
-unset($_SESSION['hp_' . $formKey]);
+unset($_SESSION[$formKey . '_' . $formVal . '_ans']);
 
 $_SESSION['rvrhName'] = $cfformtype;
 $_SESSION['rvrhprofilemsg'] = "Thank you for contacting us. We will get back to you shortly.";

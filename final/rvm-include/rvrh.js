@@ -41,107 +41,95 @@ jQuery(document).on('click', '.next-step', function() {
     //     scrollTop: jQuery("body").offset().top
     // }, 1200);
 });
-
-function validate() {
+ function fid(id, key) {
+    return `#${id}_${key}`;
+}
+function validate(form) {
     let valid = true;
-
-
-
+    const key = $(form).data("key");
 
     // Name
-    if ($("#rvrname").val().trim() === "") {
-        $("#rvrname_err").text("Name required");
-        $("#rvrname")
+    if (jQuery(fid("rvrname", key)).val().trim() === "") {
+        jQuery(fid("rvrname_err", key)).text("Name required");
+        jQuery(fid("rvrname", key))
             .removeClass("input-success")
             .addClass("error-field");
         valid = false;
     } else {
-        $("#rvrname_err").text("");
-        $("#rvrname")
+        jQuery(fid("rvrname_err", key)).text("");
+        jQuery(fid("rvrname", key))
             .removeClass("error-field")
             .addClass("input-success");
     }
 
     // Email
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#rvremail").val())) {
-        $("#rvremail_err").text("Invalid Email");
-        $("#rvremail")
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(jQuery(fid("rvremail", key)).val())) {
+        jQuery(fid("rvremail_err", key)).text("Invalid Email");
+        jQuery(fid("rvremail", key))
             .removeClass("input-success")
             .addClass("error-field");
         valid = false;
     } else {
-        $("#rvremail_err").text("");
-        $("#rvremail")
+        jQuery(fid("rvremail_err", key)).text("");
+        jQuery(fid("rvremail", key))
             .removeClass("error-field")
             .addClass("input-success");
     }
 
     // Mobile
-    if (!/^[6-9]\d{9}$/.test($("#mobile").val())) {
-        $("#rvrmobile_err").text("Invalid Mobile");
-        $("#mobile")
+    if (!/^[6-9]\d{9}$/.test(jQuery(fid("mobile", key)).val())) {
+        jQuery(fid("rvrmobile_err", key)).text("Invalid Mobile");
+        jQuery(fid("mobile", key))
             .removeClass("input-success")
             .addClass("error-field");
         valid = false;
     } else {
-        $("#rvrmobile_err").text("");
-        $("#mobile")
+        jQuery(fid("rvrmobile_err", key)).text("");
+        jQuery(fid("mobile", key))
             .removeClass("error-field")
             .addClass("input-success");
     }
 
     // Message
-    if ($("#rvrmessage").val().trim().length < 5) {
-        $("#rvrmessage_err").text("Message too short");
-        $("#rvrmessage")
+    if (jQuery(fid("rvrmessage", key)).val().trim().length < 5) {
+        jQuery(fid("rvrmessage_err", key)).text("Message too short");
+        jQuery(fid("rvrmessage", key))
             .removeClass("input-success")
             .addClass("error-field");
         valid = false;
     } else {
-        $("#rvrmessage_err").text("");
-        $("#rvrmessage")
+        jQuery(fid("rvrmessage_err", key)).text("");
+        jQuery(fid("rvrmessage", key))
             .removeClass("error-field")
             .addClass("input-success");
     }
 
-
-
-
-    $("#submitBtn").prop("disabled", !valid);
+    jQuery(fid("submitBtn", key)).prop("disabled", !valid);
     return valid;
 }
-$("input, textarea").on("focus", function() {
-    $(this)
-        .removeClass("error-field input-success")
-        .addClass("input-active");
-});
-
-$("input, textarea").on("blur", function() {
-    $(this).removeClass("input-active");
-    validate(); // blur ke baad validate
-});
-$("#secureForm").on("submit", function(e) {
-    if (!validate()) {
+jQuery(".secureForm").on("submit", function (e) {
+    if (!validate(this)) {
         e.preventDefault();
         return;
     }
 
-    // Disable submit button after first click
-    $("#submitBtn")
+    const key = $(this).data("key");
+    jQuery(fid("submitBtn", key))
         .prop("disabled", true)
         .text("Please wait...");
 });
+jQuery("input, textarea").on("focus", function () {
+    $(this).removeClass("error-field input-success").addClass("input-active");
+});
 
-function rvrefreshCaptcha(key) {
-    jQuery.ajax({
-        url: "/rvm-include/rvfcaptcha_refresh.php",
-        type: "GET",
-        data: { key: key },
-        success: function (response) {
-            jQuery("#cap_" + key).html(response);
-        },
-        error: function () {
-            console.error("Captcha refresh failed");
-        }
-    });
+jQuery("input, textarea").on("blur", function () {
+    $(this).removeClass("input-active");
+    validate($(this).closest("form"));
+});
+function refreshCaptcha(key) {
+    fetch("/rvm-include/rvfcaptcha_generate.php?refresh=1&key=" + key)
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById("cap_" + key).innerHTML = data;
+        });
 }
