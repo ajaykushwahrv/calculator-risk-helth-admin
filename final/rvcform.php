@@ -38,7 +38,7 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
 </head>
 
 <body>
-    <div class="rvpncontact-box">
+    <div class="rvfrhcontent-box">
         <form id="secureForm" method="POST" action="rvscmail.php" data-key="<?= $formval;?>" onsubmit="return validate();">
             <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 			echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";

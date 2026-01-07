@@ -73,13 +73,13 @@ body {
     display: none;
 }
 
-.content-box .form-group {
+.rvfrhcontent-box .form-group {
     margin-bottom: 15px;
     width: 100%;
     position: relative;
 }
 
-.content-box .form-group span.error {
+.rvfrhcontent-box .form-group span.error {
     position: absolute;
     font-size: 12px;
     color: red;
@@ -90,15 +90,15 @@ body {
     padding: 0 5px;
 }
 
-.content-box .form-group label {
+.rvfrhcontent-box .form-group label {
     display: block;
     text-align: left;
     margin-bottom: 3px;
 }
 
-.content-box .form-group select,
-.content-box .form-group input,
-.content-box .form-group textarea {
+.rvfrhcontent-box .form-group select,
+.rvfrhcontent-box .form-group input,
+.rvfrhcontent-box .form-group textarea {
     width: 100%;
     height: 45px;
     border-radius: 3px;
@@ -106,24 +106,24 @@ body {
     padding: 8px 20px;
 }
 
-.content-box .form-group input.error-field,
-.content-box .form-group textarea.error-field {
+.rvfrhcontent-box .form-group input.error-field,
+.rvfrhcontent-box .form-group textarea.error-field {
     border: 1px solid red !important;
 }
 
-.content-box .form-group input.input-success,
-.content-box .form-group textarea.input-success {
+.rvfrhcontent-box .form-group input.input-success,
+.rvfrhcontent-box .form-group textarea.input-success {
     border: 1px solid green !important;
 }
 
-.content-box .form-group input.input-active,
-.content-box .form-group textarea.input-active {
+.rvfrhcontent-box .form-group input.input-active,
+.rvfrhcontent-box .form-group textarea.input-active {
     border: 1px solid var(--rv-primary) !important;
     box-shadow: 0 0 5px rgba(var(--rv-primary-rgb), 0.5);
     outline: none;
 }
 
-.content-box .form-group textarea {
+.rvfrhcontent-box .form-group textarea {
     height: 100px;
 }
 
@@ -148,48 +148,48 @@ body {
     color: #2A2A2A;
 }
 
-.wizard-stape-body .content-box {
+.wizard-stape-body .rvfrhcontent-box {
     padding: 30px 30px 0px;
 }
 
-.wizard-stape-body .content-box h3 {
+.wizard-stape-body .rvfrhcontent-box h3 {
     font-size: 18px;
     margin-bottom: 20px;
 }
 
-.wizard-stape-body .content-box ul {
+.wizard-stape-body .rvfrhcontent-box ul {
     padding-left: 0px;
     list-style: none;
     margin-top: 30px;
 }
 
-.wizard-stape-body .content-box ul li {
+.wizard-stape-body .rvfrhcontent-box ul li {
     list-style: none;
     margin-bottom: 20px;
 }
 
-.wizard-stape-body .content-box ul li input[type=radio] {
+.wizard-stape-body .rvfrhcontent-box ul li input[type=radio] {
     display: none;
 }
 
-.wizard-stape-body .content-box ul li input[type=radio]:checked+label {
+.wizard-stape-body .rvfrhcontent-box ul li input[type=radio]:checked+label {
     border-color: #2A2A2A;
     padding: 10px 40px 13px 20px;
     background-color: #f9f9f9;
 }
 
-.wizard-stape-body .content-box ul li input[type=radio]:checked+label i {
+.wizard-stape-body .rvfrhcontent-box ul li input[type=radio]:checked+label i {
     color: #21c52f;
     left: unset;
     right: 6px;
 }
 
-.wizard-stape-body .content-box ul li input[type=radio]:checked+label i:before {
+.wizard-stape-body .rvfrhcontent-box ul li input[type=radio]:checked+label i:before {
     content: "\f6b2";
     font-family: bootstrap-icons !important;
 }
 
-.wizard-stape-body .content-box ul li .rvrhradio {
+.wizard-stape-body .rvfrhcontent-box ul li .rvrhradio {
     display: block;
     border: 1px solid #eee;
     padding: 10px 20px 13px 40px;
@@ -198,7 +198,7 @@ body {
     cursor: pointer;
 }
 
-.wizard-stape-body .content-box ul li .rvrhradio i {
+.wizard-stape-body .rvfrhcontent-box ul li .rvrhradio i {
     position: absolute;
     top: 4px;
     left: 6px;

@@ -380,7 +380,7 @@ exit;
                     <div class="wizard-stape-cart" id="wizard_stape_<?= $i; ?>"
                         <?php switch($i){case 1 : echo 'style="display:block;"'; break;}?>>
 
-                        <div class="content-box">
+                        <div class="rvfrhcontent-box">
                             <h3>Q.<?= $i; ?> <?= $riskDitems['question']; ?></h3>
                             <ul>
                                 <?php $j=1;  foreach( $riskDitems['answers'] as $riskDRitems2){ ?>
@@ -410,7 +410,7 @@ exit;
                     </div>
                     <?php $i++; } ?>
                     <div class="wizard-stape-cart" id="wizard_stape_11" style="display:none;">
-                        <div class="content-box">
+                        <div class="rvfrhcontent-box">
                             <h3>Risk Form</h3>
                             <input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'][$formvalrhval]; ?>">
 							<input type="hidden" name="form_key" value="risk">

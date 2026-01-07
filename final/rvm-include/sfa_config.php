@@ -34,7 +34,7 @@
     ],
     'rvuserinfo' => [
       'base_url'   => '',
-      'clientname'   => '	',
+      'clientname'   => '',
       'websitename'   => '',
       'email'   => '',
       'mobile'   => '',
@@ -53,7 +53,7 @@
     ],
     'rvlogin' => [
       'callbackUrl'   => 'https://',
-      'siteUrl' => 'https://wealthelite.in/',
+      'siteUrl' => 'https://wealthelite.in',
       'wheatlebalsiteUrl' => ''
     ]
   ];
