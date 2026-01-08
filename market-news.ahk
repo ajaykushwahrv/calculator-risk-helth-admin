@@ -239,4 +239,12 @@ Clipboard := fileContent
 Send, ^v
 return
 
+#!Numpad8::
+Clipboard =
+(
+<p><b>Disclaimer:</b> The returns used in this calculator are hypothetical and for illustration purposes only. They do not represent projections, promises, or guarantees of future performance. Actual returns may differ and are subject to market risks. Please read all scheme related documents carefully.</p>
+)
+Send, ^v
+return
+
 

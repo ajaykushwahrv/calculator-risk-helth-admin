@@ -38,7 +38,7 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
 </head>
 
 <body>
-    <div class="rvfrhcontent-box">
+       <div class="rvfrhcontent-box ">
         <form id="secureForm" method="POST" action="rvscmail.php" data-key="<?= $formval;?>" onsubmit="return validate();">
             <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 			echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
@@ -54,39 +54,45 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
                 <input type="hidden" name="form_val" value="<?= $formval;?>">
                 <input type="hidden" name="<?= $formval;?>_rvrformtype" value="<?= $formKeyName; ?>">
                 <input type="hidden" name="<?= $formval;?>_rvrformname" value="New <?= $formKeyName; ?> Inquiry Received from Website">
+            <div class="rvsf-rows">
 
-                <div class="form-group">
+                <div class="form-group rvsf-cols">
                     <label for='rvrname_<?= $formval;?>'>Name</label>
                     <input type="text" name="<?= $formval;?>_rvusersName" id="rvrname_<?= $formval;?>">
                     <span id="rvrname_err_<?= $formval;?>" class="error"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group rvsf-cols">
                     <label for='rvrname_<?= $formval;?>'>Email</label>
                     <input type="text" name="<?= $formval;?>_rvruserEmail" id="rvremail_<?= $formval;?>">
                     <span id="rvremail_err_<?= $formval;?>" class="error"></span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group rvsf-cols">
                     <label for='mobile_<?= $formval;?>'>Mobile</label>
-                    <input type="number" name="<?= $formval;?>_rvrmobile" id="mobile_<?= $formval;?>" maxlength="10">
+                    <input type="text" name="<?= $formval;?>_rvrmobile" id="mobile_<?= $formval;?>" maxlength="10">
                     <span id="rvrmobile_err_<?= $formval;?>" class="error"></span>
                 </div>
-                <div class="form-group">
-                    <label for='service_<?= $formval;?>'>Service</label>
-                    <select name="<?= $formval;?>_cfservices" id="service<?= $formval;?>">
+                <div class="form-group rvsf-cols">
+                    <label for='rvrservice_<?= $formval;?>'>Service</label>
+                    <select name="<?= $formval;?>_cfservices" id="rvrservice_<?= $formval;?>">
                         <option value="">-- Select Service --</option>
                         <?php $cfservices = [
-					[ 'title'   => 'Mutual Funds'],
-					[ 'title'   => 'Insurance & NPS'],
-					[ 'title'   => 'Taxation'],
-					[ 'title'   => 'Global Investing & P2P Lending'],
-					[ 'title'   => 'Portfolio Managed Services'],
-					[ 'title'   => 'Fixed Deposits'],
+					[ 'title'   => 'Financial Solutions'],
+					[ 'title'   => 'Financial Freedom'],
+					[ 'title'   => 'Retirement Solutions'],
+					[ 'title'   => 'Child Education Solutions'],
+					[ 'title'   => 'Real Estate Information'],
+					[ 'title'   => 'Tax Awareness'],
 				]; ?>
                         <?php foreach($cfservices as $cfservicesitems){ ?>
                         <option value="<?= $cfservicesitems['title']; ?>"><?= $cfservicesitems['title']; ?></option>
                         <?php  } ?>
+                        <option value="Other">Other</option>
+
                     </select>
+                <span id="rvrservice_err_<?= $formval;?>" class="error"></span>
+
+                </div>
                 </div>
                 <div class="form-group">
                     <label for='rvrmessage_<?= $formval;?>'>Message</label>

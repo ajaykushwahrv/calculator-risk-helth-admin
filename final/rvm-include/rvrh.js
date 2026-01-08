@@ -104,6 +104,19 @@ function validate(form) {
             .addClass("input-success");
     }
 
+    	if (jQuery(fid("rvrservice", key)).val() === "") {
+        jQuery(fid("rvrservice_err", key)).text("Please select a service");
+        jQuery(fid("rvrservice", key))
+            .removeClass("input-success")
+            .addClass("error-field");
+        valid = false;
+    } else {
+        jQuery(fid("rvrservice_err", key)).text("");
+        jQuery(fid("rvrservice", key))
+            .removeClass("error-field")
+            .addClass("input-success");
+    }
+
     jQuery(fid("submitBtn", key)).prop("disabled", !valid);
     return valid;
 }
