@@ -52,7 +52,7 @@
       'mapurl'   => '',
     ],
     'rvlogin' => [
-      'callbackUrl'   => 'https://',
+      'callbackUrl'   => '',
       'siteUrl' => 'https://wealthelite.in',
       'wheatlebalsiteUrl' => ''
     ]

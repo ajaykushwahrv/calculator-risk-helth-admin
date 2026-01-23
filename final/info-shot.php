@@ -1,7 +1,7 @@
 $config = require 'rvfaotp/sfa_config.php';
 
 $mail->Host = $config['smtp']['host'];
-$mail->Port = 587; 
+$mail->Port = 587;
 $mail->IsHTML(true);
 $mail->CharSet = 'UTF-8';
 $mail->Username = $config['smtp']['username']; // Server Mail ID
@@ -15,7 +15,7 @@ po>*:iaCR:s[
 
 <!-- admin ME smtpemail NAME KI file add krna he  -->
 
-smtpemail 
+smtpemail
 base_url
 smpassword
 
@@ -33,8 +33,8 @@ change_password.php
 
 
 
- 
- 
+
+
 
 Login
 admin Login
@@ -43,8 +43,8 @@ News
 Fund Performance
 Ticker
 Download Form
-admin me 2 file dalna 
-logout pr url chang krna 
+admin me 2 file dalna
+logout pr url chang krna
 
 
 
@@ -62,8 +62,16 @@ user
 
 
 
+
+
+
+
+
+
+
+
 ctrl + 1 = silver-category
-ctrl + 2 = gold-category    
+ctrl + 2 = gold-category
 ctrl + 3 = platinum-category
 ctrl + 4 = singal-cal php code
 ctrl + 5 = fund-performance
@@ -81,7 +89,8 @@ Alt + 7 = rvh-health.php
 Alt + 8 = rvr-risk.php
 Ctrl + Alt + 1 = contect form rvcform.php
 Ctrl + Alt + 2 = $config = require __DIR__ . '/rvm-include/sfa_config.php';
-Ctrl + Alt + 3 = $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
+Ctrl + Alt + 3 = $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] :
+$config['rvlogin']['siteUrl'];
 Ctrl + Alt + 4 = <?= !empty($config['rvuserinfo']['arn']) ? $config['rvuserinfo']['arn'] : '' ?>;
 Ctrl + Alt + 5 = <?= $config['rvuserinfo']['base_url']; ?>;
 
@@ -93,4 +102,3 @@ win + Alt + 5 = privacy-policy;
 win + Alt + 6 = risk-factors;
 win + Alt + 7 = terms-conditions;
 win + Alt + 8 = STP Calculator;
-

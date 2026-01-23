@@ -1,21 +1,22 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<?php 	require("../rvm-include/config.php");?>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?= $config['rvuserinfo']['websitename']; ?></title>
-		<link href="./rvlogin.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-		<script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
 
-	</head>
+<head>
+    <?php 	require("../rvm-include/config.php");?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= $config['rvuserinfo']['websitename']; ?></title>
+    <link href="./rvlogin.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
+    <script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
 
-	<body>
-		<section class="rvlogin-section">
-			<div class="rv-card">
-				<div class="rv-card-body">
-					<?php
+</head>
+
+<body>
+    <section class="rvlogin-section">
+        <div class="rv-card">
+            <div class="rv-card-body">
+                <?php
 
 			 
 
@@ -60,11 +61,11 @@
 						http_response_code(429); 
 
 					?>
-					<div class="rv-hadding">
-						<h1 class="text-primary">OTP </h1>
-						<h3><?php echo "Too many OTP requests. Try later."; 	exit;?></h3>
-					</div>
-					<?php }
+                <div class="rv-hadding">
+                    <h1 class="text-primary">OTP </h1>
+                    <h3><?php echo "Too many OTP requests. Try later."; 	exit;?></h3>
+                </div>
+                <?php }
 
 					// Generate OTP
 					$otp = random_int(0, pow(10, $config['otp']['length']) - 1);
@@ -100,34 +101,34 @@
 					?>
 
 
-					<div class="rv-hadding">
-						<h1 class="text-primary">Send OTP </h1>
-						<h3><?= $email ?></h3>
-						<span id="otpStatus" style="color:green; margin-top:10px;"></span>
-					</div>
-					<div class="verify-code">
-						<form action="verify_otp.php" method="POST">
-							<input type="hidden" name="<?= $config['rvuserinfo']['email']; ?>" value="<?= $config['rvuserinfo']['email']; ?>">
+                <div class="rv-hadding">
+                    <h1 class="text-primary">Send OTP </h1>
+                    <h3><?= $email ?></h3>
+                    <span id="otpStatus" style="color:green; margin-top:10px;"></span>
+                </div>
+                <div class="verify-code">
+                    <form action="verify_otp.php" method="POST">
+                        <input type="hidden" name="email" value="<?= $config['rvuserinfo']['email']; ?>">
 
-							<div class="form-group">
-								<label for="username" class="form-label">Enter OTP:</label>
-								<input type="text" name="otp" class="form-control" required maxlength="6">
-							</div>
-							<div class="form-group text-right" style="margin-top: 20px;">
-								<button id="resendBtn" class="btn btn-secondary" disabled>
-									Resend OTP <span class="newotp">(<span id="timer">60</span>s)</span>
-								</button>
-							</div>
-							<div class="form-group">
-								<button class="btn btn-primary" name="submit" type="submit">Verify</button>
-							</div>
+                        <div class="form-group">
+                            <label for="username" class="form-label">Enter OTP:</label>
+                            <input type="text" name="otp" class="form-control" required maxlength="6">
+                        </div>
+                        <div class="form-group text-right" style="margin-top: 20px;">
+                            <button id="resendBtn" class="btn btn-secondary" disabled>
+                                Resend OTP <span class="newotp">(<span id="timer">60</span>s)</span>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" name="submit" type="submit">Verify</button>
+                        </div>
 
-						</form>
-					</div>
+                    </form>
+                </div>
 
 
 
-					<?php
+                <?php
 
 						} catch (Exception $e) {
 						$db->prepare("DELETE FROM otp_codes WHERE email=:email AND expires_at=:exp")->execute([':email'=>$email, ':exp'=>$expires]);
@@ -137,60 +138,63 @@
 					}
 					?>
 
-				</div>
-			</div>
-		</section>
+            </div>
+        </div>
+    </section>
 
-		   
-		<script>
-			$(document).ready(function () {
 
-				startTimer(); // start 60 sec timer on page load
+    <script>
+    $(document).ready(function() {
 
-				function startTimer() {
-					let timeLeft = 60;
+        startTimer(); // start 60 sec timer on page load
 
-					$("#resendBtn").prop("disabled", true)
-						.html('Resend OTP (<span id="timer">'+timeLeft+'</span>s)');
+        function startTimer() {
+            let timeLeft = 60;
 
-					let timer = setInterval(function () {
-						timeLeft--;
-						$("#timer").text(timeLeft);
+            $("#resendBtn").prop("disabled", true)
+                .html('Resend OTP (<span id="timer">' + timeLeft + '</span>s)');
 
-						if (timeLeft <= 0) {
-							clearInterval(timer);
-							$("#resendBtn").prop("disabled", false).text("Resend OTP");
-						}
-					}, 1000);
+            let timer = setInterval(function() {
+                timeLeft--;
+                $("#timer").text(timeLeft);
 
-					return timer;
-				}
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    $("#resendBtn").prop("disabled", false).text("Resend OTP");
+                }
+            }, 1000);
 
-				//  CLICK → RESEND OTP VIA AJAX (NO PAGE RELOAD)
-				$("#resendBtn").click(function (e) {
-					e.preventDefault();
+            return timer;
+        }
 
-					$("#otpStatus").text("Sending...");
+        //  CLICK → RESEND OTP VIA AJAX (NO PAGE RELOAD)
+        $("#resendBtn").click(function(e) {
+            e.preventDefault();
 
-					$.ajax({
-						url: "send_otp_ajax.php",  // <<-- NEW AJAX handler
-						type: "POST",
-						data: { email: "<?= $email ?>" },
+            $("#otpStatus").text("Sending...");
 
-						success: function (res) {
-							$("#otpStatus").css("color","green").text("OTP sent successfully!");
+            $.ajax({
+                url: "send_otp_ajax.php", // <<-- NEW AJAX handler
+                type: "POST",
+                data: {
+                    email: "<?= $email ?>"
+                },
 
-							startTimer(); // restart timer
-						},
+                success: function(res) {
+                    $("#otpStatus").css("color", "green").text("OTP sent successfully!");
 
-						error: function () {
-							$("#otpStatus").css("color","red").text("Failed to send OTP");
-						}
-					});
+                    startTimer(); // restart timer
+                },
 
-				});
+                error: function() {
+                    $("#otpStatus").css("color", "red").text("Failed to send OTP");
+                }
+            });
 
-			});
-		</script>
-	</body>
+        });
+
+    });
+    </script>
+</body>
+
 </html>
