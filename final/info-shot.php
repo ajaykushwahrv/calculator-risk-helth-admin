@@ -68,6 +68,31 @@ https://www.redvisiontechnologies.com/api/audit/footer-content.php?company=test
 https://www.redvisiontechnologies.com/api/audit/commission-disclosures.php?company=test
 https://www.redvisiontechnologies.com/api/audit/AMFI_Code-of-Conduct.pdf
 https://www.redvisiontechnologies.com/api/audit/investor-grievance-redressal.php?websitename=KCI MONEY Private
+
+
+'mobiles' => array_filter([
+$_GET['mobile'] ?? '',
+$_GET['mobile1'] ?? '',
+$_GET['mobile2'] ?? '',
+$_GET['mobile3'] ?? '',
+$_GET['mobile4'] ?? '',
+]),
+
+'emails' => array_filter([
+$_GET['email'] ?? '',
+$_GET['email1'] ?? '',
+$_GET['email2'] ?? ''
+$_GET['email3'] ?? ''
+]),
+
+'addresses' => array_filter([
+$_GET['address'] ?? '',
+$_GET['address1'] ?? '',
+$_GET['address2'] ?? ''
+]),
+
+
+
 Limited&mobile=9999999999&mobile1=8888888888&mobile2=8888888888&email=info@kci.com&email1=support@kci.com&address=Delhi&address1=Noida&mapurl=https://maps.google.com
 https://www.redvisiontechnologies.com/api/audit/copyright.php
 https://www.redvisiontechnologies.com/api/audit/important-links.php
