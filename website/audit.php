@@ -1,3 +1,6 @@
+<p class="text-center text-white">AMFI Registered Distributor- Bhaswati Chatterjee| ARN-100105| Date of Registration -
+    6th February
+    2015 |Current Validity till - 2nd February 2027</p>
 <?php $rvauditlink = [
     [ 'title' => 'Risk Factors','url' => $config['rvuserinfo']['base_url'] . '/risk-factors.php', 'target' => '_self' ],
     [ 'title' => 'Terms & Conditions','url' => $config['rvuserinfo']['base_url'] . '/terms-conditions.php', 'target' => '_self' ],
@@ -10,8 +13,10 @@
     [ 'title' => 'Commission Disclosures','url' => $config['rvuserinfo']['base_url'] . '/commission-disclosures.php', 'target' => '_self']
     ];
 ?>
-<div class="legal-links">
+<div class="legal-links text-center text-white mt-4 mb-4">
     <?php foreach($rvauditlink as  $key =>  $linkitems){?>
-    <a href="<?= $linkitems['url'] ?>"  <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?> ><?= $linkitems['title'] ?></a> <?php if($key < count($rvauditlink) - 1): ?> | <?php endif; ?>
+    <a class="text-white" href="<?= $linkitems['url'] ?>"
+        <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?>><?= $linkitems['title'] ?></a>
+    <?php if($key < count($rvauditlink) - 1): ?> | <?php endif; ?>
     <?php } ?>
 </div>

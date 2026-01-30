@@ -61,12 +61,36 @@ testmonial
 user
 
 
+popup show hide krna ho to https://www.vsave.in/ ke admin me he
+
+
+https://www.redvisiontechnologies.com/api/audit/footer-content.php?company=test
+https://www.redvisiontechnologies.com/api/audit/commission-disclosures.php?company=test
+https://www.redvisiontechnologies.com/api/audit/AMFI_Code-of-Conduct.pdf
+https://www.redvisiontechnologies.com/api/audit/investor-grievance-redressal.php?websitename=KCI MONEY Private
+Limited&mobile=9999999999&mobile1=8888888888&mobile2=8888888888&email=info@kci.com&email1=support@kci.com&address=Delhi&address1=Noida&mapurl=https://maps.google.com
+https://www.redvisiontechnologies.com/api/audit/copyright.php
+https://www.redvisiontechnologies.com/api/audit/important-links.php
+https://www.redvisiontechnologies.com/api/audit/risk-factors.php
+https://www.redvisiontechnologies.com/api/audit/terms-conditions.php
+https://www.redvisiontechnologies.com/api/audit/sebicirculars.php
+https://www.redvisiontechnologies.com/api/audit/sidsaikim.php
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+<?php echo $privacy_policy = fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
 
 
 
