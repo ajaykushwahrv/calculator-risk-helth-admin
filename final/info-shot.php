@@ -64,44 +64,26 @@ user
 popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
-https://www.redvisiontechnologies.com/api/audit/footer-content.php?company=test
-https://www.redvisiontechnologies.com/api/audit/commission-disclosures.php?company=test
-https://www.redvisiontechnologies.com/api/audit/AMFI_Code-of-Conduct.pdf
-https://www.redvisiontechnologies.com/api/audit/investor-grievance-redressal.php?websitename=KCI MONEY Private
 
 
-'mobiles' => array_filter([
-$_GET['mobile'] ?? '',
-$_GET['mobile1'] ?? '',
-$_GET['mobile2'] ?? '',
-$_GET['mobile3'] ?? '',
-$_GET['mobile4'] ?? '',
-]),
-
-'emails' => array_filter([
-$_GET['email'] ?? '',
-$_GET['email1'] ?? '',
-$_GET['email2'] ?? ''
-$_GET['email3'] ?? ''
-]),
-
-'addresses' => array_filter([
-$_GET['address'] ?? '',
-$_GET['address1'] ?? '',
-$_GET['address2'] ?? ''
-]),
-
-
-
-Limited&mobile=9999999999&mobile1=8888888888&mobile2=8888888888&email=info@kci.com&email1=support@kci.com&address=Delhi&address1=Noida&mapurl=https://maps.google.com
-https://www.redvisiontechnologies.com/api/audit/copyright.php
-https://www.redvisiontechnologies.com/api/audit/important-links.php
-https://www.redvisiontechnologies.com/api/audit/risk-factors.php
-https://www.redvisiontechnologies.com/api/audit/terms-conditions.php
-https://www.redvisiontechnologies.com/api/audit/sebicirculars.php
-https://www.redvisiontechnologies.com/api/audit/sidsaikim.php
-
-
+<?= $footerContent = rv_fetchfooterContent($userinfo['name']);?>
+<?= $sid = rv_fetchSidsaikim();?>
+<?= $cConduct = rv_fetchCodeofConduct();?>
+<?= $sebiCirculars = rv_fetchCirculars();?>
+<?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
+<?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
+<?= $privacy_policy = rv_fetchPrivacyPolicy($userinfo['name'], $userinfo['email']); ?>
+<?= $risk_factors =  rv_fetchRiskFactors()?>
+<?= $termsconditions = rv_fetchTermsConditions();?>
+<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
+<?= rv_fetchInvestorGrievanceRedressal([
+        'clientname' => $userinfo['clientname'],
+        'websitename' => $userinfo['name'],
+        'mobile'      => $userinfo['mobile'],
+        'email'       => $userinfo['email'],
+        'address'     => $userinfo['address'],
+    ]);
+?>
 
 
 

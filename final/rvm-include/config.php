@@ -30,7 +30,535 @@ if (!$con) {
     die("MySQLi Connection failed: " . mysqli_connect_error());
 }
 
+
+// Fetch single calculator data by urlName
+function fetchDatasingleAPI($urlName) {
+    if (is_array($urlName)) {
+        $urlName = implode(',', $urlName);
+    }
+    $baseUrl = "https://www.redvisiontechnologies.com/api/calculatorsget.php";
+    $url = $baseUrl . "?urlName=" . urlencode($urlName);
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_FAILONERROR, true);
+
+    $result = curl_exec($ch);
+
+    if ($result === false) {
+        return ["error" => "cURL Error: " . curl_error($ch)];
+    }
+
+    curl_close($ch);
+
+    $decoded_result = json_decode($result, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return ["error" => "JSON Decode Error: " . json_last_error_msg()];
+    }
+
+    return $decoded_result;
+}
+// Fetch all calculators data
+function fetchallDataAPI($con) {
+        $baseUrl = "https://redvisiontechnologies.com/api/calculators.php"; 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $baseUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        
+        $result = curl_exec($ch);
+        if ($result === false) {
+            curl_close($ch);
+            return ["error" => "cURL Error: " . curl_error($ch)];
+        }
+        curl_close($ch);
+
+        $decoded_result = json_decode($result, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return ["error" => "JSON Decode Error: " . json_last_error_msg()];
+        }
+        
+        return $decoded_result;
+    }
+
+    $allCulatorsDaat = fetchallDataAPI($con);
+
+
+    
+
+//Privacy Policy Function
+function rv_fetchPrivacyPolicy($company_name, $email)
+{
+	
  
+	// API URL where your PHP API is hosted
+	$api_url = 'https://www.redvisiontechnologies.com/api/audit/privacy-policy.php?company_name=' . urlencode($company_name) . '&email=' . urlencode($email);
+	// Initialize cURL session
+$ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return "cURL Error: " . curl_error($ch);
+    }
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (!$data) {
+        return "Invalid JSON response from API";
+    }
+
+    if (isset($data['privacy_policy'])) {
+        return $data['privacy_policy'];
+    } elseif (isset($data['data']['privacy_policy'])) {
+        return $data['data']['privacy_policy'];
+    } else {
+        return "Privacy policy not found in API response";
+    }
+}
+
+
+ //Commission Disclosure Function
+function rv_fetchCommissionDisclosures($company_name = '')
+{
+	
+ 
+	// API URL where your PHP API is hosted
+	$api_url = 'https://www.redvisiontechnologies.com/api/audit/commission-disclosures.php?company=' . urlencode($company_name) ;
+	// Initialize cURL session
+$ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (!$data) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ CORRECT KEY
+    if (isset($data['commission_disclosures'])) {
+        return $data['commission_disclosures'];
+    } else {
+        return "Commission Disclosure not found in API response";
+    }
+}
+
+
+
+//Commission Disclosure Function
+function rv_fetchfooterContent($company_name = '')
+{
+	
+ 
+	// API URL where your PHP API is hosted
+	$api_url = 'https://www.redvisiontechnologies.com/api/audit/footer-content.php?company=' . urlencode($company_name) ;
+	// Initialize cURL session
+$ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (!$data) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ CORRECT KEY
+    if (isset($data['footer_content'])) {
+        return $data['footer_content'];
+    } else {
+        return "Footer Content not found in API response";
+    }
+}
+
+ //Risk Factors Function
+function rv_fetchRiskFactors()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/risk-factors.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['risk_factors']) && $data['risk_factors'] !== '') {
+        return $data['risk_factors'];
+    }
+
+    return "Risk Factors not found in API response";
+}
+
+ //Terms & Conditions Function
+
+function rv_fetchTermsConditions()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/terms-conditions.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['terms_conditions']) && $data['company_html'] !== '') {
+        return $data['terms_conditions'];
+    }
+
+    return "Terms & Conditions not found in API response";
+}
+
+ //Investor grievance redressal Function
+
+
+function rv_fetchInvestorGrievanceRedressal(array $params = [])
+{
+    $baseUrl = 'https://www.redvisiontechnologies.com/api/audit/investor-grievance-redressal.php';
+
+    // default parameters
+    $defaultParams = [
+        'clientname' => '',
+        'websitename' => '',
+        'mobile'      => '',
+        'mobile1'     => '',
+        'mobile2'     => '',
+        'mobile3'     => '',
+        'mobile4'     => '',
+        'email'       => '',
+        'email1'      => '',
+        'email2'      => '',
+        'email3'      => '',
+        'address'     => '',
+        'address1'    => '',
+        'address2'    => '',
+    ];
+
+    // merge defaults with passed params
+    $queryParams = array_merge($defaultParams, $params);
+
+    // build API URL
+    $api_url = $baseUrl . '?' . http_build_query($queryParams);
+
+    // Initialize cURL
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    curl_close($ch);
+
+    $data = json_decode($response, true);
+
+    if (!$data) {
+        return "Invalid JSON response from API";
+    }
+
+    // flexible response handling
+    if (isset($data['investor_grievance_redressal'])) {
+        return $data['investor_grievance_redressal'];
+    } elseif (isset($data['data']['investor_grievance_redressal'])) {
+        return $data['data']['investor_grievance_redressal'];
+    } else {
+        return "Investor grievance redressal content not found in API response";
+    }
+}
+
+
+ //Terms & Conditions Function
+
+function rv_fetchImportantLinks()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/important-links.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['important_links']) && $data['important_links'] !== '') {
+        return $data['important_links'];
+    }
+
+    return "Important Links not found in API response";
+}
+
+
+
+ //SID/SAI/KIM Function
+
+function rv_fetchSidsaikim()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/sidsaikim.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['sidsaikim']) && $data['company_html'] !== '') {
+        return $data['sidsaikim'];
+    }
+
+    return "SID/SAI/KIM not found in API response";
+}
+
+
+
+
+ //Code of Conduct Function
+
+function rv_fetchCodeofConduct()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/code-of-conduct.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['codeofconduct']) && $data['codeofconduct'] !== '') {
+        return $data['codeofconduct'];
+    }
+
+    return "Code of Conduct not found in API response";
+}
+
+
+
+ //SEBI Circulars Function
+
+function rv_fetchCirculars()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/sebicirculars.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['sebicirculars']) && $data['company_html'] !== '') {
+        return $data['sebicirculars'];
+    }
+
+    return "SEBI Circulars not found in API response";
+}
+
+
+//Copyright Circulars Function
+
+function rv_fetchCopyright()
+{
+    $api_url = 'https://www.redvisiontechnologies.com/api/audit/copyright.php';
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $api_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 15);
+
+    // ✅ SSL safety (agar hosting strict ho)
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    if ($response === false) {
+        return "cURL Error: " . curl_error($ch);
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode !== 200) {
+        return "API Error: HTTP " . $httpCode;
+    }
+
+    $data = json_decode($response, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        return "Invalid JSON response from API";
+    }
+
+    // ✅ Correct key handling
+    if (isset($data['copyright']) && $data['copyright'] !== '') {
+        return $data['copyright'];
+    }
+
+    return "Copyright not found in API response";
+}
+
+
 
 // FETCH SINGLE DATA
 function rvFetchSingleDatanconf($con, $id, $column, $table)
@@ -144,67 +672,8 @@ mysqli_free_result($resultAll);
 mysqli_stmt_close($stmt);
 return $dataAll;
 }
-
-//Privacy Policy Function
-function rv_fetchPrivacyPolicy($company_name, $email)
-{
-// API URL where your PHP API is hosted
-$api_url = 'https://www.redvisiontechnologies.com/api/audit/privacy-policy.php?company_name=' . urlencode($company_name) . '&email=' . urlencode($email);
-// Initialize cURL session
-$ch = curl_init();
-// Set cURL options
-curl_setopt($ch, CURLOPT_URL, $api_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Execute cURL request and get response
-$response = curl_exec($ch);
-// Check for cURL errors
-if (curl_errno($ch)) {
-$error_msg = curl_error($ch);
-curl_close($ch);
-return "Error fetching the privacy policy: $error_msg";
-}
-// Close cURL session
-curl_close($ch);
-// Decode the JSON response
-$data = json_decode($response, true);
-// Check if the privacy policy exists in the response
-if (isset($data['privacy_policy'])) {
-return $data['privacy_policy'];
-} else {
-return "Privacy policy not found.";
-}
-}
+ 
 
 
-
-//Privacy Policy Function
-function rv_fetchPrivacyPolicy($company_name, $email)
-{
-// API URL where your PHP API is hosted
-$api_url = 'https://www.redvisiontechnologies.com/api/audit/privacy-policy.php?company_name=' . urlencode($company_name) . '&email=' . urlencode($email);
-// Initialize cURL session
-$ch = curl_init();
-// Set cURL options
-curl_setopt($ch, CURLOPT_URL, $api_url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Execute cURL request and get response
-$response = curl_exec($ch);
-// Check for cURL errors
-if (curl_errno($ch)) {
-$error_msg = curl_error($ch);
-curl_close($ch);
-return "Error fetching the privacy policy: $error_msg";
-}
-// Close cURL session
-curl_close($ch);
-// Decode the JSON response
-$data = json_decode($response, true);
-// Check if the privacy policy exists in the response
-if (isset($data['privacy_policy'])) {
-return $data['privacy_policy'];
-} else {
-return "Privacy policy not found.";
-}
-}
 
 ?>

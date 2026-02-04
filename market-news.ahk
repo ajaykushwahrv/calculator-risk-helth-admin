@@ -145,6 +145,18 @@ Send, ^v
 return
 
 
+
+^!Numpad1::
+if (A_PriorHotkey = "^!Numpad1" && A_TimeSincePriorHotkey < 300)
+{
+    Clipboard =
+    (
+    rvcform.php;
+    )
+    Send, ^v
+}
+return
+
 ^!Numpad1::
 Clipboard =
 (
