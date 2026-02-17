@@ -272,7 +272,7 @@ function rv_fetchTermsConditions()
     }
 
     // ✅ Correct key handling
-    if (isset($data['terms_conditions']) && $data['company_html'] !== '') {
+    if (isset($data['terms_conditions']) && $data['terms_conditions'] !== '') {
         return $data['terms_conditions'];
     }
 
@@ -419,7 +419,7 @@ function rv_fetchSidsaikim()
     }
 
     // ✅ Correct key handling
-    if (isset($data['sidsaikim']) && $data['company_html'] !== '') {
+    if (isset($data['sidsaikim']) && $data['sidsaikim'] !== '') {
         return $data['sidsaikim'];
     }
 
@@ -508,7 +508,7 @@ function rv_fetchCirculars()
     }
 
     // ✅ Correct key handling
-    if (isset($data['sebicirculars']) && $data['company_html'] !== '') {
+    if (isset($data['sebicirculars']) && $data['sebicirculars'] !== '') {
         return $data['sebicirculars'];
     }
 

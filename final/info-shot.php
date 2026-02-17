@@ -66,16 +66,23 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
 
+<!--'footer Content'-->
 <?= $footerContent = rv_fetchfooterContent($userinfo['name']);?>
-<?= $sid = rv_fetchSidsaikim();?>
-<?= $cConduct = rv_fetchCodeofConduct();?>
-<?= $sebiCirculars = rv_fetchCirculars();?>
-<?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
-<?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
-<?= $privacy_policy = rv_fetchPrivacyPolicy($userinfo['name'], $userinfo['email']); ?>
-<?= $risk_factors =  rv_fetchRiskFactors()?>
+
+<!--'Risk Factors'-->
+<?= $risk_factors =  rv_fetchRiskFactors();?>
+
+<!--'Terms & Conditions'-->
 <?= $termsconditions = rv_fetchTermsConditions();?>
-<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
+
+<!--'SID/SAI/KIM'-->
+<?= $sid = rv_fetchSidsaikim();?>
+
+<!--'Code of Conduct'-->
+<?= $cConduct = rv_fetchCodeofConduct();?>
+
+
+<!--'Investor Grievance Redressal'-->
 <?= rv_fetchInvestorGrievanceRedressal([
         'clientname' => $userinfo['clientname'],
         'websitename' => $userinfo['name'],
@@ -84,6 +91,21 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
         'address'     => $userinfo['address'],
     ]);
 ?>
+
+<!--'Important Links'-->
+<?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
+
+<!--'SEBI Circulars'-->
+<?= $sebiCirculars = rv_fetchCirculars();?>
+
+<!--'Privacy Policy'-->
+<?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
+
+<!--'Commission Disclosures'-->
+<?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
+
+<!--'REDVision Global Technologies'-->
+<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
 
 
 
