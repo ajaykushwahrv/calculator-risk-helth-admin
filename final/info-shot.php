@@ -1,3 +1,35 @@
+<!-- 
+1 Sip Calculator                    calculator.php?tools=sip-calculator
+2 Lumpsum Calculator                calculator.php?tools=lumpsum-calculator
+3 Stp Calculator                    calculator.php?tools=stp-calculator
+4 Swp Calculator                    calculator.php?tools=swp-calculator
+5 Retirement Planning               calculator.php?tools=retirement-plan
+6 Delay Planning Calculator         calculator.php?tools=delay-plan
+7 Life Insurance Calculator         calculator.php?tools=life-insurance-plan
+8 Emi Planning Calculator           calculator.php?tools=emi-plan
+9 Tax Calculator                    calculator.php?tools=calculator.php
+10 Marriage Planning Calculator     calculator.php?tools=marriage-plan
+11 Education Planning Calculator    calculator.php?tools=education-plan
+12 Home Loan Calculator             calculator.php?tools=house-plan
+13 Car Planning Calculator          calculator.php?tools=car-plan
+14 Vacation Planning Calculator     calculator.php?tools=vacation-plan
+15 Step Up Calculator               calculator.php?tools=stepup-calculator
+16 Crorepati Calculator             calculator.php?tools=crorepati-calculator
+17 SIP Performance                  calculator.php?tools=sip-performance
+18 STP Performance                  calculator.php?tools=stp-performance
+19 SWP Performance                  calculator.php?tools=swp-performance
+20 Scheme Performance               calculator.php?tools=scheme-performance
+21 Fund Performance                 calculator.php?tools=fund-performance
+22 NAV Finder Calculator            calculator.php?tools=nav-finder
+23 Ipo News                         calculator.php?tools=ipo-news
+24 Market News                      calculator.php?tools=market-news
+25 Popular News                     calculator.php?tools=popular-news
+26 Tickers                          calculator.php?tools=tickers
+
+
+ -->
+
+
 $config = require 'rvfaotp/sfa_config.php';
 
 $mail->Host = $config['smtp']['host'];
@@ -66,12 +98,15 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
 
+<!--'Ctrl + 2'-->
 <!--'footer Content'-->
 <?= $footerContent = rv_fetchfooterContent($userinfo['name']);?>
 
+<!--'Ctrl + 3'-->
 <!--'Risk Factors'-->
 <?= $risk_factors =  rv_fetchRiskFactors();?>
 
+<!--'Ctrl + 4'-->
 <!--'Terms & Conditions'-->
 <?= $termsconditions = rv_fetchTermsConditions();?>
 
@@ -81,29 +116,33 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <!--'Code of Conduct'-->
 <?= $cConduct = rv_fetchCodeofConduct();?>
 
-
+<!--'Ctrl + 5'-->
 <!--'Investor Grievance Redressal'-->
 <?= rv_fetchInvestorGrievanceRedressal([
         'clientname' => $userinfo['clientname'],
-        'websitename' => $userinfo['name'],
+        'websitename' => $userinfo['websitename'],
         'mobile'      => $userinfo['mobile'],
         'email'       => $userinfo['email'],
         'address'     => $userinfo['address'],
     ]);
 ?>
 
+<!--'Ctrl + 6'-->
 <!--'Important Links'-->
 <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
 
 <!--'SEBI Circulars'-->
 <?= $sebiCirculars = rv_fetchCirculars();?>
 
+<!--'Ctrl + 7'-->
 <!--'Privacy Policy'-->
 <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
 
+<!--'Ctrl + 8'-->
 <!--'Commission Disclosures'-->
 <?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
 
+<!--'Ctrl + 9'-->
 <!--'REDVision Global Technologies'-->
 <span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
 

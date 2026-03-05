@@ -11,17 +11,20 @@ require("../rvm-include/config.php");
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Otp | <?= $config['rvuserinfo']['websitename']; ?></title>
-		<link href="./rvlogin.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-		<script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
-	</head>
 
-	<body>
-<?php
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Otp | <?= $config['rvuserinfo']['websitename']; ?></title>
+    <link href="./rvlogin.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_favicon']; ?>">
+    <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
+    <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
+</head>
+
+<body>
+    <?php
 
  
 
@@ -74,51 +77,60 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
- 
-		<section class="rvlogin-section">
-			
-				<div class="rv-card">
-					<div class="rv-card-body">
-						<div class="rv-hadding">
-							<h1 class="text-primary">Welcome To Admin</h1>
-							<h3><?= $config['rvuserinfo']['websitename']; ?></h3>
-						</div>
 
-						<div class="p-2 mt-4">
-							<?php if (isset($msg)) echo $msg; ?>
+    <section class="rvlogin-section">
 
-							<form method="post" onsubmit="return valid();">
-								<div class="form-group">
-									<label for="username" class="form-label">Username</label>
-									<input type="text" class="form-control" name="username" id="username" placeholder="Enter username">
-								</div>
-								<div class="form-group">
-									<label for="password" class="form-label">Password</label>
-									<input type="password" class="form-control" name="smpassword" id="password" placeholder="Enter password">
-									<span class="toggle-password"><i class="bi bi-eye-fill fa-fw"></i></span>
-								</div>
-								<div class="form-group">
-									<button class="btn btn-primary w-100 btn-lg" name="submit" type="submit">Login</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-		 
-		</section>
+        <div class="rv-card">
+            <div class="rv-card-body">
+                <a href="<?= $config['rvuserinfo']['base_url']; ?>" class="admin-main-logo"><img
+                        src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                        alt="Logo"></a>
 
-		<script>
-			function valid() {
-				let u = document.getElementById('username').value.trim();
-				let p = document.getElementById('smpassword').value.trim();
-				if (!u || !p) { alert("Please fill all fields"); return false; }
-				return true;
-			}
-			
-			
-			
-			    
-    
+                <div class="rv-hadding">
+                    <h1 class="text-primary">Welcome To Admin</h1>
+                    <h3><?= $config['rvuserinfo']['websitename']; ?></h3>
+                </div>
+
+                <div class="p-2 mt-4">
+                    <?php if (isset($msg)) echo $msg; ?>
+
+                    <form method="post" onsubmit="return valid();">
+                        <div class="form-group">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username" id="username"
+                                placeholder="Enter username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="smpassword" id="password"
+                                placeholder="Enter password">
+                            <span class="toggle-password"><i class="bi bi-eye-fill fa-fw"></i></span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary w-100 btn-lg" name="submit" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+    function valid() {
+        let u = document.getElementById('username').value.trim();
+        let p = document.getElementById('smpassword').value.trim();
+        if (!u || !p) {
+            alert("Please fill all fields");
+            return false;
+        }
+        return true;
+    }
+
+
+
+
+
     jQuery(document).ready(function() {
         jQuery('.toggle-password').click(function() {
             var passwordField = jQuery('#password');
@@ -133,7 +145,8 @@ if (isset($_POST['submit'])) {
             }
         });
     });
-		</script>
+    </script>
 
-	</body>
+</body>
+
 </html>

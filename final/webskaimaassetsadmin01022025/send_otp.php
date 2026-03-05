@@ -16,6 +16,9 @@
     <section class="rvlogin-section">
         <div class="rv-card">
             <div class="rv-card-body">
+                <a href="<?= $config['rvuserinfo']['base_url']; ?>" class="admin-main-logo"><img
+                        src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                        alt="Logo"></a>
                 <?php
 
 			 

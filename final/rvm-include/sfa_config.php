@@ -9,10 +9,10 @@
 
     'smtp' => [
       'host' => 'smtp.gmail.com',   
-      'username' => '@gmail.com',
-      'password' => 'sas',   
+      'username' => '', //smtp email
+      'password' => '',   //smtp password
       'port' => 587,                     
-      'from_email' => '@gmail.com', 
+      'from_email' => '', //send url
       'CC_email' => '', 
       'BCC_email' => '', 
     ],

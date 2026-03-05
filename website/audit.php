@@ -1,6 +1,11 @@
-<p class="text-center text-white">AMFI Registered Distributor- Bhaswati Chatterjee| ARN-100105| Date of Registration -
-    6th February
-    2015 |Current Validity till - 2nd February 2027</p>
+<p class="text-center text-white"> AMFI Registered mutual fund Distributor |
+    <?= !empty($config['rvuserinfo']['arn']) ? 'ARN- ' . $config['rvuserinfo']['arn'] : '' ?>
+    <?= !empty($config['rvuserinfo']['arn_start_date']) ? 'Current Validity: ' . $config['rvuserinfo']['arn_start_date'] : '' ?>
+    <?= !empty($config['rvuserinfo']['arn_end_date']) ? 'TO ' . $config['rvuserinfo']['arn_end_date'] : '' ?> |
+    <?= !empty($config['rvuserinfo']['euin']) ? 'EUIN- ' . $config['rvuserinfo']['euin'] : '' ?>
+    <?= !empty($config['rvuserinfo']['euin_start_date']) ? 'Current Validity: ' .  $config['rvuserinfo']['euin_start_date'] : '' ?>
+    <?= !empty($config['rvuserinfo']['euin_end_date']) ? 'TO ' .  $config['rvuserinfo']['euin_end_date'] : '' ?>
+</p>
 <?php $rvauditlink = [
     [ 'title' => 'Risk Factors','url' => $config['rvuserinfo']['base_url'] . '/risk-factors.php', 'target' => '_self' ],
     [ 'title' => 'Terms & Conditions','url' => $config['rvuserinfo']['base_url'] . '/terms-conditions.php', 'target' => '_self' ],

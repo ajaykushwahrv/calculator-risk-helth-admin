@@ -1,7 +1,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     if (jQuery('.calculatorHendler').length) {
-        jQuery(document).on('click', '.calculatorHendler', function() {
+        jQuery(document).on('click', '.calculatorHendler', function () {
             var titlename = jQuery(this).data('titlename');
             var toolscat = jQuery(this).data('toolscat');
             var urlname = jQuery(this).data('urlname');
@@ -11,7 +11,8 @@
             var rvdirectory = jQuery(this).data('rvdirectory');
             var rvminheight = jQuery(this).data('rvminheight');
             var rvmaxheight = jQuery(this).data('rvmaxheight');
-            var rvlogin = "<?= $config['rvlogin']['callbackUrl']; ?>";
+            var rvlogin =
+                "<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvlogin']['callbackUrl']; ?>";
 
             jQuery('.calculatorHendler').removeClass('active');
             jQuery(this).addClass('active');
@@ -30,7 +31,8 @@
                 '&secondarycolor=' + rvSecondary +
                 '&primaryactive=' + rvwhite +
                 '&redirecturl=' + rvlogin +
-                '&bgcolo=000000 frameBorder="0" title="' + titlename + '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
+                '&bgcolo=000000 frameBorder="0" title="' + titlename +
+                '" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'
             );
             jQuery("html, body").animate({
                 scrollTop: jQuery(".calculators_section").offset().top - 130

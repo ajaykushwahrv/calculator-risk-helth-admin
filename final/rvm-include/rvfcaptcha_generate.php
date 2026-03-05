@@ -1,8 +1,8 @@
 <?php
   
 function handleCaptcha($key) {
-    $a = rand(10, 30);
-    $b = rand(10, 30);
+    $a = rand(0, 12);
+    $b = rand(0, 12);
 
     $_SESSION[$key . '_a']   = $a;
     $_SESSION[$key . '_b']   = $b;

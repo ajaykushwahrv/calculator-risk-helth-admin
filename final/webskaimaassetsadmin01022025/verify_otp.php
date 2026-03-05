@@ -1,23 +1,26 @@
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<?php 	require("../rvm-include/config.php");?>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Email Otp | <?= $config['rvuserinfo']['websitename']; ?></title>
-		<link href="./rvlogin.css" rel="stylesheet">
-		<link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-		<script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
 
-	</head>
+<head>
+    <?php 	require("../rvm-include/config.php");?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email Otp | <?= $config['rvuserinfo']['websitename']; ?></title>
+    <link href="./rvlogin.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
+    <script src="<?= $config['rvuserinfo']['base_url']; ?>/<?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
 
-	<body>
-		<section class="rvlogin-section">
-			<div class="rv-card">
-				<div class="rv-card-body">
+</head>
 
-					<?php
+<body>
+    <section class="rvlogin-section">
+        <div class="rv-card">
+            <div class="rv-card-body">
+                <a href="<?= $config['rvuserinfo']['base_url']; ?>" class="admin-main-logo"><img
+                        src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                        alt="Logo"></a>
+
+                <?php
 					session_start();
 
 					require '../PHPMailer-master/src/PHPMailer.php';
@@ -51,11 +54,12 @@
 					if (!$row) {
 
 					?>
-					<div class="rv-hadding">
-						<h1 class="text-primary"> OTP </h1>
-						<h3 style="color:#2196f3; margin-top:10px;"><?php  echo "No OTP requested. Please request a new code."; exit; ?></h3>
-					</div>
-					<?php
+                <div class="rv-hadding">
+                    <h1 class="text-primary"> OTP </h1>
+                    <h3 style="color:#2196f3; margin-top:10px;">
+                        <?php  echo "No OTP requested. Please request a new code."; exit; ?></h3>
+                </div>
+                <?php
 					}
 
 					// check expiry
@@ -63,11 +67,11 @@
 						$db->prepare("UPDATE otp_codes SET used=1 WHERE id=:id")->execute([':id' => $row['id']]);
 
 					?>
-					<div class="rv-hadding">
-						<h1 class="text-primary"> OTP </h1>
-						<h3 style="color:#2196f3; margin-top:10px;"><?php  echo "OTP expired. Request again."; exit; ?></h3>
-					</div>
-					<?php
+                <div class="rv-hadding">
+                    <h1 class="text-primary"> OTP </h1>
+                    <h3 style="color:#2196f3; margin-top:10px;"><?php  echo "OTP expired. Request again."; exit; ?></h3>
+                </div>
+                <?php
 					}
 
 					// increment attempts
@@ -79,12 +83,13 @@
 
 
 					?>
-					<div class="rv-hadding">
-						<h1 class="text-primary"> OTP </h1>
-						<h3 style="color:#ff1100; margin-top:10px;"><?php  echo "Too many attempts. Request a new OTP."; exit; ?></h3>
+                <div class="rv-hadding">
+                    <h1 class="text-primary"> OTP </h1>
+                    <h3 style="color:#ff1100; margin-top:10px;">
+                        <?php  echo "Too many attempts. Request a new OTP."; exit; ?></h3>
 
-					</div>
-					<?php
+                </div>
+                <?php
 					}
 
 					// verify OTP
@@ -102,17 +107,20 @@
 
 					} else {?>
 
-					<div class="rv-hadding">
-						<h1 class="text-primary"> OTP </h1>
-						<h3 style="color:#f44336; margin-top:10px;"><?php   echo "Invalid OTP. Attempts left: " . ($config['otp']['max_attempts'] - $attempts);   exit; ?></h3>
+                <div class="rv-hadding">
+                    <h1 class="text-primary"> OTP </h1>
+                    <h3 style="color:#f44336; margin-top:10px;">
+                        <?php   echo "Invalid OTP. Attempts left: " . ($config['otp']['max_attempts'] - $attempts);   exit; ?>
+                    </h3>
 
-					</div>
+                </div>
 
-					<?php
+                <?php
 						   }
 					?>
-				</div>
-			</div>
-		</section>
-	</body>
+            </div>
+        </div>
+    </section>
+</body>
+
 </html>
