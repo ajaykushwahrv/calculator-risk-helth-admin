@@ -17,7 +17,7 @@ return
 ^Numpad2::
 Clipboard =
 (
- <?= $footerContent = rv_fetchfooterContent($userinfo['name']);?>
+ <?= $footerContent = rv_fetchfooterContent($config['rvuserinfo']['websitename']);?>
 )
 Send, ^v
 return
@@ -44,11 +44,11 @@ return
 Clipboard =
 (
 <?= rv_fetchInvestorGrievanceRedressal([
-        'clientname' => $userinfo['clientname'],
-        'websitename' => $userinfo['websitename'],
-        'mobile'      => $userinfo['mobile'],
-        'email'       => $userinfo['email'],
-        'address'     => $userinfo['address'],
+        'clientname' => $config['rvuserinfo']['clientname'],
+        'websitename' => $config['rvuserinfo']['websitename'],
+        'mobile'      => $config['rvuserinfo']['mobile'],
+        'email'       => $config['rvuserinfo']['email'],
+        'address'     => $config['rvuserinfo']['address'],
     ]);
 ?>
 )

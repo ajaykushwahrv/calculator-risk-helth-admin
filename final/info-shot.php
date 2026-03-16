@@ -119,11 +119,11 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <!--'Ctrl + 5'-->
 <!--'Investor Grievance Redressal'-->
 <?= rv_fetchInvestorGrievanceRedressal([
-        'clientname' => $userinfo['clientname'],
-        'websitename' => $userinfo['websitename'],
-        'mobile'      => $userinfo['mobile'],
-        'email'       => $userinfo['email'],
-        'address'     => $userinfo['address'],
+        'clientname' => $config['rvuserinfo']['clientname'],
+        'websitename' => $config['rvuserinfo']['websitename'],
+        'mobile'      => $config['rvuserinfo']['mobile'],
+        'email'       => $config['rvuserinfo']['email'],
+        'address'     => $config['rvuserinfo']['address'],
     ]);
 ?>
 
@@ -151,10 +151,25 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
 
-
-
-
-
+<?= $config['rvuserinfo']['base_url'];?>
+<?= $config['rvuserinfo']['clientname'];?>
+<?= $config['rvuserinfo']['websitename'];?>
+<?= $config['rvuserinfo']['email'];?>
+<?= $config['rvuserinfo']['mobile'];?>
+<?= $config['rvuserinfo']['mobile1'];?>
+<?= $config['rvuserinfo']['mobile2'];?>
+<?= $config['rvuserinfo']['arn'];?>
+<?= $config['rvuserinfo']['euin'];?>
+<?= $config['rvuserinfo']['arn_start_date'];?>
+<?= $config['rvuserinfo']['arn_end_date'];?>
+<?= $config['rvuserinfo']['euin_start_date'];?>
+<?= $config['rvuserinfo']['euin_end_date'];?>
+<?= $config['rvuserinfo']['domain'];?>
+<?= $config['rvuserinfo']['address'];?>
+<?= $config['rvuserinfo']['mapsrc'];?>
+<?= $config['rvuserinfo']['mapurl'];?>
+rvr-risk.php
+rvh-health.php
 
 
 
@@ -162,35 +177,24 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
 
-ctrl + 1 = silver-category
-ctrl + 2 = gold-category
-ctrl + 3 = platinum-category
-ctrl + 4 = singal-cal php code
-ctrl + 5 = fund-performance
-ctrl + 6 = all-news
-ctrl + 7 = tickers
-ctrl + 8 = login-page
-ctrl + 9 = calculator-style css
-Alt + 1 = script
-Alt + 2 = css/calculator-style.css
-Alt + 3 = &redirecturl=</?= $config[""rvuserinfo""][""base_url""]; ?>/login.php
-Alt + 4 = calculator.php?tools=fund-performance
-Alt + 5 = justify-content-center
-Alt + 6 = calculator-style.css
-Alt + 7 = rvh-health.php
-Alt + 8 = rvr-risk.php
-Ctrl + Alt + 1 = contect form rvcform.php
-Ctrl + Alt + 2 = $config = require __DIR__ . '/rvm-include/sfa_config.php';
-Ctrl + Alt + 3 = $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] :
-$config['rvlogin']['siteUrl'];
-Ctrl + Alt + 4 = <?= !empty($config['rvuserinfo']['arn']) ? $config['rvuserinfo']['arn'] : '' ?>;
-Ctrl + Alt + 5 = <?= $config['rvuserinfo']['base_url']; ?>;
+ctrl + 0 = $config = require __DIR__ . '/rvm-include/config.php
+ctrl + 1 = footer Content audit.php
+ctrl + 2 = Footer Link
+ctrl + 3 = Risk Factors
+ctrl + 4 = Terms & Conditions
+ctrl + 5 = Investor Grievance Redressal
+ctrl + 6 = Important Links
+ctrl + 7 = Privacy Policy
+ctrl + 8 = Commission Disclosures
+ctrl + 9 = REDVision Global Technologies
 
-win + Alt + 1 = adit;
-win + Alt + 2 = commission-disclosures;
-win + Alt + 3 = important-links;
-win + Alt + 4 = investor-grievance-redressal;
-win + Alt + 5 = privacy-policy;
-win + Alt + 6 = risk-factors;
-win + Alt + 7 = terms-conditions;
-win + Alt + 8 = STP Calculator;
+Alt + 0 = callbackUrl siteUrl
+Alt + 1 = login-page.php
+Alt + 2 = silver-category.php
+Alt + 3 = gold-category.php
+Alt + 4 = platinum-category.php
+Alt + 5 = fund-performance.php
+Alt + 6 = all-news.php
+Alt + 7 = tickers.php
+Alt + 8 = calculator-style.html
+Alt + 9 = script.html

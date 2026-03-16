@@ -55,6 +55,11 @@
       'callbackUrl'   => '',
       'siteUrl' => 'https://wealthelite.in',
       'wheatlebalsiteUrl' => ''
+    ],
+    'webapplinks' => [
+      'androidUrl'   => '',
+      'iosUrl' => '',
+      'fallbackUrl ' => ''
     ]
   ];
 ?>
