@@ -91,7 +91,7 @@
 						$mail->SMTPAuth = true;
 						$mail->Username = $config['smtp']['username'];
 						$mail->Password = $config['smtp']['password'];
-						$mail->SMTPSecure = 'tls';
+						$mail->SMTPSecure = $config['smtp']['secure'];
 						$mail->Port = $config['smtp']['port'];
 
 						$mail->setFrom($config['smtp']['from_email'], $config['rvuserinfo']['websitename']);

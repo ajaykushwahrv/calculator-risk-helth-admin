@@ -1,9 +1,9 @@
-<p class="text-center text-white"> AMFI Registered mutual fund Distributor |
-    <?= !empty($config['rvuserinfo']['arn']) ? 'ARN- ' . $config['rvuserinfo']['arn'] : '' ?>
-    <?= !empty($config['rvuserinfo']['arn_start_date']) ? 'Current Validity: ' . $config['rvuserinfo']['arn_start_date'] : '' ?>
-    <?= !empty($config['rvuserinfo']['arn_end_date']) ? 'TO ' . $config['rvuserinfo']['arn_end_date'] : '' ?> |
-    <?= !empty($config['rvuserinfo']['euin']) ? 'EUIN- ' . $config['rvuserinfo']['euin'] : '' ?>
-    <?= !empty($config['rvuserinfo']['euin_start_date']) ? 'Current Validity: ' .  $config['rvuserinfo']['euin_start_date'] : '' ?>
+<p class="text-center text-white"> AMFI Registered mutual fund Distributor
+    <?= !empty($config['rvuserinfo']['arn']) ? ' | ARN- ' . $config['rvuserinfo']['arn'] : '' ?>
+    <?= !empty($config['rvuserinfo']['arn_start_date']) ? ' | Current Validity: ' . $config['rvuserinfo']['arn_start_date'] : '' ?>
+    <?= !empty($config['rvuserinfo']['arn_end_date']) ? 'TO ' . $config['rvuserinfo']['arn_end_date'] : '' ?>
+    <?= !empty($config['rvuserinfo']['euin']) ? ' | EUIN- ' . $config['rvuserinfo']['euin'] : '' ?>
+    <?= !empty($config['rvuserinfo']['euin_start_date']) ? ' | Current Validity: ' .  $config['rvuserinfo']['euin_start_date'] : '' ?>
     <?= !empty($config['rvuserinfo']['euin_end_date']) ? 'TO ' .  $config['rvuserinfo']['euin_end_date'] : '' ?>
 </p>
 <?php $rvauditlink = [

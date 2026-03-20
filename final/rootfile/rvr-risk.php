@@ -267,7 +267,7 @@ try {
 $mail->isSMTP();
 $mail->Host = $config['smtp']['host'];
 $mail->SMTPAuth = true;
-$mail->SMTPSecure = "tls";
+$mail->SMTPSecure = $config['smtp']['secure'];
 $mail->Port =  $config['smtp']['port'];
 
 $mail->Username = $config['smtp']['username'];
@@ -413,7 +413,7 @@ exit;
                         <div class="rvfrhcontent-box">
                             <h3>Risk Form</h3>
                             <input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'][$formvalrhval]; ?>">
-							<input type="hidden" name="form_key" value="risk">
+                            <input type="hidden" name="form_key" value="risk">
                             <input type="hidden" name="my_address" class="honeypot">
                             <input type="hidden" name="rvrformtype" value="Risk">
 
@@ -443,8 +443,8 @@ exit;
                             <div class="form-group">
                                 <label for='rvrname'>Solve: <b id="cap_risk"><?= $captcha_risk ?> </b> = ? </label>
                                 <div class="">
-                                    <input type="number" name="<?= $formvalrhval;?>_captcha" id="rvfcaptcha" maxlength="3"
-                                        required>
+                                    <input type="number" name="<?= $formvalrhval;?>_captcha" id="rvfcaptcha"
+                                        maxlength="3" required>
                                     <a href="#!" type="button" class="btn btn-primary"
                                         onclick="refreshCaptcha('<?= $formvalrhval;?>')" id="refreshCaptcha">↻</a>
                                 </div>

@@ -1,5 +1,4 @@
- 
-<?php
+ <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -204,7 +203,7 @@ try {
 $mail->isSMTP();
 $mail->Host = $config['smtp']['host'];
 $mail->SMTPAuth = true;
-$mail->SMTPSecure = "tls";
+$mail->SMTPSecure = $config['smtp']['secure'];
 $mail->Port =  $config['smtp']['port'];
 
 $mail->Username = $config['smtp']['username'];
@@ -242,6 +241,3 @@ exit;
 }
 
 ?>
-
-
- 

@@ -64,7 +64,7 @@ if ($stmt->execute()) {
         $mail->SMTPAuth   = true;
         $mail->Username   = $config['smtp']['username'];
         $mail->Password   = $config['smtp']['password'];
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = $config['smtp']['secure'];
         $mail->Port       = $config['smtp']['port'];
 
         // Email settings

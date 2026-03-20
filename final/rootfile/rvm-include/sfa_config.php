@@ -9,10 +9,11 @@
 
     'smtp' => [
       'host' => 'smtp.gmail.com',   
+      'port' => 587,                     
+      'secure' => 'tls',                     
       'username' => '', //smtp email
       'password' => '',   //smtp password
-      'port' => 587,                     
-      'from_email' => '', //send url
+      'from_email' => '', //send email
       'CC_email' => '', 
       'BCC_email' => '', 
     ],
@@ -59,7 +60,7 @@
     'webapplinks' => [
       'androidUrl'   => '',
       'iosUrl' => '',
-      'fallbackUrl ' => ''
+ 
     ]
   ];
 ?>

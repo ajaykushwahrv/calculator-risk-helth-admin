@@ -170,10 +170,12 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <?= $config['rvuserinfo']['mapurl'];?>
 rvr-risk.php
 rvh-health.php
+$androidUrl = !empty($config['webapplinks']['androidUrl']) ? $config['webapplinks']['androidUrl'] :
+'https://play.google.com/store/search?q=wealth+elite&c=apps';
+$iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['iosUrl'] :
+'https://apps.apple.com/us/app/wealth-elite/id1518518606';
 
 
-
-<?php echo $privacy_policy = fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
 
 
 

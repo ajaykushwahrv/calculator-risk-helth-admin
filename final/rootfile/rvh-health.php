@@ -259,7 +259,7 @@ try {
 $mail->isSMTP();
 $mail->Host = $config['smtp']['host'];
 $mail->SMTPAuth = true;
-$mail->SMTPSecure = "tls";
+$mail->SMTPSecure = $config['smtp']['secure'];
 $mail->Port =  $config['smtp']['port'];
 
 $mail->Username = $config['smtp']['username'];
@@ -306,9 +306,11 @@ exit;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $config['rvuserinfo']['websitename']; ?> || Health</title>
-    <link rel="shortcut icon" type="image/x-icon" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_favicon']; ?>">
+    <link rel="shortcut icon" type="image/x-icon"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_favicon']; ?>">
     <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-    <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
+    <link rel="stylesheet"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
 
 
     <style>
@@ -322,7 +324,7 @@ exit;
 
 
 
- 
+
     <!-- 
 </?php foreach($riskData as $jsonDitems){ ?>
     </?= $jsonDitems['question']; ?>
@@ -341,13 +343,14 @@ exit;
 
     <section class="rvrhsection-section">
         <div class="section-container rvrhsection">
-              <div class="logo-images">
-                    <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
-                    <h3>Health Form</h3>
-				  <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
+            <div class="logo-images">
+                <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                    alt="Logo">
+                <h3>Health Form</h3>
+                <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 	echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
 }?>
-                </div>
+            </div>
             <div class="progressBar">
                 <ul>
                     <?php $i=1; foreach($riskData as $riskDitems){ ?>
@@ -361,7 +364,7 @@ exit;
                 <li><a href="#" data-step="3" class="pSteps step_4 back-step" data-tab-id="4"><span class="ws-no">4</span><span class="ws-steps">Step 4</span></a></li> -->
                 </ul>
             </div>
-            <form  id="secureForm" method="POST" data-key="<?= $formvalrhval;?>">
+            <form id="secureForm" method="POST" data-key="<?= $formvalrhval;?>">
                 <div class="wizard-stape-body">
                     <?php $i=1; foreach($riskData as $riskDitems){ ?>
                     <div class="wizard-stape-cart" id="wizard_stape_<?= $i; ?>"
@@ -379,7 +382,7 @@ exit;
                                         <i class="bi bi-send-check"></i> Yes
                                     </label>
                                 </li>
-								 <li>
+                                <li>
                                     <input type="radio" name="answers<?= $i; ?>" id="question<?= $i; ?>a<?= $j; ?>"
                                         value="0">
                                     <label class="rvrhradio next-step" data-step="<?= $i; ?>"
@@ -408,7 +411,7 @@ exit;
                         <div class="rvfrhcontent-box">
                             <h3>Health Form</h3>
                             <input type="hidden" name="rvrrf" value="<?= $_SESSION['rvrrf'][$formvalrhval]; ?>">
-							<input type="hidden" name="form_key" value="health">
+                            <input type="hidden" name="form_key" value="health">
                             <input type="hidden" name="my_address" class="honeypot">
                             <input type="hidden" name="rvrformtype" value="Health">
 
@@ -434,20 +437,23 @@ exit;
                                 <textarea name="rvrmessage" id="rvrmessage_<?= $formvalrhval;?>"></textarea>
                                 <span id="rvrmessage_err_<?= $formvalrhval;?>" class="error"></span>
                             </div>
-                           <div class="form-group">
-								<label for='rvrname'>Solve: <b id="cap_health"><?= $captcha_health ?> </b> = ? </label>
-								<div class=""> 
-									<input type="number" name="<?= $formvalrhval;?>_captcha" id="rvfcaptcha" maxlength="3" required>
-									<a href="#!" type="button"  class="btn btn-primary"  onclick="refreshCaptcha('<?= $formvalrhval;?>')" id="refreshCaptcha">↻</a>
-								</div>
-								 
-							</div>
-                             
+                            <div class="form-group">
+                                <label for='rvrname'>Solve: <b id="cap_health"><?= $captcha_health ?> </b> = ? </label>
+                                <div class="">
+                                    <input type="number" name="<?= $formvalrhval;?>_captcha" id="rvfcaptcha"
+                                        maxlength="3" required>
+                                    <a href="#!" type="button" class="btn btn-primary"
+                                        onclick="refreshCaptcha('<?= $formvalrhval;?>')" id="refreshCaptcha">↻</a>
+                                </div>
+
+                            </div>
+
                         </div>
                         <div class="back-links">
                             <a href="javascript:void(0);" class="prev_action" data-step="11"><i
                                     class="bi bi-chevron-left"></i> Back </a>
-                            <button type="submit" class="btn btn-primary" id="submitBtn_<?= $formvalrhval;?>" disabled>Submit</button>
+                            <button type="submit" class="btn btn-primary" id="submitBtn_<?= $formvalrhval;?>"
+                                disabled>Submit</button>
                         </div>
                     </div>
 
@@ -456,9 +462,9 @@ exit;
             </form>
         </div>
     </section>
-<script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
-<script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>
- 
+    <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
+    <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>
+
 </body>
 
 </html>
