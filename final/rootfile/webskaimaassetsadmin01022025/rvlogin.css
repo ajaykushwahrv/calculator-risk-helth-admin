@@ -43,6 +43,7 @@ html {
             color-mix(in srgb, var(--rv-primary) 10%, transparent) 100%
         ),
         url(./bg-01.svg);
+    background-position: center;
 }
 
 .rvlogin-section .admin-main-logo {

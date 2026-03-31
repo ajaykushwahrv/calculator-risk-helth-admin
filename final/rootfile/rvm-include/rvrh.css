@@ -27,7 +27,8 @@
             color-mix(in srgb, var(--rv-primary) 5%, transparent) 0%,
             color-mix(in srgb, var(--rv-secondary) 10%, transparent) 100%
         ),
-        url(./bg-01.svg);
+        url(./rvfrhcontent-box);
+    background-position: center;
     a {
         text-decoration: none;
     }
@@ -318,7 +319,7 @@ body {
             rgb(6 188 166 / 10%),
             rgb(6 188 166 / 15%)
         ),
-        url(./bg-01.svg);
+        url(./rvfrhcontent-box);
     .btn-box {
         margin-top: 30px;
         display: flex;
@@ -373,7 +374,9 @@ body {
 .rvrhc-notfound-section {
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background: linear-gradient(180deg, rgb(255 255 255 / 52%) 50%, rgb(230 230 230 / 51%) 50%), url(./bg-01.svg);
+    background:
+        linear-gradient(180deg, rgb(255 255 255 / 52%) 50%, rgb(230 230 230 / 51%) 50%), url(./rvfrhcontent-box);
+    background-position: center;
     .result-card {
         padding: 20px;
         border-radius: 5px;
