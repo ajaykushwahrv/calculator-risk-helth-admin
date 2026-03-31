@@ -27,7 +27,7 @@
             color-mix(in srgb, var(--rv-primary) 5%, transparent) 0%,
             color-mix(in srgb, var(--rv-secondary) 10%, transparent) 100%
         ),
-        url(./rvfrhcontent-box);
+        url(./bg-01.svg);
     background-position: center;
     a {
         text-decoration: none;
