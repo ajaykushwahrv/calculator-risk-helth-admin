@@ -3,7 +3,8 @@
     --rv-secondary: #000;
     --rv-white: #fff;
     --rv-black: #070707;
-    --rv-gray: #726d7b;
+    --rv-primary-rgb: color-mix(in srgb, var(--rv-primary) 65%, transparent);
+    --rv-secondary-rgb: color-mix(in srgb, var(--rv-secondary) 65%, transparent);
 }
 
 *,
@@ -69,7 +70,7 @@ body {
 }
 
 .wizard-stape-body {
-    background: #ffffff;
+    background: var(--rv-white);
     box-shadow: 0px 9px 30px rgba(0, 0, 0, 0.14);
     border-radius: 10px;
 }
@@ -91,7 +92,7 @@ body {
     top: 0;
     right: 10px;
     margin-top: 15px;
-    background: #fff;
+    background: var(--rv-white);
     padding: 0 5px;
 }
 
@@ -277,7 +278,7 @@ body {
 }
 
 .progressBar ul li a.activeStep span.ws-no {
-    color: #fff;
+    color: var(--rv-white);
     background-color: #2a2a2a;
 }
 
@@ -299,7 +300,7 @@ body {
     content: "\f272";
     font-family: bootstrap-icons !important;
     font-size: 12px;
-    color: #fff;
+    color: var(--rv-white);
 }
 
 .progressBar ul li a.completeStep span.ws-steps {
@@ -358,6 +359,10 @@ body {
 .logo-images {
     width: 100%;
     text-align: center;
+    a {
+        position: relative;
+        z-index: 1;
+    }
     img {
         height: 90px;
         margin: 0 auto;

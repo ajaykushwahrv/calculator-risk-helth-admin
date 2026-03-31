@@ -15,7 +15,8 @@ include("./rvm-include/config.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $config['rvuserinfo']['websitename']; ?> || Not Found</title>
     <link rel="stylesheet" href="<?= $config['rvrhcinfo']['rvrhc_bootstrap_icons']; ?>">
-    <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
+    <link rel="stylesheet"
+        href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
 
 
     <style>
@@ -30,8 +31,11 @@ include("./rvm-include/config.php");
     <section class="rvrhsection-section rvrhc-notfound-section">
         <div class="notfound-thank">
             <div class="result-card">
-              <div class="logo-images">
-                    <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>" alt="Logo">
+                <div class="logo-images">
+                    <a href="<?= $config['rvuserinfo']['base_url']; ?>">
+                        <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                            alt="Logo">
+                    </a>
                 </div>
                 <div class="result-card-body">
                     <h1>404</h1>
@@ -39,7 +43,8 @@ include("./rvm-include/config.php");
                     <p>The page you requested could not be found</p>
                     <div class="btn-box">
                         <a href="<?= $config['rvuserinfo']['base_url']; ?>" class="btn btn-primary">Go To Home</a>
-                        <a href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_contact']; ?>" class="btn btn-primary">Contact Us</a>
+                        <a href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_contact']; ?>"
+                            class="btn btn-primary">Contact Us</a>
                     </div>
                 </div>
             </div>

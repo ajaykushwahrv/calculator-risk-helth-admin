@@ -344,8 +344,10 @@ exit;
     <section class="rvrhsection-section">
         <div class="section-container rvrhsection">
             <div class="logo-images">
-                <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
-                    alt="Logo">
+                <a href="<?= $config['rvuserinfo']['base_url']; ?>">
+                    <img src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_logo']; ?>"
+                        alt="Logo">
+                </a>
                 <h3>Health Form</h3>
                 <?php if(isset($_GET['err']) && $_GET['err']=="captcha_err"){
 	echo "<span style='color:red;'>Invalid Captcha. Please resubmit form!</span>";
