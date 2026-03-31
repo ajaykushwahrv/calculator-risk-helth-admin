@@ -68,29 +68,6 @@ change_password.php
 
 
 
-Login
-admin Login
-Calculators
-News
-Fund Performance
-Ticker
-Download Form
-admin me 2 file dalna
-logout pr url chang krna
-
-
-
-
-risk_user
-risk_result_pop
-risk_result
-risk_question
-risk_ans
-result_pop
-result
-question_opt
-testmonial
-user
 
 
 popup show hide krna ho to https://www.vsave.in/ ke admin me he
@@ -200,3 +177,42 @@ Alt + 6 = all-news.php
 Alt + 7 = tickers.php
 Alt + 8 = calculator-style.html
 Alt + 9 = script.html
+
+
+
+Login
+admin Login
+Calculators
+News
+Fund Performance
+Ticker
+Download Form
+admin me 2 file dalna
+logout pr url chang krna
+
+
+
+
+risk_user
+risk_result_pop
+risk_result
+risk_question
+risk_ans
+result_pop
+result
+question_opt
+testmonial
+user
+
+
+thankyou page pr change
+config file me
+form file me
+contect file me
+Data Base me
+3 file me
+or admin file me
+
+
+
+if ( $service['id'] == 1) { continue; }

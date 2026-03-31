@@ -1,17 +1,8 @@
 <?php
 
-// $allowed_ips = [
-//     "103.231.44.222",  // First IP
-//     "103.21.53.114"   // Second IP
-// ];
-
-// // User ka current IP
-// $user_ip = $_SERVER['REMOTE_ADDR'];
-
-// // Check access
-// if (!in_array($user_ip, $allowed_ips)) {
-//     die("Access Denied: Your IP  not allowed.");
-// }
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
 $config = require __DIR__ . '/sfa_config.php';
 
