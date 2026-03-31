@@ -216,3 +216,6 @@ or admin file me
 
 
 if ( $service['id'] == 1) { continue; }
+
+
+change_password.php
