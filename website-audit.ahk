@@ -1,7 +1,7 @@
 ^Numpad0::
 Clipboard =
 (
- $config = require __DIR__ . '/rvm-include/config.php';
+require __DIR__ . '/rvm-include/config.php';
 )
 Send, ^v
 return
@@ -163,6 +163,12 @@ return
 
 !Numpad9:: 
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\script.html
+Clipboard := fileContent
+Send, ^v
+return
+
+^+Numpad0::
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\useful-links.php
 Clipboard := fileContent
 Send, ^v
 return

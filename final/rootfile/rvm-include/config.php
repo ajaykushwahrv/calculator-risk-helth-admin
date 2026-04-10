@@ -664,7 +664,55 @@ mysqli_stmt_close($stmt);
 return $dataAll;
 }
  
+// useful links
 
+    function fetchallusefullinksDataAPI() {
+        $baseUrl = "https://redvisionweb.com/api/open-apis/useful-links?apikey=fc1017dad92f3bbbd9cee9bc21d4b0e0"; 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $baseUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($ch);
+        if ($result === false) {
+            return ["error" => "cURL Error: " . curl_error($ch)];
+        }
+        curl_close($ch);
 
+        $decoded_result = json_decode($result, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return ["error" => "JSON Decode Error: " . json_last_error_msg()];
+        }
+        return $decoded_result;
+    }
 
-?>
+    $usefullinksData = fetchallusefullinksDataAPI();
+
+    // Login
+  function fetchallLoginDataAPI() {
+        $baseUrl = "https://redvisiontechnologies.com/api/web_login.php"; 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $baseUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        $result = curl_exec($ch);
+        if ($result === false) {
+            return ["error" => "cURL Error: " . curl_error($ch)];
+        }
+        curl_close($ch);
+
+        $decoded_result = json_decode($result, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return ["error" => "JSON Decode Error: " . json_last_error_msg()];
+        }
+        return $decoded_result;
+    }
+
+    $allLoginData = fetchallLoginDataAPI();
+
+?> 

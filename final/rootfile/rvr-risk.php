@@ -191,7 +191,7 @@ $stmt->execute();
 $stmt->close();
 
  
-if ($rvrradioadd >= 10 && $rvrradioadd <= 20) {
+if ($rvrradioadd <= 20) {
     $riskprofile = "Conservative";
     $riskprofilemsg = "Conservative investors are investors who want stability and are more concerned with protecting their current investments than increasing the real value of their investments.";
     
@@ -210,7 +210,7 @@ else if ($rvrradioadd >= 34 && $rvrradioadd <= 39) {
     $riskprofilemsg = "Moderately Aggressive investors are long-term investors who want good real growth in their capital. A fair amount of risk is acceptable.";
 
 }
-else if ($rvrradioadd >= 40 && $rvrradioadd <= 50) {
+else if ($rvrradioadd >= 40) {
     $riskprofile =   "Very Aggressive ";
     $riskprofilemsg = "Aggressive investors are long-term investors who want high capital growth. Substantial year-to-year fluctuations in value are acceptable in exchange for a potentially high long-term return.";
 

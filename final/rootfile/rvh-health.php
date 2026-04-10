@@ -184,7 +184,7 @@ $stmt->execute();
 $stmt->close();
   
  
-if ($rvrhadioadd >= 1 && $rvrhadioadd <= 3) {
+if ($rvrhadioadd <= 3) {
     $healthprofile = "Critical";
     $healthprofilemsg = "Your financial situation is at a very critical level and you need to get some professional help before its too late. We will soon send you a thorough analysis of your financial health.";
     
@@ -201,7 +201,7 @@ else if ($rvrhadioadd >= 8 && $rvrhadioadd <= 9) {
     $healthprofile =   "Fit";
     $healthprofilemsg = "Good care has been taken in planning your financial life. A good asset allocation and portfolio rebalancing may be required. It will show help in maximising returns by minimizing the risk. We will soon send you a thorough analysis of your financial health";
 }
-else if ($rvrhadioadd >= 10 && $rvrhadioadd <= 10) {
+else if ($rvrhadioadd >= 10) {
     $healthprofile =   "Excellent ";
     $healthprofilemsg = "We appreciate the effort you've put into financial planning. You are in the correct direction. Make sure you rebalance your portfolio regularly. We will soon send you a thorough analysis of your financial health.";
 }

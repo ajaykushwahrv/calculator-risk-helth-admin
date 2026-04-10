@@ -63,7 +63,7 @@ $config = require __DIR__ . './../webpbrajeshsadmin/sfa_config.php';
 change_password.php
 
 
-
+    <link type="text/css" rel="stylesheet" href="<?= $config['rvuserinfo']['base_url'];?>/assets/css/calculator-style.css">
 
 
 
@@ -124,7 +124,10 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
 
 
-
+'username' => 'ajaykushwahredvision@gmail.com',
+'password' => 'zojfafebkxycwuvh',
+'port' => 587,
+'from_email' => 'Ajay.Kushwah@redvisionglobal.com',
 
 
 
@@ -216,6 +219,8 @@ or admin file me
 
 
 if ( $service['id'] == 1) { continue; }
-
+if ( $leeds['form_lead_name'] == 'Risk' ||  $leeds['form_lead_name'] == 'Health') { continue; }
 
 change_password.php
+
+
