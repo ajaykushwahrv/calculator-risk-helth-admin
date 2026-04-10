@@ -167,8 +167,9 @@ Clipboard := fileContent
 Send, ^v
 return
 
-^+Numpad0::
+^!Numpad0::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\useful-links.php
 Clipboard := fileContent
 Send, ^v
 return
+ 
