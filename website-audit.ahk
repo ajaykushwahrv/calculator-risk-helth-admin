@@ -25,7 +25,7 @@ return
 ^Numpad3::
 Clipboard =
 (
-Risk Factors, <?= $risk_factors = rv_fetchRiskFactors();?>
+Risk Factors <?= $risk_factors = rv_fetchRiskFactors();?>
 )
 ClipWait, 1
 SendInput ^v
@@ -35,7 +35,7 @@ return
 ^Numpad4::
 Clipboard =
 (
-Terms & Conditions, <?= $termsconditions = rv_fetchTermsConditions();?>
+Terms & Conditions <?= $termsconditions = rv_fetchTermsConditions();?>
 )
 ClipWait, 1
 SendInput ^v
@@ -45,7 +45,7 @@ return
 ^Numpad5::
 Clipboard =
 (
-Investor Grievance Redressal, <?= rv_fetchInvestorGrievanceRedressal([
+Investor Grievance Redressal <?= rv_fetchInvestorGrievanceRedressal([
         'clientname' => $config['rvuserinfo']['clientname'],
         'websitename' => $config['rvuserinfo']['websitename'],
         'mobile'      => $config['rvuserinfo']['mobile'],
@@ -62,7 +62,7 @@ return
 ^Numpad6::
 Clipboard =
 (
-Important Links, <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
+Important Links <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
 )
 ClipWait, 1
 SendInput ^v
@@ -72,7 +72,7 @@ return
 ^Numpad7::
 Clipboard =
 (
-Privacy Policy, <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
+Privacy Policy <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
 )
 ClipWait, 1
 SendInput ^v
@@ -83,7 +83,7 @@ return
 ^Numpad8::
 Clipboard =
 (
-Commission Disclosures, <?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
+Commission Disclosures <?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
 )
 ClipWait, 1
 SendInput ^v
