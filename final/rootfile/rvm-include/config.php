@@ -22,6 +22,12 @@ if (!$con) {
 }
 
 
+// Fetch callbackUrl data siteUrl from config
+
+$callbackUrl = rtrim($config['rvuserinfo']['base_url'], '/') . '/' . ltrim($config['rvlogin']['callbackUrl'], '/');
+$siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
+
+
 // Fetch single calculator data by urlName
 function fetchDatasingleAPI($urlName) {
     if (is_array($urlName)) {
