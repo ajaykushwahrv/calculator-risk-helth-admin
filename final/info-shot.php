@@ -150,10 +150,8 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <?= $config['rvuserinfo']['mapurl'];?>
 rvr-risk.php
 rvh-health.php
-$androidUrl = !empty($config['webapplinks']['androidUrl']) ? $config['webapplinks']['androidUrl'] :
-'https://play.google.com/store/search?q=wealth+elite&c=apps';
-$iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['iosUrl'] :
-'https://apps.apple.com/us/app/wealth-elite/id1518518606';
+$androidUrl
+$iosUrl
 
 
 
@@ -220,6 +218,8 @@ or admin file me
 
 if ( $service['id'] == 1) { continue; }
 if ( $leeds['form_lead_name'] == 'Risk' ||  $leeds['form_lead_name'] == 'Health') { continue; }
+if ( $risk['form_lead_name'] == 'Contact' ||  $risk['form_lead_name'] == 'Health') { continue; }
+if ( $health['form_lead_name'] == 'Risk' ||  $health['form_lead_name'] == 'Contact') { continue; }
 
 change_password.php
 

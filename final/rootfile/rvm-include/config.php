@@ -22,11 +22,14 @@ if (!$con) {
 }
 
 
-// Fetch callbackUrl data siteUrl from config
+// Fetch callbackUrl data siteUrl  
 
 $callbackUrl = rtrim($config['rvuserinfo']['base_url'], '/') . '/' . ltrim($config['rvlogin']['callbackUrl'], '/');
 $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin']['wheatlebalsiteUrl'] : $config['rvlogin']['siteUrl'];
 
+// Fetch App links 
+$androidUrl = !empty($config['webapplinks']['androidUrl']) ? $config['webapplinks']['androidUrl'] : 'https://play.google.com/store/search?q=wealth+elite&c=apps';
+$iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['iosUrl'] : 'https://apps.apple.com/us/app/wealth-elite/id1518518606';  
 
 // Fetch single calculator data by urlName
 function fetchDatasingleAPI($urlName) {
