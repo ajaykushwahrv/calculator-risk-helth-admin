@@ -65,6 +65,13 @@ Header set Cache-Control "public, max-age=31536000"
  
 
 # -----------------------------
+# Audit All pages
+# -----------------------------
+
+RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L]
+
+
+# -----------------------------
 # Custom Not Found
 # -----------------------------
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -72,8 +79,3 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /rv-not-found.php [L]
 
 
-# -----------------------------
-# Audit All pages
-# -----------------------------
-
-RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L]
