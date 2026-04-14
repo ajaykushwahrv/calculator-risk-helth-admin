@@ -148,6 +148,22 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <?= $config['rvuserinfo']['address'];?>
 <?= $config['rvuserinfo']['mapsrc'];?>
 <?= $config['rvuserinfo']['mapurl'];?>
+
+  <?= $risk_factors = rv_fetchRiskFactors();?>
+  <?= $termsconditions = rv_fetchTermsConditions();?>
+  <?= rv_fetchInvestorGrievanceRedressal([
+        'clientname' => $config['rvuserinfo']['clientname'],
+        'websitename' => $config['rvuserinfo']['websitename'],
+        'mobile'      => $config['rvuserinfo']['mobile'],
+        'email'       => $config['rvuserinfo']['email'],
+        'address'     => $config['rvuserinfo']['address'],
+    ]);
+?>
+  <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
+  <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
+  <?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
+
+
 rvr-risk.php
 rvh-health.php
 $androidUrl
