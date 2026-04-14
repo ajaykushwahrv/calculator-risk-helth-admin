@@ -11,9 +11,9 @@
       'host' => 'smtp.gmail.com',   
       'port' => 587,                     
       'secure' => 'tls',                     
-      'username' => '', //smtp email
-      'password' => '',   //smtp password
-      'from_email' => '', //send email
+      'username' => 'ajaykushwahredvision@gmail.com', //smtp email
+      'password' => 'zojfafebkxycwuvh',   //smtp password
+      'from_email' => 'ajaykushwahredvision@gmail.com', //send email
       'CC_email' => '', 
       'BCC_email' => '', 
     ],
