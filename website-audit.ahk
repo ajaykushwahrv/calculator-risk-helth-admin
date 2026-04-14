@@ -17,7 +17,7 @@ return
 ^Numpad2::
 Clipboard =
 (
- <?= $footerContent = rv_fetchfooterContent($config['rvuserinfo']['websitename']);?>
+ <div style="--rvcfo-color:var(--rv-white);  text-align:center;"><?= $footerContent = rv_fetchfooterContent($config['rvuserinfo']['websitename']);?></div>
 )
 Send, ^v
 return
