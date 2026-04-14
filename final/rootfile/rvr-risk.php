@@ -191,26 +191,26 @@ $stmt->execute();
 $stmt->close();
 
  
-if ($rvrradioadd <= 20) {
+if ($rvrradioadd <= 10) {
     $riskprofile = "Conservative";
     $riskprofilemsg = "Conservative investors are investors who want stability and are more concerned with protecting their current investments than increasing the real value of their investments.";
     
 }
-else if ($rvrradioadd >= 21 && $rvrradioadd <= 26) {
+else if ($rvrradioadd >= 11 && $rvrradioadd <= 20) {
     $riskprofile =   "Moderately Conservative";
     $riskprofilemsg = "Moderately conservative investors are investors who want to protect their capital, and achieve some real increase in the value of their investments.";
 }
-else if ($rvrradioadd >= 27 && $rvrradioadd <= 33) {
+else if ($rvrradioadd >= 21 && $rvrradioadd <= 30) {
     $riskprofile =    "Moderate";
     $riskprofilemsg = "Moderate investors are long-term investors who want reasonable but relatively stable growth. Some fluctuations are tolerable, but investors want less risk than that attribute to a fully equity based investment.";
 
 }
-else if ($rvrradioadd >= 34 && $rvrradioadd <= 39) {
+else if ($rvrradioadd >= 31 && $rvrradioadd <= 40) {
     $riskprofile =   "Moderately Aggressive";
     $riskprofilemsg = "Moderately Aggressive investors are long-term investors who want good real growth in their capital. A fair amount of risk is acceptable.";
 
 }
-else if ($rvrradioadd >= 40) {
+else if ($rvrradioadd >= 41) {
     $riskprofile =   "Very Aggressive ";
     $riskprofilemsg = "Aggressive investors are long-term investors who want high capital growth. Substantial year-to-year fluctuations in value are acceptable in exchange for a potentially high long-term return.";
 
