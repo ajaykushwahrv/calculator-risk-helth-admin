@@ -23,14 +23,7 @@
                             if($allCulators['scategory'] == 1){
                             ?>
                  <li>
-                     <a href="#!" class="calculatorHendler" data-titlename="<?= $allCulators['titleName']; ?>"
-                         data-toolscat="<?= $allCulators['toolscat']; ?>" data-urlname="<?= $allCulators['urlName']; ?>"
-                         data-apikey="<?= $allCulators['apikey']; ?>" data-rvsrcimg="<?= $allCulators['rvicone']; ?>"
-                         data-rvdomain="<?= $allCulators['domainName']; ?>"
-                         data-rvdirectory="<?= $allCulators['directoryName']; ?>"
-                         data-rvminheight="<?= $allCulators['minHeight']; ?>"
-                         data-rvmaxheight="<?= $allCulators['maxHeight']; ?>"
-                         aria-label="<?= $allCulators['urlName'];?>">
+                     <a href="#!" class="calculatorHendler" data-urlname="<?= $allCulators['urlName']; ?>" aria-label="<?= $allCulators['titleName'];?>">
 
                          <div class="image">
                              <img src="<?= $allCulators['rvicone'];?>" alt="<?= $allCulators['titleName'];?>">
