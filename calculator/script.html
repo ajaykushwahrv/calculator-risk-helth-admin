@@ -1,23 +1,22 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
-    const calculators = < ? = json_encode(array_reduce($allCulatorsDaat, function ($carry, $item) {
+    const calculators = <?= json_encode(array_reduce($allCulatorsDaat, function($carry, $item) {
         if ($item['calculators_name'] == 1 || $item['calculators_name'] == 2) {
             $carry[$item['urlName']] = [
-                "titlename" => $item['titleName'],
-                "toolscat" => $item['toolscat'],
-                "urlname" => $item['urlName'],
-                "apikey" => $item['apikey'],
-                "rvsrcimg" => $item['rvicone'],
-                "rvdomain" => $item['domainName'],
-                "rvdirectory" => $item['directoryName'],
-                "rvminheight" => $item['minHeight'],
-                "rvmaxheight" => $item['maxHeight'],
+                "titlename"   =>$item['titleName'],
+                "toolscat"    =>$item['toolscat'],
+                "urlname"     =>$item['urlName'],
+                "apikey"      =>$item['apikey'],
+                "rvsrcimg"    =>$item['rvicone'],
+                "rvdomain"    =>$item['domainName'],
+                "rvdirectory" =>$item['directoryName'],
+                "rvminheight" =>$item['minHeight'],
+                "rvmaxheight" =>$item['maxHeight'],
             ];
         }
         return $carry;
-    }, [])); ? > ;
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
+    }, [])); ?>
+ 
     if (jQuery('.calculatorHendler').length) {
         jQuery(document).on('click', '.calculatorHendler', function () {
             var urlname = jQuery(this).data('urlname');
@@ -29,15 +28,13 @@
             jQuery('.calculators_section').addClass('active');
 
             jQuery('.calculator-title').html(
-                '<img src="' + data.rvsrcimg + '"alt=" ' + data.titlename + ' "> <span>' + data.titlename +
-                '</span>')
-            var rvPrimary = jQuery("html").css("--rvc-primary").replace("#", "").trim();
-            var rvSecondary = jQuery("html").css("--rvc-secondary").replace("#", "").trim();
-            var rvwhite = jQuery("html").css("--rvc-white").replace("#", "").trim();
+                '<img src="' + data.rvsrcimg + '"alt=" ' + data.titlename + ' "> <span>' + data.titlename + '</span>')
+                var rvPrimary = jQuery("html").css("--rvc-primary").replace("#", "").trim();
+                var rvSecondary = jQuery("html").css("--rvc-secondary").replace("#", "").trim();
+                var rvwhite = jQuery("html").css("--rvc-white").replace("#", "").trim();
 
             jQuery('.calculator-text .rvcaliframe').html(
-                '<iframe src="' + data.rvdomain + '/' + data.rvdirectory + '/' + data.toolscat + '/' +
-                urlname +
+                '<iframe src="' + data.rvdomain + '/' + data.rvdirectory + '/' + data.toolscat + '/' + urlname +
                 '?apikey=' + data.apikey +
                 '&primarycolor=' + rvPrimary +
                 '&secondarycolor=' + rvSecondary +
