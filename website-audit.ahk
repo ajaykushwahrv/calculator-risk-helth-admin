@@ -31,13 +31,12 @@ Clipboard =
 Send, ^v
 return
 
+
 ^Numpad4::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\useful-links.php
 Clipboard := fileContent
 Send, ^v
 return
- 
-
  
 
 ^Numpad5::
@@ -89,12 +88,12 @@ Send, ^v
 return
 
 
-
 !Numpad7::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\calculator-style.html
 Clipboard := fileContent
 Send, ^v
 return
+
 
 !Numpad8:: 
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\script.html

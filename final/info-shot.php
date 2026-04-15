@@ -175,25 +175,19 @@ $iosUrl
 
 ctrl + 0 = $config = require __DIR__ . '/rvm-include/config.php
 ctrl + 1 = footer Content audit.php
-ctrl + 2 = Footer Link
-ctrl + 3 = Risk Factors
-ctrl + 4 = Terms & Conditions
-ctrl + 5 = Investor Grievance Redressal
-ctrl + 6 = Important Links
-ctrl + 7 = Privacy Policy
-ctrl + 8 = Commission Disclosures
-ctrl + 9 = REDVision Global Technologies
+ctrl + 2 = Footer content
+ctrl + 3 = REDVision Global Technologies
+ctrl + 4 = Useful Links
+ctrl + 5 = login-page.php
 
-Alt + 0 = callbackUrl siteUrl
-Alt + 1 = login-page.php
-Alt + 2 = silver-category.php
-Alt + 3 = gold-category.php
-Alt + 4 = platinum-category.php
-Alt + 5 = fund-performance.php
-Alt + 6 = all-news.php
-Alt + 7 = tickers.php
-Alt + 8 = calculator-style.html
-Alt + 9 = script.html
+Alt + 1 = silver-category.php
+Alt + 2 = gold-category.php
+Alt + 3 = platinum-category.php
+Alt + 4 = fund-performance.php
+Alt + 5 = all-news.php
+Alt + 6 = tickers.php
+Alt + 7 = calculator-style.html
+Alt + 8 = script.html
 
 
 
