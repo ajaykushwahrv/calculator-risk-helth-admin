@@ -90,6 +90,22 @@ $iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['ios
 
 
 
+// Fetch  Audit footer content
+
+
+ $rvauditlink = [
+    [ 'title' => 'Risk Factors','url' => $config['rvuserinfo']['base_url'] . '/risk-factors', 'target' => '_self' ],
+    [ 'title' => 'Terms & Conditions','url' => $config['rvuserinfo']['base_url'] . '/terms-conditions', 'target' => '_self' ],
+    [ 'title' => 'SID/SAI/KIM','url' =>  $sid = rv_fetchSidsaikim(), 'target' => '_blank'],
+    [ 'title' => 'Code of Conduct','url' =>  $cConduct = rv_fetchCodeofConduct(), 'target' => '_blank' ],
+    [ 'title' => 'Investor Grievance Redressal','url' => $config['rvuserinfo']['base_url'] . '/investor-grievance-redressal', 'target' => '_self' ],
+    [ 'title' => 'Important Links','url' => $config['rvuserinfo']['base_url'] . '/important-links', 'target' => '_self' ],
+    [ 'title' => 'SEBI Circulars','url' =>  $sebiCirculars = rv_fetchCirculars(), 'target' => '_blank' ],
+    [ 'title' => 'Privacy Policy','url' => $config['rvuserinfo']['base_url'] . '/privacy-policy', 'target' => '_self' ],
+    [ 'title' => 'Commission Disclosures','url' => $config['rvuserinfo']['base_url'] . '/commission-disclosures', 'target' => '_self']
+    ];
+
+
 // Fetch single calculator data by urlName
 function fetchDatasingleAPI($urlName) {
     if (is_array($urlName)) {

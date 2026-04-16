@@ -3,6 +3,7 @@
     foreach ($rvasallaudit as $rvasitems) {
     if ($rvaslug == $rvasitems['rvasurl']) {
 ?>
+        <?= $rvasitems['rvasurl'];?> 
         <?= $rvasitems['title'];?> 
         <?= $rvasitems['content']();?>
 <?php 

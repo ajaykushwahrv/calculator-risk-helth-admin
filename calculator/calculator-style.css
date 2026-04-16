@@ -1,8 +1,9 @@
 @import url("../rvm-include/rvrh.css");
+
 :root {
   --rvc-primary: var(--rv-primary);
   --rvc-secondary: var(--rv-secondary);
-  --rvc-secondary-light: #ffff00;
+  --rvc-secondary-light: color-mix(in srgb, var(--rv-primary) 5%, transparent);
   --rvc-white: #fff;
   --rvc-black: #000;
 }

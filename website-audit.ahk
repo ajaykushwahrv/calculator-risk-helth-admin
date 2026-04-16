@@ -8,7 +8,7 @@ return
 
 
 ^Numpad1::
-FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\website\audit.php
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\audit.php
 Clipboard := fileContent
 Send, ^v
 return
@@ -17,29 +17,20 @@ return
 ^Numpad2::
 Clipboard =
 (
- <div style="--rvcfo-color:var(--rv-white);  text-align:center;"><?= $footerContent = rv_fetchfooterContent($config['rvuserinfo']['websitename']);?></div>
-)
-Send, ^v
-return
-      
-
-^Numpad3::
-Clipboard =
-(
 <span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
 )
 Send, ^v
 return
 
 
-^Numpad4::
+^Numpad3::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\useful-links.php
 Clipboard := fileContent
 Send, ^v
 return
  
 
-^Numpad5::
+^Numpad4::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\login-page.php
 Clipboard := fileContent
 Send, ^v
@@ -89,7 +80,7 @@ return
 
 
 !Numpad7::
-FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\calculator-style.html
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\calculator-style.css
 Clipboard := fileContent
 Send, ^v
 return

@@ -4,11 +4,12 @@
      Thank you for your patience. </marquee>
     <?php } else { $i=1; if (!empty($usefullinksData)) {  foreach($usefullinksData as $usefullinksitems): ?>
      
-$usefullinksitems['link']
-$usefullinksitems['title']
-$usefullinksitems['description']
-https://redvisionweb.com/ $usefullinksitems['image']
-
+<?= $usefullinksitems['link']; ?>
+<?=  $usefullinksitems['title']; ?>
+<?=  $usefullinksitems['description'];?>
+<?= $usefullinksitems['image']; ?>
+https://redvisionweb.com/ 
+    <li><a href="<?= $usefullinksitems['link']; ?>" target="_blank" aria-label="<?=  $usefullinksitems['title']; ?>"><?=  $usefullinksitems['title']; ?></a></li>
 <?php $i++; endforeach; } else { echo "<p>Currently Data not Available. Please try again later.</p>"; }  } ?>
 							
 					

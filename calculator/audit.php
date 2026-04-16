@@ -6,18 +6,7 @@
     <?= !empty($config['rvuserinfo']['euin_start_date']) ? ' | Current Validity: ' .  $config['rvuserinfo']['euin_start_date'] : '' ?>
     <?= !empty($config['rvuserinfo']['euin_end_date']) ? 'TO ' .  $config['rvuserinfo']['euin_end_date'] : '' ?>
 </p>
-<?php $rvauditlink = [
-    [ 'title' => 'Risk Factors','url' => $config['rvuserinfo']['base_url'] . '/risk-factors', 'target' => '_self' ],
-    [ 'title' => 'Terms & Conditions','url' => $config['rvuserinfo']['base_url'] . '/terms-conditions', 'target' => '_self' ],
-    [ 'title' => 'SID/SAI/KIM','url' =>  $sid = rv_fetchSidsaikim(), 'target' => '_blank'],
-    [ 'title' => 'Code of Conduct','url' =>  $cConduct = rv_fetchCodeofConduct(), 'target' => '_blank' ],
-    [ 'title' => 'Investor Grievance Redressal','url' => $config['rvuserinfo']['base_url'] . '/investor-grievance-redressal', 'target' => '_self' ],
-    [ 'title' => 'Important Links','url' => $config['rvuserinfo']['base_url'] . '/important-links', 'target' => '_self' ],
-    [ 'title' => 'SEBI Circulars','url' =>  $sebiCirculars = rv_fetchCirculars(), 'target' => '_blank' ],
-    [ 'title' => 'Privacy Policy','url' => $config['rvuserinfo']['base_url'] . '/privacy-policy', 'target' => '_self' ],
-    [ 'title' => 'Commission Disclosures','url' => $config['rvuserinfo']['base_url'] . '/commission-disclosures', 'target' => '_self']
-    ];
-?>
+ 
 <div class="legal-links text-center text-white mt-4 mb-4">
     <?php foreach($rvauditlink as  $key =>  $linkitems){?>
     <a class="text-white" href="<?= $linkitems['url'] ?>"
@@ -25,3 +14,5 @@
     <?php if($key < count($rvauditlink) - 1): ?> | <?php endif; ?>
     <?php } ?>
 </div>
+
+<div style="--rvcfo-color:var(--rv-white);  text-align:center;"><?= $footerContent = rv_fetchfooterContent($config['rvuserinfo']['websitename']);?></div>
