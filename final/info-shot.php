@@ -175,10 +175,9 @@ $iosUrl
 
 ctrl + 0 = $config = require __DIR__ . '/rvm-include/config.php
 ctrl + 1 = footer Content audit.php
-ctrl + 2 = Footer content
-ctrl + 3 = REDVision Global Technologies
-ctrl + 4 = Useful Links
-ctrl + 5 = login-page.php
+ctrl + 2 = REDVision Global Technologies
+ctrl + 3 = Useful Links
+ctrl + 4 = login-page.php
 
 Alt + 1 = silver-category.php
 Alt + 2 = gold-category.php

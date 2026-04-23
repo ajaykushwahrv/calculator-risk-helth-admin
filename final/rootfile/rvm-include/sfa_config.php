@@ -41,12 +41,22 @@
       'mobile'   => '',
       'mobile1'   => '',
       'mobile2'   => '',
-      'arn'   => '',
-      'euin'   => '',
-      'arn_start_date'   => '',
-      'arn_end_date'   => '',
-      'euin_start_date'   => '',
-      'euin_end_date'   => '',
+      // 
+      'mfarn'   => '',
+      'mfarnDate_start'   => '',
+      'mfarnDate_end'   => '',
+      // 
+      'apmi'   => '',
+      'apmiDate_start'   => '',
+      'apmiDate_end'   => '',
+      // 
+      'irdai'   => '',
+      'irdaiDate_start'   => '',
+      'irdaiDate_end'   => '',
+      // 
+      // GSTIN
+      'gstin'   => '',
+
       'domain'   => '',
       'address'   => '',
       'mapsrc'   => '',

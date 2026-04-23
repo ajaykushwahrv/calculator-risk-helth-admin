@@ -1,9 +1,9 @@
 <?php $rvaslug = $_GET['slug']; ?>
 <?php 
     foreach ($rvasallaudit as $rvasitems) {
-    if ($rvaslug == $rvasitems['rvasurl']) {
+    if ($rvaslug == $rvasitems['rvcurl']) {
 ?>
-        <?= $rvasitems['rvasurl'];?> 
+        <?= $rvasitems['rvcurl'];?> 
         <?= $rvasitems['title'];?> 
         <?= $rvasitems['content']();?>
 <?php 
