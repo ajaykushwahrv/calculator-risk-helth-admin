@@ -1,22 +1,22 @@
 <div class="">
-    <p class="text-center"> <?php if(!empty($config['rvuserinfo']['mfarnDate'])){ ?><b><?=  $config['rvuserinfo']['websitename'] ?></b> <?php } ?></p>
+    <p class="text-center"> <?php if(!empty($config['rvuserinfo']['mfarnDate'])){ ?><b><?=  $config['rvuserinfo']['websitename'] ?></b> </br><?php } ?> 
     <?php if(!empty($config['rvuserinfo']['mfarnDate'])){ ?>
-        <p class="text-center">
-            <b><?=  $config['rvuserinfo']['mfarnDate'] ?></b>
-        </p>
+         
+            <b><?=  $config['rvuserinfo']['mfarnDate'] ?></b></br>
+         
     <?php } ?>
     <?php if(!empty($config['rvuserinfo']['apmiDate'])){ ?>
-        <p class="text-center">
-            <b><?=  $config['rvuserinfo']['apmiDate'] ?></b>
-        </p>
+         
+            <b><?=  $config['rvuserinfo']['apmiDate'] ?></b></br>
+         
     <?php } ?>
     <?php if(!empty($config['rvuserinfo']['irdaiDate'])){ ?>
-        <p class="text-center">
-            <b><?=  $config['rvuserinfo']['irdaiDate'] ?></b>
-        </p>
+ 
+            <b><?=  $config['rvuserinfo']['irdaiDate'] ?></b></br>
+        
     <?php } ?>
 
-
+</p>
 
     <div class="legal-links text-center   mt-2 mb-2">
         <?php foreach($rvasallaudits as  $key =>  $linkitems){ if ( $linkitems['id'] == 15) { continue; }?>
@@ -38,7 +38,7 @@
             <?php if(!empty($config['rvuserinfo']['aif'])){ ?><span>Alternative Investment Funds are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns.</span><?php } ?>
 
             <?php if(!empty($config['rvuserinfo']['sif'])){ ?><span>Specialised Investment Funds are subject to market risks. Please read all related documents carefully before investing. Past performance is not indicative of future returns.</span><?php } ?>
-            <?php if(!empty($config['rvuserinfo']['giftcity'])){ ?><span>Investments through GIFT City or offshore platforms are subject to applicable regulations, currency risks, and tax implications. Please read all related documents carefully before investing.</span><?php } ?>
+            <?php if(!empty($config['rvuserinfo']['giftcity'])){ ?><span>Investments through GIFT City or offshore platforms are subject to applicable regulations, currency risks, and tax implications. Please read all related documents carefully before investing.</span><?php } ?></br>
     
         <b>We are not a SEBI Registered Investment Adviser. We distribute financial products and do not provide investment advisory services.</b></br>
         <?php if(!empty($config['rvuserinfo']['gstin'])){ ?><?= '<b>GSTIN:</b> ' . $config['rvuserinfo']['gstin'] . ' | '?><?php } ?>

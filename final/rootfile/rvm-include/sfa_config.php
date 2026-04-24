@@ -41,16 +41,23 @@
       'mobile'   => '',
       'mobile1'   => '',
       'mobile2'   => '',
-      // 
-      'mfarn'   => '123465',
-      'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 123465 | Validity: 01-01-2023 TO 31-12-2025',
-      // 
+        // AMFI AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
+      'mfarn'   => '155130',
+      'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 155130',
+      // APMI APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
       'apmi'   => '123465',
-      'apmiDate'   => 'APMI Registered PMS Distributor | APRN - 123465 | Validity: 01-01-2023 TO 31-12-2025',
-      // 
+      'apmiDate'   => '',
+      // IRDAI IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
       'irdai'   => '123465',
-      'irdaiDate'   => 'IRDAI Registered Insurance Distributor | IRDAI - 123465 | Validity: 01-01-2023 TO 31-12-2025',
-      // 
+      'irdaiDate'   => '',
+
+      // AIF
+      'aif'   => 'yes',
+      // SIF
+      'sif'   => 'yes',
+      // GIFT CITY
+      'giftcity'   => 'yes',
+
       // GSTIN
       'gstin'   => '',
 

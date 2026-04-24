@@ -1,11 +1,13 @@
-<?php $rvaslug = $_GET['slug']; ?>
+    <?php $rvaslug = $_GET['slug']; ?>
 <?php 
-    foreach ($rvasallaudit as $rvasitems) {
-    if ($rvaslug == $rvasitems['rvcurl']) {
+    foreach ($rvasallaudits as $rvasitems) {
+        $rvasfile = $rvasitems['rvasfile'] ?? '';
+    if ($rvaslug == $rvasfile) {
+
 ?>
-        <?= $rvasitems['rvcurl'];?> 
+     
         <?= $rvasitems['title'];?> 
-        <?= $rvasitems['content']();?>
+         <?=  rv_fetchDynamic($rvaslug, $config_data); ?>
 <?php 
     $rvasfound = true;
     break;
