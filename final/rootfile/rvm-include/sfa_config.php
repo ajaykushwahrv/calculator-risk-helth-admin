@@ -36,33 +36,45 @@
     'rvuserinfo' => [
       'base_url'   => '',
       'clientname'   => '',
+      'designation'   => '',
       'websitename'   => '',
       'email'   => '',
       'mobile'   => '',
       'mobile1'   => '',
       'mobile2'   => '',
-        // AMFI AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
+
+      // AMFI AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
       'mfarn'   => '155130',
       'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 155130',
+
       // APMI APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
       'apmi'   => '123465',
       'apmiDate'   => '',
+
       // IRDAI IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
       'irdai'   => '123465',
       'irdaiDate'   => '',
-
+      
       // AIF
-      'aif'   => 'yes',
+      'aif'   => '',
       // SIF
-      'sif'   => 'yes',
+      'sif'   => '',
       // GIFT CITY
-      'giftcity'   => 'yes',
+      'giftcity'   => '',
+      // BONDS 
+      'bonds'   => '',
 
       // GSTIN
       'gstin'   => '',
 
+      // WORKING HOURS
+      'workinghours'   => '',
+
+  
+
       'domain'   => '',
       'address'   => '',
+      'city'   => '',
       'mapsrc'   => '',
       'mapurl'   => '',
     ],
