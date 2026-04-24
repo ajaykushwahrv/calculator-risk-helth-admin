@@ -1,51 +1,56 @@
-<?php if(!empty($config['rvuserinfo']['mfarn'])){ ?>
-<p class="text-center text-white">
-    <?= 'AMFI Registered Mutual Fund Distributor | ARN- ' . $config['rvuserinfo']['mfarn'] ?>
-    <?= !empty($config['rvuserinfo']['mfarnDate_start']) ? ' | Validity: ' . $config['rvuserinfo']['mfarnDate_start'] : '' ?>
-    <?= !empty($config['rvuserinfo']['mfarnDate_end']) ? ' TO ' . $config['rvuserinfo']['mfarnDate_end'] : '' ?>
-</p>
-<?php } ?>
-
-<?php if(!empty($config['rvuserinfo']['apmi'])){ ?>
-<p class="text-center text-white">
-    <?= 'APMI Registered PMS Distributor | APRN ' . $config['rvuserinfo']['apmi'] ?>
-    <?= !empty($config['rvuserinfo']['apmiDate_start']) ? ' | Validity: ' . $config['rvuserinfo']['apmiDate_start'] : '' ?>
-    <?= !empty($config['rvuserinfo']['apmiDate_end']) ? ' TO ' . $config['rvuserinfo']['apmiDate_end'] : '' ?>
-</p>
-<?php } ?>
-
-<?php if(!empty($config['rvuserinfo']['irdai'])){ ?>
-<p class="text-center text-white">
-    <?= 'IRDAI Registered Insurance Distributor | IRDAI ' . $config['rvuserinfo']['irdai'] ?>
-    <?= !empty($config['rvuserinfo']['irdaiDate_start']) ? ' | Validity: ' . $config['rvuserinfo']['irdaiDate_start'] : '' ?>
-    <?= !empty($config['rvuserinfo']['irdaiDate_end']) ? ' TO ' . $config['rvuserinfo']['irdaiDate_end'] : '' ?>
-</p>
-<?php } ?>
- 
-<div class="legal-links text-center text-white mt-4 mb-4">
-    <?php foreach($rvasallaudits as  $key =>  $linkitems){ if ( $linkitems['id'] == 15) { continue; }?>
-    <a class="text-white" href="<?= $linkitems['rvasurl'] ?>"
-        <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?>><?= $linkitems['title'] ?></a>
-    <?php if($key < count($rvasallaudits) - 1): ?> | <?php endif; ?>
+<div class="">
+    <p class="text-center"> <?php if(!empty($config['rvuserinfo']['mfarnDate'])){ ?><b><?=  $config['rvuserinfo']['websitename'] ?></b> <?php } ?></p>
+    <?php if(!empty($config['rvuserinfo']['mfarnDate'])){ ?>
+        <p class="text-center">
+            <b><?=  $config['rvuserinfo']['mfarnDate'] ?></b>
+        </p>
     <?php } ?>
+    <?php if(!empty($config['rvuserinfo']['apmiDate'])){ ?>
+        <p class="text-center">
+            <b><?=  $config['rvuserinfo']['apmiDate'] ?></b>
+        </p>
+    <?php } ?>
+    <?php if(!empty($config['rvuserinfo']['irdaiDate'])){ ?>
+        <p class="text-center">
+            <b><?=  $config['rvuserinfo']['irdaiDate'] ?></b>
+        </p>
+    <?php } ?>
+
+
+
+    <div class="legal-links text-center   mt-2 mb-2">
+        <?php foreach($rvasallaudits as  $key =>  $linkitems){ if ( $linkitems['id'] == 15) { continue; }?>
+        <a class=" " href="<?= $linkitems['rvasurl'] ?>"
+            <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?>><?= $linkitems['title'] ?></a>
+        <?php if($key < count($rvasallaudits) - 1): ?> | <?php endif; ?>
+        <?php } ?>
+    </div>
+
+
+    <p style="--rvcfo-color:var(--rv-white);  text-align:center;">
+        <small>
+            <?=  rv_fetchDynamic('audit-content', $config_data); ?>
+
+            <?php if(!empty($config['rvuserinfo']['apmiDate'])){ ?><span>Portfolio Management Services are subject to market risks. Please read the Disclosure Document of the PMS provider carefully before investing. Past performance is not indicative of future returns.</span><?php } ?>
+
+            <?php if(!empty($config['rvuserinfo']['irdaiDate'])){ ?><span>Insurance products are subject to the terms and conditions of the respective insurer. Please read all policy-related documents carefully before purchasing.</span><?php } ?>
+
+            <?php if(!empty($config['rvuserinfo']['aif'])){ ?><span>Alternative Investment Funds are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future returns.</span><?php } ?>
+
+            <?php if(!empty($config['rvuserinfo']['sif'])){ ?><span>Specialised Investment Funds are subject to market risks. Please read all related documents carefully before investing. Past performance is not indicative of future returns.</span><?php } ?>
+            <?php if(!empty($config['rvuserinfo']['giftcity'])){ ?><span>Investments through GIFT City or offshore platforms are subject to applicable regulations, currency risks, and tax implications. Please read all related documents carefully before investing.</span><?php } ?>
+    
+        <b>We are not a SEBI Registered Investment Adviser. We distribute financial products and do not provide investment advisory services.</b></br>
+        <?php if(!empty($config['rvuserinfo']['gstin'])){ ?><?= '<b>GSTIN:</b> ' . $config['rvuserinfo']['gstin'] . ' | '?><?php } ?>
+        <?= !empty($config['rvuserinfo']['address']) ? '<b>Office:</b> ' . $config['rvuserinfo']['address'] : '' ?>
+        </br>    
+        <b>Grievance Redressal Officer: </b>
+        <?= !empty($config['rvuserinfo']['clientname']) ? $config['rvuserinfo']['clientname'] : '' ?>
+        <?= !empty($config['rvuserinfo']['email']) ? ' | <a href="tel:+91' .$config['rvuserinfo']['email']. '">' .$config['rvuserinfo']['email']. '</a>' : '' ?>
+        <?= !empty($config['rvuserinfo']['mobile']) ? ' | <a href="tel:+91' .$config['rvuserinfo']['mobile']. '">' .$config['rvuserinfo']['mobile']. '</a>' : '' ?>
+        </small>
+
+    </p>
+
+    <div><?=  rv_fetchDynamic('amfimfsh-img', $config_data); ?></div>
 </div>
-
-
-<div style="--rvcfo-color:var(--rv-white);  text-align:center;"><?=  rv_fetchDynamic('audit-content', $config_data); ?></div>
-
-<p><b>We are not a SEBI Registered Investment Adviser. We distribute financial products and do not provide investment advisory services.</b></p>
-<p class="text-center text-white">
-    <?php if(!empty($config['rvuserinfo']['gstin'])){ ?><?= '<b>GSTIN:</b> ' . $config['rvuserinfo']['gstin'] ?><?php } ?>
-    <?= !empty($config['rvuserinfo']['address']) ? ' | <b>Office:</b> ' . $config['rvuserinfo']['address'] : '' ?>
-</p>
-
- 
-<p class="text-center text-white">
-    <b>Grievance Redressal Officer: </b>
-    <?= !empty($config['rvuserinfo']['clientname']) ? $config['rvuserinfo']['clientname'] : '' ?>
-    <?= !empty($config['rvuserinfo']['email']) ? ' | <a href="tel:+91' .$config['rvuserinfo']['email']. '">' .$config['rvuserinfo']['email']. '</a>' : '' ?>
-    <?= !empty($config['rvuserinfo']['mobile']) ? ' | <a href="tel:+91' .$config['rvuserinfo']['mobile']. '">' .$config['rvuserinfo']['mobile']. '</a>' : '' ?>
-</p>
- 
-
-<div><?=  rv_fetchDynamic('amfimfsh-img', $config_data); ?></div>
