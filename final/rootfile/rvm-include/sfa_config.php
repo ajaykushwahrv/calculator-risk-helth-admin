@@ -43,16 +43,21 @@
       'mobile1'   => '',
       'mobile2'   => '',
 
+    
+       'pteg' => [
+          'prategs'   => '<b>',
+          'pratege'   => '</b>',
+      ],
       // AMFI AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
-      'mfarn'   => '155130',
-      'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 155130',
+      'mfarn'   => '14438',
+      'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 14438',
 
       // APMI APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
-      'apmi'   => '123465',
+      'apmi'   => '',
       'apmiDate'   => '',
 
       // IRDAI IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
-      'irdai'   => '123465',
+      'irdai'   => '',
       'irdaiDate'   => '',
       
       // AIF
@@ -66,11 +71,10 @@
 
       // GSTIN
       'gstin'   => '',
-
+      // city
+      'city'   => 'Guna',
       // WORKING HOURS
       'workinghours'   => '',
-      'city'   => '',
-
   
 
       'domain'   => '',
