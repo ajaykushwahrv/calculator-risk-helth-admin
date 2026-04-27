@@ -17,7 +17,7 @@ return
 ^Numpad2::
 Clipboard =
 (
-<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
+<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchDynamic('copyright', $config_data); ?></span>
 )
 Send, ^v
 return
@@ -35,6 +35,15 @@ FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calcu
 Clipboard := fileContent
 Send, ^v
 return 
+
+
+^Numpad5::
+Clipboard =
+(
+<?=  $cookiedata = rv_fetchDynamic('cookie-banner', $config_data); ?>
+)
+Send, ^v
+return
 
           
 !Numpad1::

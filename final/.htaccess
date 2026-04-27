@@ -15,8 +15,8 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # Audit All pages
 # -----------------------------
 
-RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L]
-
+#RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L]
+RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L]
 
 # -----------------------------
 # GZIP Compression

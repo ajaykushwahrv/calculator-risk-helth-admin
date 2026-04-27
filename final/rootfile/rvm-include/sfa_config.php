@@ -69,12 +69,12 @@
 
       // WORKING HOURS
       'workinghours'   => '',
+      'city'   => '',
 
   
 
       'domain'   => '',
       'address'   => '',
-      'city'   => '',
       'mapsrc'   => '',
       'mapurl'   => '',
     ],

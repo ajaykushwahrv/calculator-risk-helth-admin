@@ -7,7 +7,7 @@
     </p>
     <div class="legal-links text-center   mt-2 mb-2">
         <?php $rvi=1; foreach($rvasallaudits as     $linkitems){ if ( $linkitems['id'] == 15) { continue; }?>
-        <a class=" " href="<?= $linkitems['rvasurl'] ?>" <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?>><?= $linkitems['title'] ?></a>
+        <a class=" " href="<?= $linkitems['rvasurl'] ?>" <?= !empty($linkitems['target']) ? 'target="' . $linkitems['target'] .'"' : '' ?> <?= !empty($linkitems['download']) ? 'download' : '' ?>><?= $linkitems['title'] ?></a>
         <?php if($rvi < count($rvasallaudits) - 1): ?>   | <?php endif; ?>
         <?php $rvi++; } ?>
     </div>
