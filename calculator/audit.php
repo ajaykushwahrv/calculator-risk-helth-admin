@@ -25,3 +25,5 @@
     </p>
     <div><?=  rv_fetchDynamic('amfimfsh-img', $config_data); ?></div>
 </div>
+
+<?=  $cookiedata = rv_fetchDynamic('cookie-banner', $config_data); ?>

@@ -36,14 +36,7 @@ Clipboard := fileContent
 Send, ^v
 return 
 
-
-^Numpad5::
-Clipboard =
-(
-<?=  $cookiedata = rv_fetchDynamic('cookie-banner', $config_data); ?>
-)
-Send, ^v
-return
+ 
 
           
 !Numpad1::
