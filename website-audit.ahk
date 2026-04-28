@@ -36,8 +36,6 @@ Clipboard := fileContent
 Send, ^v
 return 
 
- 
-
           
 !Numpad1::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\data\all-data\silver-category.php

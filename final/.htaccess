@@ -15,8 +15,21 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # Audit All pages
 # -----------------------------
 
-#RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L]
-RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L]
+ 
+RewriteEngine On
+
+# Agar file ya folder exist karta hai to rewrite mat karo
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# .html URL ke liye
+RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L,QSA]
+
+# Clean URL (optional)
+RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L,QSA]
+
+
+
 
 # -----------------------------
 # GZIP Compression
