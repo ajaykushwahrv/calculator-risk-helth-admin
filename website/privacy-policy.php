@@ -1,1 +1,0 @@
- <?php echo $privacy_policy = fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>

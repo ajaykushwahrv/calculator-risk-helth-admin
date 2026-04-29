@@ -36,7 +36,6 @@
     'rvuserinfo' => [
       'base_url'   => '',
       'clientname'   => '',
-      'designation'   => '',
       'websitename'   => '',
       'email'   => '',
       'mobile'   => '',
@@ -69,8 +68,15 @@
       // BONDS 
       'bonds'   => '',
 
+      'designation'   => '',
+
       // GSTIN
       'gstin'   => '',
+
+      // GSTIN
+      'gstin'   => '',
+      // PIN
+      'panno'   => '',
       // city
       'city'   => 'Guna',
       // WORKING HOURS
