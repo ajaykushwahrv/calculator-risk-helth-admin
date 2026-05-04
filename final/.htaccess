@@ -16,7 +16,13 @@ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 # -----------------------------
 
  
+ 
+
 RewriteEngine On
+
+# Redirect old URL to clean URL
+RewriteCond %{THE_REQUEST} \s/audit\.php\?slug=([^\s&]+)
+RewriteRule ^ audit/%1? [R=301,L]
 
 # Agar file ya folder exist karta hai to rewrite mat karo
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -25,7 +31,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # .html URL ke liye
 RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L,QSA]
 
-# Clean URL (optional)
+# Clean URL
 RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L,QSA]
 
 

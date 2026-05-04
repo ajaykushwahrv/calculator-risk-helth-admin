@@ -81,15 +81,23 @@
       'city'   => 'Guna',
       // WORKING HOURS
       'workinghours'   => '',
-  
 
       'domain'   => '',
       'address'   => '',
       'mapsrc'   => '',
       'mapurl'   => '',
+
+
+      // Privacy Policy
+      'rvcprivacypolicy'   => '',
+        // rievancegedressal
+      'rievancegedressal'   => '',
+      // footercontentmid
+      'footercontentmid'   => '',
+    
     ],
     'rvlogin' => [
-      'callbackUrl'   => '',
+      'callbackUrl'   => '/login.php',
       'siteUrl' => 'https://wealthelite.in',
       'wheatlebalsiteUrl' => ''
     ],

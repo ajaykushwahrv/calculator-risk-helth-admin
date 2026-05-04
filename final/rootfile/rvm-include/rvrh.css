@@ -443,3 +443,19 @@ body {
         width: 100%;
     }
 }
+
+.rvafootercolor {
+    div {
+        color: var(--rvcfo-color);
+        text-align: var(--rvatextalign);
+    }
+
+    p {
+        color: var(--rvcfo-color);
+        text-align: var(--rvatextalign);
+    }
+
+    a {
+        color: var(--rva-ateg);
+    }
+}
