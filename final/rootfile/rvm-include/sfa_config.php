@@ -47,15 +47,18 @@
           'prategs'   => '<b>',
           'pratege'   => '</b>',
       ],
-      // AMFI AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
+      // AMFI 
+      // AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
       'mfarn'   => '14438',
       'mfarnDate'   => 'AMFI Registered Mutual Fund Distributor | ARN - 14438',
 
-      // APMI APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
+      // APMI 
+      // APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
       'apmi'   => '',
       'apmiDate'   => '',
 
-      // IRDAI IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
+      // IRDAI 
+      // IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
       'irdai'   => '',
       'irdaiDate'   => '',
       
