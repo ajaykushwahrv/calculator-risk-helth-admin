@@ -63,7 +63,7 @@ $config = require __DIR__ . './../webpbrajeshsadmin/sfa_config.php';
 change_password.php
 
 
-    <link type="text/css" rel="stylesheet" href="<?= $config['rvuserinfo']['base_url'];?>/assets/css/calculator-style.css">
+<link type="text/css" rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?>/assets/css/calculator-style.css">
 
 
 
@@ -77,31 +77,31 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 <!--'Ctrl + 2'-->
 <!--'footer Content'-->
-<?= $footerContent = rv_fetchfooterContent($userinfo['name']);?>
+<?= $footerContent = rv_fetchfooterContent($userinfo['name']); ?>
 
 <!--'Ctrl + 3'-->
 <!--'Risk Factors'-->
-<?= $risk_factors =  rv_fetchRiskFactors();?>
+<?= $risk_factors = rv_fetchRiskFactors(); ?>
 
 <!--'Ctrl + 4'-->
 <!--'Terms & Conditions'-->
-<?= $termsconditions = rv_fetchTermsConditions();?>
+<?= $termsconditions = rv_fetchTermsConditions(); ?>
 
 <!--'SID/SAI/KIM'-->
-<?= $sid = rv_fetchSidsaikim();?>
+<?= $sid = rv_fetchSidsaikim(); ?>
 
 <!--'Code of Conduct'-->
-<?= $cConduct = rv_fetchCodeofConduct();?>
+<?= $cConduct = rv_fetchCodeofConduct(); ?>
 
 <!--'Ctrl + 5'-->
 <!--'Investor Grievance Redressal'-->
 <?= rv_fetchInvestorGrievanceRedressal([
-        'clientname' => $config['rvuserinfo']['clientname'],
-        'websitename' => $config['rvuserinfo']['websitename'],
-        'mobile'      => $config['rvuserinfo']['mobile'],
-        'email'       => $config['rvuserinfo']['email'],
-        'address'     => $config['rvuserinfo']['address'],
-    ]);
+    'clientname' => $config['rvuserinfo']['clientname'],
+    'websitename' => $config['rvuserinfo']['websitename'],
+    'mobile' => $config['rvuserinfo']['mobile'],
+    'email' => $config['rvuserinfo']['email'],
+    'address' => $config['rvuserinfo']['address'],
+]);
 ?>
 
 <!--'Ctrl + 6'-->
@@ -109,7 +109,7 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
 
 <!--'SEBI Circulars'-->
-<?= $sebiCirculars = rv_fetchCirculars();?>
+<?= $sebiCirculars = rv_fetchCirculars(); ?>
 
 <!--'Ctrl + 7'-->
 <!--'Privacy Policy'-->
@@ -121,7 +121,7 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 <!--'Ctrl + 9'-->
 <!--'REDVision Global Technologies'-->
-<span style="--rvc-color:var(--rv-secondary)"><?=  $copyrightdata = rv_fetchCopyright();?></span>
+<span style="--rvc-color:var(--rv-secondary)"><?= $copyrightdata = rv_fetchCopyright(); ?></span>
 
 
 'username' => 'ajaykushwahredvision@gmail.com',
@@ -131,33 +131,33 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 
 
 
-<?= $config['rvuserinfo']['base_url'];?>
-<?= $config['rvuserinfo']['clientname'];?>
-<?= $config['rvuserinfo']['websitename'];?>
-<?= $config['rvuserinfo']['email'];?>
-<?= $config['rvuserinfo']['mobile'];?>
-<?= $config['rvuserinfo']['mobile1'];?>
-<?= $config['rvuserinfo']['mobile2'];?>
-<?= $config['rvuserinfo']['arn'];?>
-<?= $config['rvuserinfo']['euin'];?>
-<?= $config['rvuserinfo']['arn_start_date'];?>
-<?= $config['rvuserinfo']['arn_end_date'];?>
-<?= $config['rvuserinfo']['euin_start_date'];?>
-<?= $config['rvuserinfo']['euin_end_date'];?>
-<?= $config['rvuserinfo']['domain'];?>
-<?= $config['rvuserinfo']['address'];?>
-<?= $config['rvuserinfo']['mapsrc'];?>
-<?= $config['rvuserinfo']['mapurl'];?>
+<?= $config['rvuserinfo']['base_url']; ?>
+<?= $config['rvuserinfo']['clientname']; ?>
+<?= $config['rvuserinfo']['websitename']; ?>
+<?= $config['rvuserinfo']['email']; ?>
+<?= $config['rvuserinfo']['mobile']; ?>
+<?= $config['rvuserinfo']['mobile1']; ?>
+<?= $config['rvuserinfo']['mobile2']; ?>
+<?= $config['rvuserinfo']['arn']; ?>
+<?= $config['rvuserinfo']['euin']; ?>
+<?= $config['rvuserinfo']['arn_start_date']; ?>
+<?= $config['rvuserinfo']['arn_end_date']; ?>
+<?= $config['rvuserinfo']['euin_start_date']; ?>
+<?= $config['rvuserinfo']['euin_end_date']; ?>
+<?= $config['rvuserinfo']['domain']; ?>
+<?= $config['rvuserinfo']['address']; ?>
+<?= $config['rvuserinfo']['mapsrc']; ?>
+<?= $config['rvuserinfo']['mapurl']; ?>
 
-  <?= $risk_factors = rv_fetchRiskFactors();?>
-  <?= $termsconditions = rv_fetchTermsConditions();?>
-  <?= rv_fetchInvestorGrievanceRedressal([
-        'clientname' => $config['rvuserinfo']['clientname'],
-        'websitename' => $config['rvuserinfo']['websitename'],
-        'mobile'      => $config['rvuserinfo']['mobile'],
-        'email'       => $config['rvuserinfo']['email'],
-        'address'     => $config['rvuserinfo']['address'],
-    ]);
+  <?= $risk_factors = rv_fetchRiskFactors(); ?>
+  <?= $termsconditions = rv_fetchTermsConditions(); ?>
+<?= rv_fetchInvestorGrievanceRedressal([
+    'clientname' => $config['rvuserinfo']['clientname'],
+    'websitename' => $config['rvuserinfo']['websitename'],
+    'mobile' => $config['rvuserinfo']['mobile'],
+    'email' => $config['rvuserinfo']['email'],
+    'address' => $config['rvuserinfo']['address'],
+]);
 ?>
   <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
   <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
@@ -228,10 +228,8 @@ or admin file me
 
 
 if ( $service['id'] == 1) { continue; }
-if ( $leeds['form_lead_name'] == 'Risk' ||  $leeds['form_lead_name'] == 'Health') { continue; }
-if ( $risk['form_lead_name'] == 'Contact' ||  $risk['form_lead_name'] == 'Health') { continue; }
-if ( $health['form_lead_name'] == 'Risk' ||  $health['form_lead_name'] == 'Contact') { continue; }
+if ( $leeds['form_lead_name'] == 'Risk' || $leeds['form_lead_name'] == 'Health') { continue; }
+if ( $risk['form_lead_name'] == 'Contact' || $risk['form_lead_name'] == 'Health') { continue; }
+if ( $health['form_lead_name'] == 'Risk' || $health['form_lead_name'] == 'Contact') { continue; }
 
 change_password.php
-
-

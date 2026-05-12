@@ -43,14 +43,23 @@ return [
     'mobile2' => '',
 
 
+    // Grievance Redressal Officer 
+
+    'footergro' => [
+      'groname' => '',
+      'groemail' => '',
+      'gromobile' => '',
+    ],
+
+
     'pteg' => [
       'prategs' => '<b>',
       'pratege' => '</b>',
     ],
     // AMFI 
     // AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
-    'mfarn' => '14438',
-    'mfarnDate' => 'AMFI Registered Mutual Fund Distributor | ARN - 14438',
+    'mfarn' => '',
+    'mfarnDate' => '',
 
     // APMI 
     // APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date

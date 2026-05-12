@@ -40,16 +40,16 @@ return
 ^Numpad5::
 Clipboard =
 (
-<link rel="stylesheet" href="dynamic-style.php">
+<link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url'];?>/dynamic-style.php">
 )
 Send, ^v
 return
 
+ 
+
 ^Numpad6::
-Clipboard =
-(
-For illustration purposes only. Actual returns may vary. Maximum assumed CAGR: 12% as per firm policy (AMFI cap: 13%). Mutual Fund investments are subject to market risks.
-)
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\all-calculator-text.php
+Clipboard := fileContent
 Send, ^v
 return
 
