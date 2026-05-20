@@ -35,12 +35,24 @@ return [
   ],
   'rvuserinfo' => [
     'base_url' => '',
+    'domain' => '',
     'clientname' => '',
     'websitename' => '',
     'email' => '',
     'mobile' => '',
-    'mobile1' => '',
-    'mobile2' => '',
+
+    'eemail' => [
+      ['email' => ''],
+    ],
+    'emobile' => [
+      ['mobile' => ''],
+    ],
+
+    // city
+    'city' => '',
+    'address' => '',
+    'mapsrc' => '',
+    'mapurl' => '',
 
 
     // Grievance Redressal Officer 
@@ -52,6 +64,23 @@ return [
     ],
 
 
+    'grievance_redressal' => [
+      'pgroname' => '',
+      'pgroemail' => '',
+      'pgromobile' => '',
+      'pgroaddress' => '',
+    ],
+    'designation' => '',
+    // WORKING HOURS
+    'workinghours' => '',
+
+    // GSTIN
+    'gstin' => '',
+
+    // PIN
+    'panno' => '',
+
+
     'pteg' => [
       'prategs' => '<b>',
       'pratege' => '</b>',
@@ -60,6 +89,8 @@ return [
     // AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
     'mfarn' => '',
     'mfarnDate' => '',
+
+    'mfeuin' => '',
 
     // APMI 
     // APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
@@ -80,29 +111,13 @@ return [
     // BONDS 
     'bonds' => '',
 
-    'designation' => '',
-
-    // GSTIN
-    'gstin' => '',
-
-    // PIN
-    'panno' => '',
-    // city
-    'city' => 'Guna',
-    // WORKING HOURS
-    'workinghours' => '',
-
-    'domain' => '',
-    'address' => '',
-    'mapsrc' => '',
-    'mapurl' => '',
 
 
-    // Privacy Policy
+    // Privacy Policy me extra data dalna ho 
     'rvcprivacypolicy' => '',
-    // rievancegedressal
+    // rievancegedressal me line change krna ho 
     'rievancegedressal' => '',
-    // footercontentmid
+    // footercontentmid  Mutual Fund investments  footer me bich ka content nhi rkhna ho 
     'footercontentmid' => '',
 
   ],

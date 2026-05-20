@@ -96,11 +96,11 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <!--'Ctrl + 5'-->
 <!--'Investor Grievance Redressal'-->
 <?= rv_fetchInvestorGrievanceRedressal([
-    'clientname' => $config['rvuserinfo']['clientname'],
-    'websitename' => $config['rvuserinfo']['websitename'],
-    'mobile' => $config['rvuserinfo']['mobile'],
-    'email' => $config['rvuserinfo']['email'],
-    'address' => $config['rvuserinfo']['address'],
+  'clientname' => $config['rvuserinfo']['clientname'],
+  'websitename' => $config['rvuserinfo']['websitename'],
+  'mobile' => $config['rvuserinfo']['mobile'],
+  'email' => $config['rvuserinfo']['email'],
+  'address' => $config['rvuserinfo']['address'],
 ]);
 ?>
 
@@ -136,32 +136,24 @@ popup show hide krna ho to https://www.vsave.in/ ke admin me he
 <?= $config['rvuserinfo']['websitename']; ?>
 <?= $config['rvuserinfo']['email']; ?>
 <?= $config['rvuserinfo']['mobile']; ?>
-<?= $config['rvuserinfo']['mobile1']; ?>
-<?= $config['rvuserinfo']['mobile2']; ?>
-<?= $config['rvuserinfo']['arn']; ?>
-<?= $config['rvuserinfo']['euin']; ?>
-<?= $config['rvuserinfo']['arn_start_date']; ?>
-<?= $config['rvuserinfo']['arn_end_date']; ?>
-<?= $config['rvuserinfo']['euin_start_date']; ?>
-<?= $config['rvuserinfo']['euin_end_date']; ?>
 <?= $config['rvuserinfo']['domain']; ?>
 <?= $config['rvuserinfo']['address']; ?>
 <?= $config['rvuserinfo']['mapsrc']; ?>
 <?= $config['rvuserinfo']['mapurl']; ?>
 
-  <?= $risk_factors = rv_fetchRiskFactors(); ?>
-  <?= $termsconditions = rv_fetchTermsConditions(); ?>
+<?= $risk_factors = rv_fetchRiskFactors(); ?>
+<?= $termsconditions = rv_fetchTermsConditions(); ?>
 <?= rv_fetchInvestorGrievanceRedressal([
-    'clientname' => $config['rvuserinfo']['clientname'],
-    'websitename' => $config['rvuserinfo']['websitename'],
-    'mobile' => $config['rvuserinfo']['mobile'],
-    'email' => $config['rvuserinfo']['email'],
-    'address' => $config['rvuserinfo']['address'],
+  'clientname' => $config['rvuserinfo']['clientname'],
+  'websitename' => $config['rvuserinfo']['websitename'],
+  'mobile' => $config['rvuserinfo']['mobile'],
+  'email' => $config['rvuserinfo']['email'],
+  'address' => $config['rvuserinfo']['address'],
 ]);
 ?>
-  <?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
-  <?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
-  <?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
+<?= $ImportantLinksData = rv_fetchImportantLinks(); ?>
+<?= $privacy_policy = rv_fetchPrivacyPolicy($config['rvuserinfo']['websitename'], $config['rvuserinfo']['email']); ?>
+<?= $commission_disclosures = rv_fetchCommissionDisclosures(); ?>
 
 
 rvr-risk.php

@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="dynamic-style.php">
 <?php
 if (isset($allCulatorsDaat['error']) || empty($allCulatorsDaat) || !is_array($allCulatorsDaat)) { ?>
     <marquee behavior='' direction='' style='display: flex; align-items: center; color:red;'>We're currently experiencing a
