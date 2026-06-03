@@ -45,7 +45,7 @@ return [
       ['email' => ''],
     ],
     'emobile' => [
-      ['mobile' => ''],
+      ['mobile' => '', 'mobiletitle' => '',],
     ],
 
     // city
@@ -112,6 +112,8 @@ return [
     'bonds' => '',
 
 
+    // commission disclosures list
+    'commission-disclosures-list' => '',
 
     // Privacy Policy me extra data dalna ho 
     'rvcprivacypolicy' => '',
@@ -120,6 +122,11 @@ return [
     // footercontentmid  Mutual Fund investments  footer me bich ka content nhi rkhna ho 
     'footercontentmid' => '',
 
+  ],
+  'servicesData' => [
+    ['titleName' => 'Mutual Funds',],
+    ['titleName' => 'Health Insurance',],
+    ['titleName' => 'Life insurance',],
   ],
   'rvlogin' => [
     'callbackUrl' => '/login.php',

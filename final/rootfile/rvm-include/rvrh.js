@@ -1,4 +1,4 @@
-jQuery(document).on('click', '.prev_action', function() {
+jQuery(document).on('click', '.prev_action', function () {
     var nextstap = jQuery(this).attr('data-step');
     var currentstep = nextstap - 1;
     jQuery('.wizard-stape-cart').hide();
@@ -11,7 +11,7 @@ jQuery(document).on('click', '.prev_action', function() {
     // }, 1200);
 });
 
-jQuery(document).on('click', '.back-step', function() {
+jQuery(document).on('click', '.back-step', function () {
     var backstap = parseInt(jQuery(this).attr('data-tab-id'));
     var currentstep = jQuery('.progressBar ul li').length + 1;
     jQuery('.wizard-stape-cart').hide();
@@ -29,7 +29,7 @@ jQuery(document).on('click', '.back-step', function() {
     }
 });
 
-jQuery(document).on('click', '.next-step', function() {
+jQuery(document).on('click', '.next-step', function () {
     var currentstep = parseInt(jQuery(this).attr('data-step'));
     var nextstap = currentstep + 1;
     jQuery('.wizard-stape-cart').hide();
@@ -41,7 +41,7 @@ jQuery(document).on('click', '.next-step', function() {
     //     scrollTop: jQuery("body").offset().top
     // }, 1200);
 });
- function fid(id, key) {
+function fid(id, key) {
     return `#${id}_${key}`;
 }
 function validate(form) {
@@ -50,7 +50,7 @@ function validate(form) {
 
     // Name
     if (jQuery(fid("rvrname", key)).val().trim() === "") {
-        jQuery(fid("rvrname_err", key)).text("Name required");
+        jQuery(fid("rvrname_err", key)).text("Name Required");
         jQuery(fid("rvrname", key))
             .removeClass("input-success")
             .addClass("error-field");
@@ -64,7 +64,7 @@ function validate(form) {
 
     // Email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(jQuery(fid("rvremail", key)).val())) {
-        jQuery(fid("rvremail_err", key)).text("Invalid Email");
+        jQuery(fid("rvremail_err", key)).text("Email Required");
         jQuery(fid("rvremail", key))
             .removeClass("input-success")
             .addClass("error-field");
@@ -78,7 +78,7 @@ function validate(form) {
 
     // Mobile
     if (!/^[6-9]\d{9}$/.test(jQuery(fid("mobile", key)).val())) {
-        jQuery(fid("rvrmobile_err", key)).text("Invalid Mobile");
+        jQuery(fid("rvrmobile_err", key)).text("Mobile Required");
         jQuery(fid("mobile", key))
             .removeClass("input-success")
             .addClass("error-field");
@@ -104,7 +104,7 @@ function validate(form) {
             .addClass("input-success");
     }
 
-    	if (jQuery(fid("rvrservice", key)).val() === "") {
+    if (jQuery(fid("rvrservice", key)).val() === "") {
         jQuery(fid("rvrservice_err", key)).text("Please select a service");
         jQuery(fid("rvrservice", key))
             .removeClass("input-success")

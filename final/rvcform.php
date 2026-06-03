@@ -65,29 +65,24 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
                     </div>
                     <div class="form-group rvsf-cols">
                         <label for='rvrname_<?= $formval; ?>'>Email</label>
-                        <input type="text" name="<?= $formval; ?>_rvruserEmail" id="rvremail_<?= $formval; ?>">
+                        <input type="email" name="<?= $formval; ?>_rvruserEmail" id="rvremail_<?= $formval; ?>">
                         <span id="rvremail_err_<?= $formval; ?>" class="error"></span>
                     </div>
 
                     <div class="form-group rvsf-cols">
                         <label for='mobile_<?= $formval; ?>'>Mobile</label>
-                        <input type="text" name="<?= $formval; ?>_rvrmobile" id="mobile_<?= $formval; ?>" maxlength="10">
+                        <input type="tel" name="<?= $formval; ?>_rvrmobile" id="mobile_<?= $formval; ?>" maxlength="10"
+                            pattern="[0-9]{10}" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,10)">
                         <span id="rvrmobile_err_<?= $formval; ?>" class="error"></span>
                     </div>
                     <div class="form-group rvsf-cols">
                         <label for='rvrservice_<?= $formval; ?>'>Service</label>
                         <select name="<?= $formval; ?>_cfservices" id="rvrservice_<?= $formval; ?>">
                             <option value="">-- Select Service --</option>
-                            <?php $cfservices = [
-                                ['title' => 'Financial Solutions'],
-                                ['title' => 'Financial Freedom'],
-                                ['title' => 'Retirement Solutions'],
-                                ['title' => 'Child Education Solutions'],
-                                ['title' => 'Real Estate Information'],
-                                ['title' => 'Tax Awareness'],
-                            ]; ?>
-                            <?php foreach ($cfservices as $cfservicesitems) { ?>
-                                <option value="<?= $cfservicesitems['title']; ?>"><?= $cfservicesitems['title']; ?></option>
+
+                            <?php foreach ($servicesData['servicesData'] as $cfservicesitems) { ?>
+                                <option value="<?= $cfservicesitems['titleName']; ?>"><?= $cfservicesitems['titleName']; ?>
+                                </option>
                             <?php } ?>
                             <option value="Other">Other</option>
 
@@ -107,8 +102,8 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
                     <div class="">
                         <input type="number" name="<?= $formKey . '_' . $formval ?>_captcha" id="rvfcaptcha"
                             maxlength="3" required>
-                        <a href="#!" type="button" class="btn btn-primary"
-                            onclick="refreshCaptcha('<?= $formKey . '_' . $formval ?>')" id="refreshCaptcha">↻</a>
+                        <span type="button" class="btn btn-primary"
+                            onclick="refreshCaptcha('<?= $formKey . '_' . $formval ?>')" id="refreshCaptcha">↻</span>
                     </div>
 
                 </div>
