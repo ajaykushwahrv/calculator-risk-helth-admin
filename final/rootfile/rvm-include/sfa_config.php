@@ -40,68 +40,56 @@ return [
     'websitename' => '',
     'email' => '',
     'mobile' => '',
-
     'eemail' => [
       ['email' => ''],
     ],
     'emobile' => [
       ['mobile' => '', 'mobiletitle' => '',],
     ],
-
     // city
     'city' => '',
     'address' => '',
     'mapsrc' => '',
     'mapurl' => '',
-
-
     // Grievance Redressal Officer 
-
     'footergro' => [
       'groname' => '',
       'groemail' => '',
       'gromobile' => '',
     ],
-
-
     'grievance_redressal' => [
       'pgroname' => '',
       'pgroemail' => '',
       'pgromobile' => '',
       'pgroaddress' => '',
+      'escalation' => [
+        ['id' => '1', 'egrlevelname' => '', 'egrlevelemail' => '', 'egrlevelmobile' => '', 'egrlevelmobiletitle' => '',],
+      ],
     ],
     'designation' => '',
     // WORKING HOURS
     'workinghours' => '',
-
     // GSTIN
     'gstin' => '',
-
     // PIN
     'panno' => '',
-
-
     'pteg' => [
       'prategs' => '<b>',
-      'pratege' => '</b>',
+      'pratege' => '</b><br>',
     ],
     // AMFI 
     // AMFI Registered Mutual Fund Distributor | ARN - No | Validity: Start Date TO End Date
     'mfarn' => '',
     'mfarnDate' => '',
-
     'mfeuin' => '',
-
     // APMI 
     // APMI Registered PMS Distributor | APRN - No | Validity: Start Date TO End Date
     'apmi' => '',
     'apmiDate' => '',
-
     // IRDAI 
     // IRDAI Registered Insurance Distributor | IRDAI - No | Validity: Start Date TO End Date
     'irdai' => '',
     'irdaiDate' => '',
-
     // AIF
     'aif' => '',
     // SIF
@@ -110,10 +98,9 @@ return [
     'giftcity' => '',
     // BONDS 
     'bonds' => '',
-
-
     // commission disclosures list
     'commission-disclosures-list' => '',
+    'registration-disclosure-list' => '',
 
     // Privacy Policy me extra data dalna ho 
     'rvcprivacypolicy' => '',
@@ -121,12 +108,9 @@ return [
     'rievancegedressal' => '',
     // footercontentmid  Mutual Fund investments  footer me bich ka content nhi rkhna ho 
     'footercontentmid' => '',
-
   ],
   'servicesData' => [
     ['titleName' => 'Mutual Funds',],
-    ['titleName' => 'Health Insurance',],
-    ['titleName' => 'Life insurance',],
   ],
   'rvlogin' => [
     'callbackUrl' => '/login.php',
@@ -136,7 +120,6 @@ return [
   'webapplinks' => [
     'androidUrl' => '',
     'iosUrl' => '',
-
   ]
 ];
 ?>

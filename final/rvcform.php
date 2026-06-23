@@ -80,7 +80,7 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
                         <select name="<?= $formval; ?>_cfservices" id="rvrservice_<?= $formval; ?>">
                             <option value="">-- Select Service --</option>
 
-                            <?php foreach ($servicesData['servicesData'] as $cfservicesitems) { ?>
+                            <?php foreach ($config['servicesData'] as $cfservicesitems) { ?>
                                 <option value="<?= $cfservicesitems['titleName']; ?>"><?= $cfservicesitems['titleName']; ?>
                                 </option>
                             <?php } ?>
