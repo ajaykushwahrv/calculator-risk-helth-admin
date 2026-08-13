@@ -1,0 +1,265 @@
+# =========================================================
+# FINOMIS ONLINE - PERFORMANCE OPTIMIZED .HTACCESS
+# =========================================================
+
+RewriteEngine On
+
+
+# =========================================================
+# 1. FORCE HTTPS + WWW
+# =========================================================
+
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.finomisonline\.com$ [NC]
+RewriteRule ^ https://www.finomisonline.com%{REQUEST_URI} [R=301,L]
+
+
+# =========================================================
+# 2. OLD AUDIT URL -> CLEAN URL
+#
+# /audit.php?slug=example
+# ->
+# /audit/example
+# =========================================================
+
+RewriteCond %{THE_REQUEST} \s/+audit\.php\?slug=([^\s&]+) [NC]
+RewriteRule ^audit\.php$ /audit/%1? [R=301,L]
+
+
+# =========================================================
+# 3. AUDIT .HTML URL
+#
+# /example.html
+# ->
+# audit.php?slug=example
+# =========================================================
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L,QSA]
+
+
+# =========================================================
+# 4. BLOG ROUTING
+#
+# /blog
+# ->
+# audit.php?slug=blog
+#
+# /blog/post-slug
+# ->
+# audit.php?slug=blog/post-slug
+# =========================================================
+
+RewriteRule ^blog/?$ audit.php?slug=blog [L,QSA]
+
+RewriteRule ^blog/([^/]+)/?$ audit.php?slug=blog/$1 [L,QSA]
+
+
+# =========================================================
+# 5. CLEAN AUDIT URL
+#
+# /example
+# ->
+# audit.php?slug=example
+# =========================================================
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L,QSA]
+
+
+# =========================================================
+# 6. GZIP COMPRESSION
+# =========================================================
+
+<IfModule mod_deflate.c>
+
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE image/svg+xml
+
+    # Don't compress already compressed files
+    SetEnvIfNoCase Request_URI \
+    "\.(?:gif|jpe?g|png|webp|avif|zip|gz|mp4|mp3|pdf|woff|woff2)$" no-gzip dont-vary
+
+</IfModule>
+
+
+# =========================================================
+# 7. BROTLI COMPRESSION
+# Only works if mod_brotli is installed/enabled
+# =========================================================
+
+<IfModule mod_brotli.c>
+
+    AddOutputFilterByType BROTLI_COMPRESS text/html
+    AddOutputFilterByType BROTLI_COMPRESS text/plain
+    AddOutputFilterByType BROTLI_COMPRESS text/css
+    AddOutputFilterByType BROTLI_COMPRESS text/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript
+    AddOutputFilterByType BROTLI_COMPRESS application/json
+    AddOutputFilterByType BROTLI_COMPRESS application/xml
+    AddOutputFilterByType BROTLI_COMPRESS application/xhtml+xml
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+
+</IfModule>
+
+
+# =========================================================
+# 8. BROWSER CACHE
+# =========================================================
+
+<IfModule mod_headers.c>
+
+    # -----------------------------------------------------
+    # CSS
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(css)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+
+    # -----------------------------------------------------
+    # JavaScript
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+
+    # -----------------------------------------------------
+    # Images
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|avif|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+
+    # -----------------------------------------------------
+    # Fonts
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(woff|woff2|ttf|otf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+
+    # -----------------------------------------------------
+    # PDF
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(pdf)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+
+
+    # -----------------------------------------------------
+    # HTML / PHP
+    #
+    # Do NOT use no-store.
+    # Allow browser/proxy revalidation.
+    # -----------------------------------------------------
+
+    <FilesMatch "\.(html|htm|php)$">
+        Header set Cache-Control "public, max-age=0, must-revalidate"
+    </FilesMatch>
+
+</IfModule>
+
+
+# =========================================================
+# 9. ETAG OPTIMIZATION
+# =========================================================
+
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+FileETag None
+
+
+# =========================================================
+# 10. VARY HEADER
+# =========================================================
+
+<IfModule mod_headers.c>
+
+    Header append Vary Accept-Encoding
+
+</IfModule>
+
+
+# =========================================================
+# 11. SECURITY HEADERS
+# =========================================================
+
+<IfModule mod_headers.c>
+
+    # Prevent MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Basic referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+</IfModule>
+
+
+# =========================================================
+# 12. REMOVE SERVER INFORMATION
+# =========================================================
+
+ServerSignature Off
+
+
+# =========================================================
+# 13. DIRECTORY LISTING OFF
+# =========================================================
+
+Options -Indexes
+
+
+# =========================================================
+# 14. CUSTOM 404
+# =========================================================
+
+ErrorDocument 404 /rv-not-found.php
+
+
+# =========================================================
+# 15. BLOCK SENSITIVE FILES
+# =========================================================
+
+<FilesMatch "(^\.|config\.php|composer\.json|composer\.lock|package\.json|package-lock\.json|\.env)">
+    Require all denied
+</FilesMatch>
+
+
+# =========================================================
+# 16. BLOCK BACKUP / TEMP FILES
+# =========================================================
+
+<FilesMatch "\.(bak|backup|old|orig|save|swp|tmp|sql)$">
+    Require all denied
+</FilesMatch>
+
+
+# =========================================================
+# 17. HOTLINK PROTECTION
+# DISABLED
+#
+# Keep disabled unless you specifically want
+# to prevent other websites from using your images.
+# =========================================================

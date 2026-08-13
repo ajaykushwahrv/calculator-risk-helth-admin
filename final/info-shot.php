@@ -225,3 +225,67 @@ if ( $risk['form_lead_name'] == 'Contact' || $risk['form_lead_name'] == 'Health'
 if ( $health['form_lead_name'] == 'Risk' || $health['form_lead_name'] == 'Contact') { continue; }
 
 change_password.php
+
+
+
+
+
+
+function allPagesBanner($con, $bannertitleId)
+{
+$userinfo = rvFetchSingleDataSpecific($con, 1, 'base_url', 'admin');
+
+// Agar numeric ID hai
+if (is_numeric($bannertitleId)) {
+
+$pagesdatas = rvFetchAllDataSpecific($con, $bannertitleId, 'id', 'page_banner' );
+
+foreach ($pagesdatas as $pagesdata) {
+?>
+<section class="top-banner-section"
+    style="background-image:url('<?= $userinfo['base_url']; ?>/assets/images/admin/page-banner/<?= $pagesdata['img']; ?>')">
+
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+
+    <div class="banner-box container">
+        <h1><?= $pagesdata['title']; ?></h1>
+
+        <ul>
+            <li>
+                <a href="<?= $userinfo['base_url']; ?>">Home</a>
+            </li>
+            <li><?= $pagesdata['title']; ?></li>
+        </ul>
+    </div>
+</section>
+<?php
+		}
+
+	}
+	// Agar text/string diya hai
+	else {
+
+		?>
+<section class="top-banner-section">
+
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+
+    <div class="banner-box container">
+        <h1><?= htmlspecialchars($bannertitleId); ?></h1>
+
+        <ul>
+            <li>
+                <a href="<?= $userinfo['base_url']; ?>">Home</a>
+            </li>
+            <li><?= htmlspecialchars($bannertitleId); ?></li>
+        </ul>
+    </div>
+
+</section>
+<?php
+	}
+}

@@ -38,6 +38,8 @@ return [
     'domain' => '',
     'clientname' => '',
     'websitename' => '',
+    'ernwebsitename' => '',
+    'privacypolicyname' => '',
     'email' => '',
     'mobile' => '',
     'eemail' => [
@@ -100,7 +102,10 @@ return [
     'bonds' => '',
     // commission disclosures list
     'commission-disclosures-list' => '',
-    'registration-disclosure-list' => '',
+    // sare rkhna he or kuch htana he to 
+    'registration-disclosure-list' => 'all',
+    // kuch selected rkhna ho to 
+    'registration-disclosure-selected-list' => '46',
 
     // Privacy Policy me extra data dalna ho 
     'rvcprivacypolicy' => '',
