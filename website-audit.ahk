@@ -45,9 +45,17 @@ Clipboard =
 Send, ^v
 return
 
+^Numpad6::
+Clipboard =
+(
+ <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
+)
+Send, ^v
+return
+
  
 
-^Numpad6::
+^Numpad7::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\all-calculator-text.php
 Clipboard := fileContent
 Send, ^v

@@ -38,6 +38,8 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
 </head>
 
 <body>
+
+
     <div class="rvfrhcontent-box ">
         <form id="secureForm" method="POST" action="rvscmail.php" data-key="<?= $formval; ?>"
             onsubmit="return validate();">
@@ -115,6 +117,9 @@ if (empty($_SESSION[$rvrrf][$formKey])) {
             </div>
         </form>
     </div>
+
+
+
 </body>
 <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_jquery360']; ?>"></script>
 <script src="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_js']; ?>"></script>

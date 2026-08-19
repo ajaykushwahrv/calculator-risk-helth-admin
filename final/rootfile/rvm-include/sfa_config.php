@@ -106,6 +106,10 @@ return [
     'registration-disclosure-list' => 'all',
     // kuch selected rkhna ho to 
     'registration-disclosure-selected-list' => '46',
+    // kim sid sai all = all , number = 1, 2, 3  etc
+    'rv-kim-sid-sai-list' => 'all',
+    // Scheme Wise Commission Disclosure  all = all , number = 1, 2, 3  etc
+    'scheme-wise-commission-disclosure-list' => '',
 
     // Privacy Policy me extra data dalna ho 
     'rvcprivacypolicy' => '',
