@@ -1,0 +1,94 @@
+ 
+RewriteEngine On
+
+# -----------------------------
+# Force HTTPS
+# -----------------------------
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+
+# -----------------------------
+# Audit All pages
+# -----------------------------
+
+ 
+ 
+
+RewriteEngine On
+
+# Redirect old URL to clean URL
+RewriteCond %{THE_REQUEST} \s/audit\.php\?slug=([^\s&]+)
+RewriteRule ^ audit/%1? [R=301,L]
+
+# Agar file ya folder exist karta hai to rewrite mat karo
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# .html URL ke liye
+RewriteRule ^([a-zA-Z0-9-]+)\.html$ audit.php?slug=$1 [L,QSA]
+
+# Clean URL
+RewriteRule ^([a-zA-Z0-9-]+)$ audit.php?slug=$1 [L,QSA]
+
+
+
+
+# -----------------------------
+# GZIP Compression
+# -----------------------------
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/json
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE font/ttf
+AddOutputFilterByType DEFLATE font/woff
+AddOutputFilterByType DEFLATE font/woff2
+AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+
+# HTML always fresh
+<FilesMatch "\.(html|php)$">
+Header set Cache-Control "no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "0"
+</FilesMatch>
+
+# CSS & JS (browser re-checks on refresh)
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "public, max-age=0, must-revalidate"
+</FilesMatch>
+
+# Images (long cache but refresh works)
+<FilesMatch "\.(png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf)$">
+Header set Cache-Control "public, max-age=604800, must-revalidate"
+</FilesMatch>
+
+</IfModule>
+# -----------------------------
+# Cache-Control Headers
+# -----------------------------
+<IfModule mod_headers.c>
+<FilesMatch "\.(js|css|png|jpg|jpeg|gif|webp|svg|woff|woff2|ttf)$">
+Header set Cache-Control "public, max-age=31536000"
+</FilesMatch>
+</IfModule>
+
+# -----------------------------
+# Prevent Hotlinking (Dynamic)
+# -----------------------------
+ 
+
+# -----------------------------
+# Custom Not Found
+# -----------------------------
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /rv-not-found.php [L]
+
+

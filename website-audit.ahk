@@ -46,21 +46,31 @@ Send, ^v
 return
 
 ^Numpad6::
-Clipboard =
-(
- <link rel="stylesheet" href="<?= $config['rvuserinfo']['base_url']; ?><?= $config['rvrhcinfo']['rvrhc_rvrh_css']; ?>">
-)
-Send, ^v
-return
-
- 
-
-^Numpad7::
-FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\all-calculator-text.php
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\new-audit\function.php
 Clipboard := fileContent
 Send, ^v
 return
 
+^Numpad7::
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\new-audit\style.php
+Clipboard := fileContent
+Send, ^v
+return
+ 
+^Numpad8::
+FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\new-audit\audit.php
+Clipboard := fileContent
+Send, ^v
+return
+ 
+ 
+^Numpad9::
+Clipboard =
+(
+<?= legalhub_footer($tenantId, $apiBase, $apiKey); ?>
+)
+Send, ^v
+return
           
 !Numpad1::
 FileRead, fileContent, E:\xampp\htdocs\ajay-data\NEW-data\admin-calculator\calculator-risk-helth-admin\calculator\data\all-data\silver-category.php

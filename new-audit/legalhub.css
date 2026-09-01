@@ -1,0 +1,203 @@
+:root {
+    --rv-primary: #07486a;
+    --rv-secondary: #72b32f;
+    --rv-white: #fff;
+    --rv-black: #070707;
+    --rv-primary-rgb: color-mix(in srgb, var(--rv-primary) 65%, transparent);
+    --rv-secondary-rgb: color-mix(in srgb, var(--rv-secondary) 65%, transparent);
+    --border-color: #444;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.legalhub-footer {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+
+    div,
+    p,
+    a {
+        font-size: 14px;
+
+    }
+
+    &>div {
+        width: 100%;
+        display: block;
+    }
+
+
+    .legalhub-footer-registration-bar {
+        order: 1;
+    }
+
+    .legalhub-footer-legal-links {
+        order: 2;
+
+    }
+
+    .legalhub-footer-disclaimer {
+        order: 3;
+    }
+
+    .legalhub-footer-company-details {
+        order: 4;
+        padding-bottom: 20px;
+
+    }
+
+
+
+    .legalhub-footer-link-list {
+        padding: 10px 0;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding-left: 0;
+        display: flex;
+        gap: 5px 24px;
+        list-style: none;
+        margin: 15px 0;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        li {
+            position: relative;
+
+            &::after {
+                content: '|';
+                position: absolute;
+                right: -12px;
+                color: var(--rv-white);
+
+            }
+
+            &:last-child {
+                &::after {
+                    content: unset;
+                }
+            }
+
+            a {
+                color: var(--rv-secondary);
+            }
+        }
+    }
+
+    .legalhub-footer-amfi-badge {
+        display: flex;
+        order: 5;
+        gap: 10px;
+        justify-content: center;
+
+        img {
+            height: 60px;
+            object-fit: contain;
+
+        }
+
+    }
+}
+
+.content-text {
+    .legalhub-table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 15px;
+        background-color: #fff;
+
+        th:first-child,
+        td:first-child {
+            white-space: nowrap;
+        }
+
+        thead {
+            background-color: #212529;
+            color: #fff;
+
+            tr {
+                background-color: #212529;
+
+                th {
+                    padding: 0.75rem;
+                    vertical-align: middle;
+                    text-align: left;
+                    font-weight: 600;
+                    border: 1px solid #454d55;
+                    color: #fff;
+                    white-space: nowrap;
+                }
+            }
+        }
+
+
+
+        tbody {
+            background-color: #fff;
+
+            tr {
+                background-color: #fff;
+
+                &:nth-child(even) {
+                    background-color: #f8f9fa;
+                }
+
+                &:hover {
+                    background-color: #f1f3f5;
+                }
+
+                td {
+                    img {
+                        height: 45px;
+                        width: 130px;
+                        object-fit: contain;
+                        object-position: left;
+
+                    }
+
+                    padding: 0.75rem;
+                    vertical-align: middle;
+                    border: 1px solid #dee2e6;
+                    color: #212529;
+
+                    a {
+                        color: #007bff;
+                        text-decoration: none;
+
+                        &:hover {
+                            color: #0056b3;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
+
+    @media (max-width: 767.98px) {
+        table {
+            min-width: 700px;
+            font-size: 14px;
+        }
+
+        table thead th,
+        table tbody td {
+            padding: 0.6rem;
+        }
+    }
+
+}
