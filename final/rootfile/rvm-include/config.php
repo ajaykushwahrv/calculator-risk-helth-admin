@@ -29,7 +29,7 @@ $siteUrl = !empty($config['rvlogin']['wheatlebalsiteUrl']) ? $config['rvlogin'][
 
 // Fetch App links 
 $androidUrl = !empty($config['webapplinks']['androidUrl']) ? $config['webapplinks']['androidUrl'] : 'https://play.google.com/store/search?q=wealth+elite&c=apps';
-$iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['iosUrl'] : 'https://apps.apple.com/us/app/wealth-elite/id1518518606';  
+$iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['iosUrl'] : 'https://apps.apple.com/us/app/wealth-elite/id1518518606';
 
 // Fetch Audit data by slug
 
@@ -38,7 +38,8 @@ $iosUrl = !empty($config['webapplinks']['iosUrl']) ? $config['webapplinks']['ios
 
 
 // Fetch single calculator data by urlName
-function fetchDatasingleAPI($urlName) {
+function fetchDatasingleAPI($urlName)
+{
 	if (is_array($urlName)) {
 		$urlName = implode(',', $urlName);
 	}
@@ -69,8 +70,9 @@ function fetchDatasingleAPI($urlName) {
 	return $decoded_result;
 }
 // Fetch all calculators data
-function fetchallDataAPI($con) {
-	$baseUrl = "https://redvisiontechnologies.com/api/calculators.php"; 
+function fetchallDataAPI($con)
+{
+	$baseUrl = "https://redvisiontechnologies.com/api/calculators.php";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $baseUrl);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -136,7 +138,7 @@ function rvFetchSingleDatanconf($con, $id, $column, $table)
 }
 $userinfo = rvFetchSingleDatanconf($con, 1, 'id', 'admin');
 
-function insertLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype)
+function insertrvLeads($con, $cfusersName, $cfmobile, $cfuserEmail, $cfservices, $cfmessage, $cfformtype)
 {
 	// SECURITY: Sanitize Inputs
 	$cfusersName = substr(trim(strip_tags($cfusersName)), 0, 100);
@@ -214,8 +216,9 @@ function rvFetchAllDataSpecificnconf($con, $id, $column, $table)
 
 // useful links
 
-function fetchallusefullinksDataAPI() {
-	$baseUrl = "https://redvisionweb.com/api/open-apis/useful-links?apikey=fc1017dad92f3bbbd9cee9bc21d4b0e0"; 
+function fetchallusefullinksDataAPI()
+{
+	$baseUrl = "https://redvisionweb.com/api/open-apis/useful-links?apikey=fc1017dad92f3bbbd9cee9bc21d4b0e0";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $baseUrl);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -239,8 +242,9 @@ function fetchallusefullinksDataAPI() {
 $usefullinksData = fetchallusefullinksDataAPI();
 
 // Login
-function fetchallLoginDataAPI() {
-	$baseUrl = "https://redvisiontechnologies.com/api/web_login.php"; 
+function fetchallLoginDataAPI()
+{
+	$baseUrl = "https://redvisiontechnologies.com/api/web_login.php";
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $baseUrl);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -268,25 +272,25 @@ $allLoginData = fetchallLoginDataAPI();
 $config_data = $config['rvuserinfo'];
 function rv_apiCall($endpoint, $config_data = [])
 {
-    $api_key = "123456ABC";
-    // ✅ api_key added
-    $api_url = "https://www.redvisiontechnologies.com/api/sebi-audit/$endpoint?api_key=$api_key";
-    $ch = curl_init($api_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, [
-        'config_data' => json_encode($config_data)
-    ]);
-    $response = curl_exec($ch);
-    if ($response === false) {
-        return "cURL Error: " . curl_error($ch);
-    }
-    curl_close($ch);
-    $data = json_decode($response, true);
-    if (!$data) {
-        return "Invalid JSON response from API";
-    }
-    return $data;
+	$api_key = "123456ABC";
+	// ✅ api_key added
+	$api_url = "https://www.redvisiontechnologies.com/api/sebi-audit/$endpoint?api_key=$api_key";
+	$ch = curl_init($api_url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_POST, true);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, [
+		'config_data' => json_encode($config_data)
+	]);
+	$response = curl_exec($ch);
+	if ($response === false) {
+		return "cURL Error: " . curl_error($ch);
+	}
+	curl_close($ch);
+	$data = json_decode($response, true);
+	if (!$data) {
+		return "Invalid JSON response from API";
+	}
+	return $data;
 }
 $data = rv_apiCall("audit-links.php", $config_data);
 $rvasallaudits = $data['audit_links'] ?? [];
@@ -294,18 +298,18 @@ $rvasallaudits = $data['audit_links'] ?? [];
 
 function rv_fetchDynamic($slug, $config_data = [])
 {
-    $data = rv_apiCall($slug . ".php", $config_data);
+	$data = rv_apiCall($slug . ".php", $config_data);
 	$key = str_replace('-', '_', $slug);
 	return $data[$key] ?? ($slug . " not found");
 }
- 
-
-
- 
 
 
 
 
 
 
-?> 
+
+
+
+
+?>
